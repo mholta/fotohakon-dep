@@ -1,18 +1,23 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+}
 
 module.exports = {
   siteMetadata: {
     title: 'fotohakon',
+    description: `Web page for Hakon`,
+    author: `@mholta`,
+    siteUrl: `https://fotohakondev.netlify.app`,
   },
   plugins: [
+    'gatsby-plugin-mdx',
+
     {
       resolve: 'gatsby-source-contentful',
-      options: {
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-      },
+      options: contentfulConfig,
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
@@ -44,5 +49,9 @@ module.exports = {
       },
       __key: 'pages',
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {},
+    },
   ],
-};
+}
