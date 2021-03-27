@@ -1,7 +1,35 @@
-import React from 'react';
+import { graphql } from 'gatsby'
+import React from 'react'
+import HomePage from '../views/HomePage/HomePage'
 
-const IndexPage = () => {
-  return <main>Content</main>;
-};
+interface IndexPageProps {
+  data: any
+}
 
-export default IndexPage;
+const IndexPage = ({ data: { contentfulHjem } }: IndexPageProps) => {
+  const node: HomePageQueryNode = contentfulHjem
+  return <HomePage node={node} />
+}
+
+export default IndexPage
+
+export const pageQuery = graphql`
+  query {
+    contentfulHjem(internTittel: { eq: "home" }) {
+      internTittel
+      presentation {
+        raw
+      }
+      headerImages {
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+        title
+      }
+    }
+  }
+`
+
+export interface HomePageQueryNode {
+  internTittel: string
+  presentation: any
+  headerImages: any[]
+}
