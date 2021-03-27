@@ -1,44 +1,57 @@
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+}
+
 module.exports = {
   siteMetadata: {
-    title: "fotohakon",
+    title: 'fotohakon',
+    description: `Web page for Hakon`,
+    author: `@mholta`,
+    siteUrl: `https://fotohakondev.netlify.app`,
   },
   plugins: [
+    'gatsby-plugin-mdx',
+
     {
-      resolve: "gatsby-source-contentful",
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig,
+    },
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        accessToken: "O3dDPGn0c8Tie5j46YlPUCv-iZHVqVIMF49GeF5s-24",
-        spaceId: "bhkcln8s1ixm",
+        icon: 'src/images/icon.png',
       },
     },
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    'gatsby-transformer-remark',
+    'gatsby-plugin-mdx',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        icon: "src/images/icon.png",
+        name: 'images',
+        path: './src/images/',
       },
-    },
-    "gatsby-transformer-remark",
-    "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
+      __key: 'images',
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'pages',
+        path: './src/pages/',
       },
-      __key: "pages",
+      __key: 'pages',
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {},
     },
   ],
-};
+}
