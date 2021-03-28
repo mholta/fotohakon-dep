@@ -1,4 +1,5 @@
 import React from 'react'
+import RandomGallery from '../../components/gallery/randomGallery'
 import { HomePageQueryNode } from '../../pages'
 import HeaderSlider from './components/headerSlider'
 import PresentationSection from './components/presentationSection'

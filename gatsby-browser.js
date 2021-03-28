@@ -1,6 +1,7 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { StylesProvider } from '@material-ui/core'
+import { StylesProvider, ThemeProvider } from '@material-ui/core'
+import theme from './src/styles/theme'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -19,7 +20,9 @@ const GlobalStyles = createGlobalStyle`
 
 export const wrapRootElement = ({ element }) => (
   <StylesProvider injectFirst>
-    <GlobalStyles />
-    {element}
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {element}
+    </ThemeProvider>
   </StylesProvider>
 )

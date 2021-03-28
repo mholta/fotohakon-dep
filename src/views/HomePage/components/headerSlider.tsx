@@ -1,7 +1,7 @@
 import { IconButton, withTheme } from '@material-ui/core'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import Image from '../../../components/Image'
+import Image from '../../../components/gallery/image'
 import { HomePageQueryNode } from '../../../pages'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import styled from 'styled-components'
@@ -17,7 +17,6 @@ const HeaderSlider = ({ node, speed = 2, autoplay }: HeaderSliderProps) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(autoplay ?? false)
 
   const play = () => setIsPlaying(true)
-
   const pause = () => setIsPlaying(false)
 
   const maxLength = node.headerImages.length
