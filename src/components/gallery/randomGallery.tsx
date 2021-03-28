@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { withTheme } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { CategoryPageQueryNode } from '../../pages'
 import { randomAlign, randomInt, randomMargin4x } from '../../utils/random'
@@ -37,6 +38,8 @@ const RandomGallery = ({
     setNotLoaded(notLoaded.slice(appendWithAmount, notLoaded.length))
   }
 
+  useEffect(loadMore, [])
+
   return (
     <>
       <GalleryGrid>
@@ -69,14 +72,21 @@ const ImageElement = ({
   </li>
 )
 
-const GalleryGrid = styled.ul`
+const GalleryGrid = withTheme(styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 6rem;
   padding: 0;
   padding: 4rem;
-`
+  max-width: 100vw;
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    gap: 2rem;
+  }
+`)
 
 interface LoadedElement {
   imageData: any

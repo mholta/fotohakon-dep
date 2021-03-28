@@ -39,13 +39,16 @@ const Lightbox = ({ imageData }: LightboxProps) => {
         BackdropProps={{
           timeout: 500,
         }}
+        style={{ cursor: 'pointer' }}
       >
         <Fade in={open}>
           <Container>
             <CloseButton onClick={handleClose}>
               <CloseIcon />
             </CloseButton>
-            <Image imageData={imageData} maxheight="80vh" />
+            <ButtonBase disableRipple onClick={handleClose}>
+              <Image imageData={imageData} maxheight="94vh" />
+            </ButtonBase>
           </Container>
         </Fade>
       </ModalWrapper>
@@ -64,7 +67,7 @@ const GalleryImageButton = styled(ButtonBase)<Partial<LightboxProps>>`
     z-index: 100;
   }
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
     z-index: 100;
   }
 `
@@ -79,7 +82,7 @@ const ModalWrapper = styled(Modal)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10vh 10vw;
+  padding: 1vh 1vw;
 `
 
 const Container = styled.div`

@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import RandomGallery from '../components/gallery/randomGallery'
+import CategorySection from '../views/HomePage/components/categoriesSection'
 import HomePage from '../views/HomePage/HomePage'
 
 interface IndexPageProps {
@@ -8,14 +8,16 @@ interface IndexPageProps {
 }
 
 const IndexPage = ({
-  data: { contentfulHjem, contentfulCategory },
+  data: { contentfulHjem, allContentfulCategory },
 }: IndexPageProps) => {
   const homeNode: HomePageQueryNode = contentfulHjem
-  const categoryNode: CategoryPageQueryNode = contentfulCategory
+  const allCategoryNodes: AllCategoryPageQueryNodes =
+    allContentfulCategory.edges
+  allContentfulCategory.edges
   return (
     <>
       <HomePage node={homeNode} />
-      <RandomGallery node={categoryNode} />
+      <CategorySection nodes={allCategoryNodes} />
     </>
   )
 }
@@ -38,14 +40,22 @@ export const pageQuery = graphql`
         title
       }
     }
-    contentfulCategory(key: { eq: "wedding" }) {
-      buttonText
-      infoseksjon {
-        raw
-      }
-      gallery {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-        title
+    allContentfulCategory {
+      edges {
+        node {
+          buttonImage {
+            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+            title
+          }
+          buttonText
+          infoseksjon {
+            raw
+          }
+          gallery {
+            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+            title
+          }
+        }
       }
     }
   }
@@ -62,4 +72,10 @@ export interface CategoryPageQueryNode {
   buttonText: string
   infoseksjon: any
   gallery: any[]
+  buttonImage: any
 }
+export interface CategoryPageQueryEdge {
+  node: CategoryPageQueryNode
+}
+
+export type AllCategoryPageQueryNodes = CategoryPageQueryEdge[]
