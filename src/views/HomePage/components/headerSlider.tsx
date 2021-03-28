@@ -1,10 +1,10 @@
-import { IconButton, withTheme } from '@material-ui/core'
+import { withTheme } from '@material-ui/core'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import Image from '../../../components/gallery/image'
 import { HomePageQueryNode } from '../../../pages'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import styled from 'styled-components'
+import ArrowButton from '../../../components/elements/arrowButton'
 
 interface HeaderSliderProps {
   node: HomePageQueryNode
@@ -51,12 +51,8 @@ const HeaderSlider = ({ node, speed = 2, autoplay }: HeaderSliderProps) => {
   return (
     <MainWrapper>
       <ControlsWrapper>
-        <PrevButton onClick={handleNextButtonClick}>
-          <ArrowForwardIosIcon />
-        </PrevButton>
-        <NextButton onClick={handlePrevButtonClick}>
-          <ArrowForwardIosIcon />
-        </NextButton>
+        <ArrowButton direction="left" onClick={handleNextButtonClick} />
+        <ArrowButton direction="right" onClick={handlePrevButtonClick} />
       </ControlsWrapper>
       <CarouselContentWrapper>
         {node.headerImages.map((imageData, index: number) => (
@@ -78,9 +74,12 @@ const HeaderSlider = ({ node, speed = 2, autoplay }: HeaderSliderProps) => {
 }
 
 const MainWrapper = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding-bottom: 50%;
+  height: 100%;
+  z-index: 2;
 `
 
 const ControlsWrapper = styled.div`
@@ -91,26 +90,9 @@ const ControlsWrapper = styled.div`
   height: 100%;
   z-index: 10;
 
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: 1fr auto 1fr;
-  place-items: center;
-`
-
-const PrevButton = styled(IconButton)`
-  grid-column: 1;
-  grid-row: 2;
-  color: #fff;
-
-  & > * {
-    transform: rotateZ(180deg);
-  }
-`
-
-const NextButton = styled(IconButton)`
-  grid-column: 3;
-  grid-row: 2;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 const CarouselContentWrapper = withTheme(styled.div`

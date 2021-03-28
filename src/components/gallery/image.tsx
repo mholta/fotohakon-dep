@@ -32,7 +32,9 @@ interface ImgProps extends Partial<ImageProps> {
 const GImage = styled(GatsbyImage)<ImgProps>`
   max-width: 100%;
   ${(props) =>
-    props.maxheight ? `width: calc(${props.maxheight} * ${props.ratio});` : ''}
+    props.maxheight
+      ? `max-width: calc(${props.maxheight} * ${props.ratio});`
+      : `height: 100%;`}
 `
 
 export default Image
