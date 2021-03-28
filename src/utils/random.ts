@@ -16,4 +16,4 @@ export const randomAlign = (): string =>
 export const randomBool = (): boolean => Math.random() >= 0.5
 
 export const randomInt = (min: number, max: number): number =>
-  Math.round(min + Math.random() * (max - min))
+  Math.round(min + (Math.random() - 0.3) * (max - min))

@@ -6,6 +6,7 @@ export const Section = styled.section`
 
 export const Container = styled.div`
   max-width: 980px;
+  margin: 0 auto;
 `
 
 interface CenterChildProps {
