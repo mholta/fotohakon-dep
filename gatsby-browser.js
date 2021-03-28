@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
   body, html {
     font-weight: 400;
     height: 100%;
+    font-size: 18px;
   }
   
   h1,h2,h3,h4,h5,h6{

@@ -33,6 +33,10 @@ export const pageQuery = graphql`
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
         title
       }
+      profilePicture {
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+        title
+      }
     }
     contentfulCategory(key: { eq: "wedding" }) {
       buttonText
@@ -51,6 +55,7 @@ export interface HomePageQueryNode {
   internTittel: string
   presentation: any
   headerImages: any[]
+  profilePicture: any
 }
 
 export interface CategoryPageQueryNode {

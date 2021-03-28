@@ -1,7 +1,6 @@
 import React from 'react'
-import RandomGallery from '../../components/gallery/randomGallery'
 import { HomePageQueryNode } from '../../pages'
-import HeaderSlider from './components/headerSlider'
+import HeaderWrapper from './components/headerWrapper'
 import PresentationSection from './components/presentationSection'
 
 interface HomePageProps {
@@ -11,7 +10,7 @@ interface HomePageProps {
 const HomePage = ({ node }: HomePageProps) => {
   return (
     <>
-      <HeaderSlider node={node} speed={2} autoplay />
+      <HeaderWrapper node={node} />
       <PresentationSection node={node} />
     </>
   )
