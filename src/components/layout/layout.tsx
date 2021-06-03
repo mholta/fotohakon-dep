@@ -1,11 +1,18 @@
+import { withTheme } from '@material-ui/core'
 import styled from 'styled-components'
 
-export const Section = styled.section`
-  padding: 10rem 2rem;
-`
+interface SectionProps {
+  lightGrey?: boolean
+}
+
+export const Section = withTheme(styled.section<SectionProps>`
+  padding: 4rem 1rem;
+  background-color: ${(props) =>
+    props.lightGrey ? props.theme.palette.grey[200] : 'transparent'};
+`)
 
 export const Container = styled.div`
-  max-width: 980px;
+  max-width: 760px;
   margin: 0 auto;
 `
 

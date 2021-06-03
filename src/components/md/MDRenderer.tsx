@@ -22,6 +22,8 @@ const Bold = styled.span`
 const P = styled.p``
 
 const H1 = styled.h1``
+const H2 = styled.h2``
+const H3 = styled.h3``
 
 const options = {
   renderMark: {
@@ -30,6 +32,8 @@ const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: any, children: any) => <P>{children}</P>,
     [BLOCKS.HEADING_1]: (node: any, children: any) => <H1>{children}</H1>,
+    [BLOCKS.HEADING_2]: (node: any, children: any) => <H2>{children}</H2>,
+    [BLOCKS.HEADING_3]: (node: any, children: any) => <H3>{children}</H3>,
   },
 }
 
