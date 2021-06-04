@@ -10,6 +10,7 @@ import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
 import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
+import LogoTop from '../components/logoTop'
 import MDRenderer from '../components/md/MDRenderer'
 import StepsSection from '../components/steps/steps.section'
 
@@ -51,6 +52,7 @@ const BookingPage = ({
   }
   return (
     <div>
+      <LogoTop />
       <Section>
         <Container style={{ textAlign: 'center' }}>
           <MDRenderer>{weddingPageNode.topText}</MDRenderer>
