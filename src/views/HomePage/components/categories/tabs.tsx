@@ -41,7 +41,9 @@ export const Tabs = ({ children }: TabsProps) => {
 
   return (
     <div>
-      <TabsWrapper className="tabs__box">{tabs}</TabsWrapper>
+      <Section>
+        <TabsWrapper className="tabs__box">{tabs}</TabsWrapper>
+      </Section>
       <Section>
         <Container style={{ minHeight: '200vh' }}>
           {children.map((child: Child, index: number) => (
@@ -60,7 +62,8 @@ export const Tabs = ({ children }: TabsProps) => {
 const TabsWrapper = styled.div`
   display: flex;
   justify-content: center;
-
+  margin-top: -2rem;
+  margin-bottom: 2rem;
   & > * {
     margin: 0 2rem;
   }

@@ -3,10 +3,11 @@ import styled from 'styled-components'
 
 interface SectionProps {
   lightGrey?: boolean
+  large?: boolean
 }
 
 export const Section = withTheme(styled.section<SectionProps>`
-  padding: 4rem 1rem;
+  padding: ${(props) => (props.large ? 8 : 4)}rem 1rem;
   overflow: hidden;
   background-color: ${(props) =>
     props.lightGrey ? props.theme.palette.grey[200] : 'transparent'};

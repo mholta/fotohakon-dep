@@ -15,7 +15,7 @@ const LoadMoreButton = ({ callback, hide = false }: LoadMoreButtonProps) => {
   useEffect(() => {
     if (inView) callback()
   }, [inView])
-  return <TriggerElement ref={ref}>{inView ? 'Hallo' : 0}</TriggerElement>
+  return <TriggerElement ref={ref}>{inView ? '' : ''}</TriggerElement>
 }
 
 const TriggerElement = styled.div`

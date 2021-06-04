@@ -18,9 +18,9 @@ const SliderWrapper = styled.div<SliderWrapperProps>`
   display: flex;
   overflow: auto;
   margin: -3rem;
-  padding: 3rem 0;
-  padding-left: 3rem;
-  & > * {
+  padding: 3rem;
+
+  & > *:not(:last-child) {
     margin-right: 3rem;
   }
 `

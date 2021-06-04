@@ -1,4 +1,4 @@
-import { withTheme } from '@material-ui/core'
+/* import { withTheme } from '@material-ui/core'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import Image from '../../../components/gallery/image'
@@ -118,3 +118,4 @@ const CarouselContentWrapper = withTheme(styled.div`
 `)
 
 export default HeaderSlider
+ */
