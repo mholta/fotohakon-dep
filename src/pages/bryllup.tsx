@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormControlLabel,
-  RadioGroup,
-  TextField,
-} from '@material-ui/core'
-import { ContactsOutlined, Group } from '@material-ui/icons'
+import { FormControlLabel, TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import {
@@ -17,6 +11,7 @@ import SubmitButton from '../components/forms/sendButton'
 import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
+import StepsSection from '../components/steps/steps.section'
 
 interface BookingPageProps {
   data: any
@@ -62,8 +57,10 @@ const BookingPage = ({
         </Container>
       </Section>
 
+      <StepsSection weddingPageNode={weddingPageNode} />
+
       <Section>
-        <Container style={{ textAlign: 'center' }}>
+        <Container style={{ textAlign: 'center' }} width="sm">
           <MDRenderer>{weddingPageNode.optionsIntro}</MDRenderer>
         </Container>
       </Section>
@@ -138,18 +135,25 @@ const BookingPage = ({
         <Container>
           <h2>Fullfør booking</h2>
           <BookingForm
-            noValidate
             name="Booking bryllup"
             autoComplete="off"
             method="POST"
             data-netlify="true"
+            action="/takk"
           >
             <input type="hidden" name="form-name" value="Booking bryllup" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
             <PhoneEmailGrid>
               <TextField id="fphone" name="Mobil" label="Mobil" required />
-              <TextField id="femail" name="E-post" label="Epost" required />
+              <TextField
+                id="femail"
+                name="E-post"
+                type="email"
+                label="Epost"
+                required
+              />
             </PhoneEmailGrid>
+
             <h2>Foto</h2>
             <RadioSlider
               aria-label="foto"
@@ -161,6 +165,7 @@ const BookingPage = ({
                 <FormControlLabel
                   label=""
                   value={node.title}
+                  key={'phots-' + index}
                   control={
                     <SelectionCard
                       summary
@@ -168,7 +173,6 @@ const BookingPage = ({
                         selectedPhotoSolution === node.title.toUpperCase()
                       }
                       node={node}
-                      key={'ps' + index}
                       onClick={() =>
                         setSelectedPhotoSolution(
                           selectedPhotoSolution === node.title.toUpperCase()
@@ -193,6 +197,7 @@ const BookingPage = ({
                 <FormControlLabel
                   label=""
                   value={node.title}
+                  key={'vids-' + index}
                   control={
                     <SelectionCard
                       summary
@@ -200,7 +205,6 @@ const BookingPage = ({
                         selectedVideoSoluton === node.title.toUpperCase()
                       }
                       node={node}
-                      key={'vs' + index}
                       onClick={() =>
                         setSelectedVideoSolution(
                           selectedVideoSoluton === node.title.toUpperCase()
@@ -219,11 +223,12 @@ const BookingPage = ({
               aria-label="foto"
               name="Tileggsvalg"
               value={selectedVideoSoluton}
-              onChange={handleVideoSolutionChange}
+              onChange={handleExtraSolutionChange}
               /* URGENT: Not multiselectable */
             >
               {weddingPageNode.extras.map((node, index) => (
                 <FormControlLabel
+                  key={'extr-' + index}
                   label=""
                   value={node.title}
                   control={
@@ -233,7 +238,6 @@ const BookingPage = ({
                         selectedExtraSoluton === node.title.toUpperCase()
                       }
                       node={node}
-                      key={'es' + index}
                       onClick={() =>
                         setSelectedExtraSolution(
                           selectedExtraSoluton === node.title.toUpperCase()
@@ -261,6 +265,7 @@ const BookingPage = ({
               label="Melding"
               placeholder="Vi ønsker dette og dette "
               multiline
+              required
               fullWidth
             />
 

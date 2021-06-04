@@ -17,9 +17,9 @@ interface SliderWrapperProps {
 const SliderWrapper = styled.div<SliderWrapperProps>`
   display: flex;
   overflow: auto;
-  margin: -3rem 0;
-  margin-right: -3rem;
+  margin: -3rem;
   padding: 3rem 0;
+  padding-left: 3rem;
   & > * {
     margin-right: 3rem;
   }
