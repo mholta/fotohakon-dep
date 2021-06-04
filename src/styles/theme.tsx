@@ -46,6 +46,9 @@ const theme = createMuiTheme({
       light: 'rgba(234, 226, 217, 0.6)',
     },
     text: {},
+    background: {
+      default: '#fff',
+    },
   },
   typography: {
     allVariants: {},

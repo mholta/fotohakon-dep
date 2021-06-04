@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 interface SubmitButtonProps {
@@ -6,8 +6,83 @@ interface SubmitButtonProps {
 }
 
 const SubmitButton = ({ onClick }: SubmitButtonProps) => {
-  return <SubmitButtonWrapper onClick={onClick}>Send</SubmitButtonWrapper>
+  const [hover, setHover] = useState<boolean>(true)
+
+  return (
+    <SubmitButtonWrapper
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <LineWrapper hover={hover}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </LineWrapper>
+      <SubmitText hover={hover}>Send</SubmitText>
+    </SubmitButtonWrapper>
+  )
 }
+
+interface HoverProps {
+  hover?: boolean
+}
+
+const LineWrapper = styled.div<HoverProps>`
+  font-size: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: transform 200ms ease;
+  transform: translateX(${(props) => (props.hover ? '0.4em' : '0')});
+
+  & > span:nth-child(1) {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  & > span:nth-child(2),
+  & > span:nth-child(3) {
+    position: absolute;
+    right: 0;
+    width: 2em;
+    height: 2px;
+    background-color: black;
+    transition: transform 200ms ease;
+    transform-origin: right;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  & > span:nth-child(2) {
+    ${(props) =>
+      props.hover &&
+      `
+      transform: translateY(0.04em) translateX(0.01em) rotateZ(45deg);
+      `}
+  }
+  & > span:nth-child(3) {
+    ${(props) =>
+      props.hover &&
+      `
+      transform: translateY(-0.04em) translateX(0.01em) rotateZ(-45deg);
+    `}
+  }
+`
+
+const SubmitText = styled.span<HoverProps>`
+  font-size: 4rem;
+  font-weight: 600;
+  transition: transform 200ms ease;
+
+  ${(props) =>
+    props.hover &&
+    `
+      transform: translateX(-0.04em);
+      `}
+`
 
 const SubmitButtonWrapper = styled.button`
   border: none;
@@ -16,6 +91,19 @@ const SubmitButtonWrapper = styled.button`
   background-color: transparent;
   font-family: inherit;
   font-size: 1rem;
+
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  cursor: pointer;
+  align-items: center;
+  transition: transform 200ms ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
 `
 
 export default SubmitButton
