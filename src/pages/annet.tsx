@@ -2,6 +2,10 @@ import { FormControlLabel, TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import {
+  OptionsIntroWrapper,
+  OptionsLabel,
+} from '../components/elements/optionsIntroWrapper'
+import {
   BookingForm,
   PhoneEmailGrid,
   RadioSlider,
@@ -41,12 +45,14 @@ const OtherBookingsPage = ({
       </Section>
       <Section>
         <Container style={{ textAlign: 'center' }} width="sm">
-          <MDRenderer>{pageNode.optionsIntro}</MDRenderer>
+          <OptionsIntroWrapper>
+            <MDRenderer>{pageNode.optionsIntro}</MDRenderer>
+          </OptionsIntroWrapper>
         </Container>
       </Section>
       <Section>
         <Container>
-          <h2>Foto</h2>
+          <OptionsLabel>Foto</OptionsLabel>
           <Slider>
             {pageNode.solutions.map((node, index) => (
               <SelectionCard
@@ -67,7 +73,7 @@ const OtherBookingsPage = ({
       </Section>
       <Section lightGrey>
         <Container>
-          <h2>Fullfør booking</h2>
+          <OptionsLabel>Fullfør booking</OptionsLabel>
           <BookingForm
             name="Booking annet"
             autoComplete="off"
@@ -88,7 +94,7 @@ const OtherBookingsPage = ({
               />
             </PhoneEmailGrid>
 
-            <h2>Pakke</h2>
+            <h3>Pakke</h3>
             <RadioSlider
               aria-label="foto"
               name="Pakke"

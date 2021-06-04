@@ -21,8 +21,8 @@ const StepCardWrapper = withTheme(styled.div`
   background-color: ${(props) => props.theme.palette.background.paper};
 
   & > h3 {
-    font-size: 2.6rem;
-    margin-bottom: 0.8rem;
+    font-size: 3.2rem;
+    margin-bottom: 0rem;
   }
 `)
 
