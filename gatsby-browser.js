@@ -1,7 +1,8 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { ThemeProvider } from '@material-ui/core'
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './src/styles/theme'
+import { Helmet } from 'react-helmet'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -25,8 +26,23 @@ const GlobalStyles = createGlobalStyle`
   h1{font-size: 3.75}
 `
 
+const Viewport = ({ children }) => {
+  return (
+    <Helmet>
+      {/* To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your <head> element. */}
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+      />
+      {children}
+    </Helmet>
+  )
+}
+
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
+    <Viewport />
+    <CssBaseline />
     <GlobalStyles />
     {element}
   </ThemeProvider>
