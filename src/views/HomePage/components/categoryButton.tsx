@@ -64,7 +64,7 @@ const ImageWrapper = styled.div`
   position: relative;
 `
 
-const ButtonTextWrapper = withTheme(styled.div`
+const ButtonTextWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -81,6 +81,6 @@ const ButtonTextWrapper = withTheme(styled.div`
     color: white;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 1), 0px 2px 24px rgba(0, 0, 0, 1);
   }
-`)
+`
 
 export default CategoryTabButton

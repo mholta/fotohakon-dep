@@ -1,6 +1,11 @@
 import { FormControlLabel, TextField } from '@material-ui/core'
+import { motion } from 'framer'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
+import {
+  OptionsIntroWrapper,
+  OptionsLabel,
+} from '../components/elements/optionsIntroWrapper'
 import {
   BookingForm,
   PhoneEmailGrid,
@@ -63,13 +68,15 @@ const BookingPage = ({
 
       <Section>
         <Container style={{ textAlign: 'center' }} width="sm">
-          <MDRenderer>{weddingPageNode.optionsIntro}</MDRenderer>
+          <OptionsIntroWrapper>
+            <MDRenderer>{weddingPageNode.optionsIntro}</MDRenderer>
+          </OptionsIntroWrapper>
         </Container>
       </Section>
 
       <Section>
         <Container>
-          <h2>Foto</h2>
+          <OptionsLabel>Foto</OptionsLabel>
           <Slider>
             {weddingPageNode.photoSolutions.map((node, index) => (
               <SelectionCard
@@ -91,7 +98,7 @@ const BookingPage = ({
 
       <Section>
         <Container>
-          <h2>Video</h2>
+          <OptionsLabel>Video</OptionsLabel>
           <Slider>
             {weddingPageNode.videoSolutions.map((node, index) => (
               <SelectionCard
@@ -113,7 +120,7 @@ const BookingPage = ({
 
       <Section>
         <Container>
-          <h2>Tilleggsvalg</h2>
+          <OptionsLabel>Tilleggsvalg</OptionsLabel>
           <Slider>
             {weddingPageNode.extras.map((node, index) => (
               <SelectionCard
@@ -135,7 +142,7 @@ const BookingPage = ({
 
       <Section lightGrey>
         <Container>
-          <h2>Fullfør booking</h2>
+          <OptionsLabel>Fullfør booking</OptionsLabel>
           <BookingForm
             name="Booking bryllup"
             autoComplete="off"

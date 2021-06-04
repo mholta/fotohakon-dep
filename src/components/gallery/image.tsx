@@ -20,7 +20,7 @@ const Image = ({
   const gImage = getImage(imageData)
 
   return (
-    <>
+    <AbosluteWrapper absolute={absolute ? 1 : 0}>
       {gImage && (
         <GImage
           image={gImage}
@@ -32,7 +32,7 @@ const Image = ({
           darken={darken}
         />
       )}
-    </>
+    </AbosluteWrapper>
   )
 }
 
@@ -41,14 +41,7 @@ interface ImgProps extends Partial<ImageProps> {
   maxheight: string | undefined
 }
 
-const GImage = styled(GatsbyImage)<ImgProps>`
-  max-width: 100%;
-  transition: filter 00ms ease;
-  position: relative;
-  ${(props) =>
-    props.maxheight
-      ? `max-width: calc(${props.maxheight} * ${props.ratio});`
-      : `height: 100%;`}
+const AbosluteWrapper = styled.div<Partial<ImgProps>>`
   ${(props) =>
     props.absolute
       ? `
@@ -60,8 +53,18 @@ const GImage = styled(GatsbyImage)<ImgProps>`
     object-fit: fill;
     `
       : ``}
+`
 
-      ${(props) =>
+const GImage = styled(GatsbyImage)<ImgProps>`
+  max-width: 100%;
+  transition: filter 00ms ease;
+  position: relative;
+  ${(props) =>
+    props.maxheight
+      ? `max-width: calc(${props.maxheight} * ${props.ratio});`
+      : `height: 100%;`}
+
+  ${(props) =>
     props.bw
       ? `
       filter: grayscale();

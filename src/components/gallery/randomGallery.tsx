@@ -2,7 +2,7 @@ import { withTheme } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { CategoryPageQueryNode } from '../../pages'
-import { randomAlign, randomInt, randomMargin4x } from '../../utils/random'
+import { randomAlign, randomInt, randomVwMargin4x } from '../../utils/random'
 import Lightbox from './lightbox'
 import LoadMoreButton from './loadmoreButton'
 
@@ -25,10 +25,11 @@ const RandomGallery = ({
     const raw = notLoaded.slice(0, appendWithAmount)
     raw.forEach((imageData: any, index: number) => {
       const columnSpan = randomInt(1, 2)
+      console.log(columnSpan)
 
       const loadedElement: LoadedElement = {
         imageData: imageData,
-        margin: randomMargin4x(maxMargin),
+        margin: randomVwMargin4x(10 /* maxMargin */),
         alignSelf: randomAlign(),
         gridColumn: 'auto / span ' + columnSpan,
       }
@@ -65,7 +66,8 @@ const ImageElement = ({
       gridColumn: gridColumn,
       display: 'block',
       padding: 0,
-      minWidth: 0,
+      minWidth: '14rem',
+      maxWidth: '25rem',
     }}
   >
     <Lightbox imageData={imageData} />
@@ -75,7 +77,7 @@ const ImageElement = ({
 const GalleryGrid = withTheme(styled.ul`
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 6rem;
   padding: 0;
   padding: 4rem;
