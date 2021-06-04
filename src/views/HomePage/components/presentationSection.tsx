@@ -11,7 +11,7 @@ interface PresentationSectionProps {
 
 const PresentationSection = ({ node }: PresentationSectionProps) => {
   return (
-    <Section>
+    <Section large>
       <Container>
         <PresentationGrid>
           <TextWrapper>

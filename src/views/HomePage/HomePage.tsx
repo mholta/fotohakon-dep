@@ -11,7 +11,7 @@ interface HomePageProps {
 const HomePage = ({ node }: HomePageProps) => {
   return (
     <>
-      <Container>
+      <Container style={{ maxWidth: '1000px' }}>
         <HeaderWrapper node={node} />
       </Container>
       <PresentationSection node={node} />

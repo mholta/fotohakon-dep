@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { HomePageQueryNode } from '../../../pages'
-import HeaderSlider from './headerSlider'
 import { CenterChild } from '../../../components/layout/layout'
 import ArrowButton from '../../../components/elements/arrowButton'
+import Image from '../../../components/gallery/image'
+import Logo from '../../../assets/Logo.svg'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -15,14 +16,23 @@ const HeaderWrapper = ({ node }: HeaderWrapperProps) => {
   return (
     <MainWrapper>
       <RelativeWrapper>
-        <HeaderSlider node={node} speed={2} autoplay />
-        <CenterChild absolute fullWidth bottom>
+        <LogoWrapper absolute fullWidth top>
+          <Logo />
+        </LogoWrapper>
+        <Image imageData={node.headerImage} absolute />
+
+        {/*    <CenterChild absolute fullWidth bottom>
           <ArrowButton direction="down" onClick={handleScrollDown} />
-        </CenterChild>
+        </CenterChild> */}
       </RelativeWrapper>
     </MainWrapper>
   )
 }
+
+const LogoWrapper = styled(CenterChild)`
+  top: 2rem;
+  z-index: 10;
+`
 
 const MainWrapper = styled.header`
   padding: 1rem;

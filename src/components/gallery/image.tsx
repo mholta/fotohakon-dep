@@ -7,6 +7,7 @@ interface ImageProps {
   maxheight?: string
   absolute?: boolean | number
   bw?: boolean | number
+  darken?: number
 }
 
 const Image = ({
@@ -14,6 +15,7 @@ const Image = ({
   maxheight,
   absolute = false,
   bw = false,
+  darken = 0,
 }: ImageProps) => {
   const gImage = getImage(imageData)
 
@@ -27,6 +29,7 @@ const Image = ({
           maxheight={maxheight}
           absolute={absolute ? 1 : 0}
           bw={bw ? 1 : 0}
+          darken={darken}
         />
       )}
     </>
@@ -41,6 +44,7 @@ interface ImgProps extends Partial<ImageProps> {
 const GImage = styled(GatsbyImage)<ImgProps>`
   max-width: 100%;
   transition: filter 00ms ease;
+  position: relative;
   ${(props) =>
     props.maxheight
       ? `max-width: calc(${props.maxheight} * ${props.ratio});`
@@ -60,9 +64,27 @@ const GImage = styled(GatsbyImage)<ImgProps>`
       ${(props) =>
     props.bw
       ? `
-      filter: grayscale()
+      filter: grayscale();
       `
       : ``}
+
+    ${(props) =>
+    props.darken !== 0 &&
+    `
+
+    &::after {
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width:100%;
+      z-index: 1;
+      background-color: black;
+      opacity: ${props.darken};
+    }
+
+    `}
 `
 
 export default Image

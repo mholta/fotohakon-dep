@@ -31,7 +31,7 @@ export const pageQuery = graphql`
       presentation {
         raw
       }
-      headerImages {
+      headerImage {
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
         title
       }
@@ -43,6 +43,7 @@ export const pageQuery = graphql`
     allContentfulCategory {
       edges {
         node {
+          link
           buttonImage {
             gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
             title
@@ -64,7 +65,7 @@ export const pageQuery = graphql`
 export interface HomePageQueryNode {
   internTittel: string
   presentation: any
-  headerImages: any[]
+  headerImage: any
   profilePicture: any
 }
 
@@ -73,6 +74,7 @@ export interface CategoryPageQueryNode {
   infoseksjon: any
   gallery: any[]
   buttonImage: any
+  link: string
 }
 export interface CategoryPageQueryEdge {
   node: CategoryPageQueryNode

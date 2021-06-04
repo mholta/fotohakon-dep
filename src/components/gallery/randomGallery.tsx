@@ -18,7 +18,7 @@ const RandomGallery = ({
   columns = 6,
 }: RandomGalleryProps) => {
   const [notLoaded, setNotLoaded] = useState<any[]>(node.gallery)
-  const [loaded, setLoaded] = useState<LoadedElement[]>([])
+  const [loaded] = useState<LoadedElement[]>([])
   const maxMargin = 6
 
   const loadMore = () => {
@@ -38,7 +38,7 @@ const RandomGallery = ({
     setNotLoaded(notLoaded.slice(appendWithAmount, notLoaded.length))
   }
 
-  useEffect(loadMore, [])
+  useEffect(loadMore, [node])
 
   return (
     <>

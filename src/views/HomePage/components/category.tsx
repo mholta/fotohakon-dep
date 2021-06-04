@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { Button } from '../../../components/elements/button'
 import RandomGallery from '../../../components/gallery/randomGallery'
 import MDRenderer from '../../../components/md/MDRenderer'
 import { CategoryPageQueryNode } from '../../../pages'
@@ -26,6 +27,7 @@ const Category = ({ node, currentTab }: CategoryProps) => {
     >
       <InfoBlock>
         <MDRenderer>{node.infoseksjon}</MDRenderer>
+        <Button to={'/' + node.link}>Fortell meg mer</Button>
       </InfoBlock>
       <AnimatePresence>
         {currentTab && (
@@ -43,13 +45,14 @@ const Category = ({ node, currentTab }: CategoryProps) => {
 }
 
 const InfoBlock = styled.div`
-  max-width: 18rem;
+  max-width: 24rem;
   margin: 0 auto;
   margin-bottom: 6rem;
   text-align: center;
 
-  & > * {
-    margin: 1rem 0;
+  & > h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.6rem;
   }
 `
 
