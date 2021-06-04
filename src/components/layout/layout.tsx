@@ -7,12 +7,26 @@ interface SectionProps {
 
 export const Section = withTheme(styled.section<SectionProps>`
   padding: 4rem 1rem;
+  overflow: hidden;
   background-color: ${(props) =>
     props.lightGrey ? props.theme.palette.grey[200] : 'transparent'};
 `)
 
-export const Container = styled.div`
-  max-width: 760px;
+type ContainerWidth = 'sm' | 'md'
+
+interface ContainerProps {
+  width?: ContainerWidth
+}
+
+export const Container = styled.div<ContainerProps>`
+  max-width: ${(props) => {
+    switch (props.width) {
+      case 'sm':
+        return `300px`
+      default:
+        return `760px`
+    }
+  }};
   margin: 0 auto;
 `
 
