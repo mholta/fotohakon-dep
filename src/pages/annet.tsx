@@ -30,7 +30,6 @@ const OtherBookingsPage = ({
   const handleSolutionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedSolution((event.target as HTMLInputElement).value)
   }
-  console.log(pageNode)
 
   const handleSubmit = () => {
     console.log('submit')

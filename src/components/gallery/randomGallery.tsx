@@ -1,6 +1,6 @@
 import { withTheme } from '@material-ui/core'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { CategoryPageQueryNode } from '../../pages'
@@ -44,7 +44,6 @@ const RandomGallery = ({
         )
 
         const columnSpan = isHoriz ? 2 : 1 // randomInt(1, 1)
-        console.log(randomBool() ? 1 : 2)
         const gridColumn =
           (isHoriz ? 'auto / span ' : 'auto / span ') + columnSpan
 
@@ -67,14 +66,19 @@ const RandomGallery = ({
       callback(!loadMoreButtonVisible)
     }
   }
+  const constraintsRef = useRef(null)
 
   //  useEffect(() => loadMore(false), [node])
 
   return (
-    <RandomGalleryWrapper>
+    <RandomGalleryWrapper ref={constraintsRef}>
       <GalleryGrid>
         {loaded.map((loadedElement: LoadedElement, index: number) => (
-          <ImageElement {...loadedElement} key={'random-gallery-' + index} />
+          <ImageElement
+            {...loadedElement}
+            dragConstraints={constraintsRef}
+            key={'randomImage-' + index}
+          />
         ))}
       </GalleryGrid>
       <LoadMoreButton callback={loadMore} sendState hide={!notLoaded.length} />
@@ -83,7 +87,6 @@ const RandomGallery = ({
 }
 
 const RandomGalleryWrapper = styled.div`
-  position: relative;
   min-height: 100em;
 `
 
@@ -94,6 +97,7 @@ const ImageElement = ({
   gridColumnStart,
   imageData,
   justifySelf,
+  dragConstraints,
 }: LoadedElement) => (
   <li
     style={{
@@ -108,7 +112,7 @@ const ImageElement = ({
       maxWidth: '32em',
     }}
   >
-    <Lightbox imageData={imageData} />
+    <Lightbox imageData={imageData} dragConstraints={dragConstraints} />
   </li>
 )
 
@@ -136,6 +140,7 @@ interface LoadedElement {
   key?: string
   gridColumnStart: string
   justifySelf: string
+  dragConstraints?: any
 }
 
 export default RandomGallery
