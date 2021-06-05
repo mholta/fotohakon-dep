@@ -5,7 +5,9 @@ import {
   OptionsIntroWrapper,
   OptionsLabel,
 } from '../components/elements/optionsIntroWrapper'
+import Footer from '../components/footer'
 import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
+import FormsChoice from '../components/forms/formsChoise'
 import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
 import Slider from '../components/forms/sliderWrapper'
@@ -44,7 +46,7 @@ const BookingPage = ({
 
       <StepsSection weddingPageNode={weddingPageNode} />
 
-      <Section>
+      <Section id="pakker">
         <Container style={{ textAlign: 'center' }} width="sm">
           <OptionsIntroWrapper>
             <MDRenderer>{weddingPageNode.optionsIntro}</MDRenderer>
@@ -118,8 +120,9 @@ const BookingPage = ({
         </Container>
       </Section>
 
-      <Section lightGrey>
+      <Section lightGrey id="booking">
         <Container>
+          <FormsChoice />
           <OptionsLabel>Fullfør booking</OptionsLabel>
           <BookingForm
             name="Booking bryllup"
@@ -141,7 +144,7 @@ const BookingPage = ({
               />
             </PhoneEmailGrid>
 
-            <h2>Foto</h2>
+            <h3>Fotopakke</h3>
             <Slider summary>
               {weddingPageNode.photoSolutions.map((node, index) => (
                 <SelectionCard
@@ -160,7 +163,7 @@ const BookingPage = ({
               ))}
             </Slider>
 
-            <h2>Video</h2>
+            <h3>Videopakke</h3>
             <Slider summary>
               {weddingPageNode.videoSolutions.map((node, index) => (
                 <SelectionCard
@@ -179,7 +182,7 @@ const BookingPage = ({
               ))}
             </Slider>
 
-            <h2>Tilleggsvalg</h2>
+            <h3>Tilleggsvalg</h3>
             <Slider summary>
               {weddingPageNode.extras.map((node, index) => (
                 <SelectionCard
@@ -201,17 +204,17 @@ const BookingPage = ({
             {/* Hidden fields for sending solution data */}
             <input
               name="Fotopakke"
-              value={selectedPhotoSolution ?? ''}
+              defaultValue={selectedPhotoSolution ?? ''}
               hidden
             />
             <input
               name="Videopakke"
-              value={selectedVideoSoluton ?? ''}
+              defaultValue={selectedVideoSoluton ?? ''}
               hidden
             />
             <input
               name="Tilleggsvalg"
-              value={selectedExtraSoluton ?? ''}
+              defaultValue={selectedExtraSoluton ?? ''}
               hidden
             />
 
@@ -227,7 +230,7 @@ const BookingPage = ({
               id="fmessage"
               name="Melding"
               label="Melding"
-              placeholder="Vi ønsker dette og dette "
+              placeholder=""
               multiline
               required
               fullWidth
@@ -237,6 +240,7 @@ const BookingPage = ({
           </BookingForm>
         </Container>
       </Section>
+      <Footer />
     </div>
   )
 }

@@ -23,7 +23,13 @@ const GlobalStyles = createGlobalStyle`
   h1,h2,h3,h4,h5,h6{
     font-family: 'Libre Baskerville', serif;    font-weight: 400;
   }
-  h1{font-size: 3.75}
+  h1{
+    font-size: 3.75
+  }  
+  h3{
+    font-size: 1.4rem;
+    }
+
 `
 
 const Viewport = ({ children }) => {

@@ -11,7 +11,7 @@ interface HomePageProps {
 const HomePage = ({ node }: HomePageProps) => {
   return (
     <>
-      <HeaderWrapper node={node} />s
+      <HeaderWrapper node={node} />
       <PresentationSection node={node} />
     </>
   )

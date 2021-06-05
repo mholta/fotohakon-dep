@@ -11,13 +11,13 @@ interface NavProps {
 
 const Nav = ({ noArrow }: NavProps) => {
   return (
-    <NavWrapper>
+    <NavWrapper id="top">
       <InnerFlexWrapper>
         <MenuLinkWrapper>
           <LeftNavLinksWrapper>
             <div style={{ fontWeight: 'bold' }}>Priser:</div>
-            <NavLink to="/bryllup">Bryllupspakker</NavLink>
-            <NavLink to="/familiepar">Familie/par-pakker</NavLink>
+            <NavLink to="/bryllup/#pakker">Bryllupspakker</NavLink>
+            <NavLink to="/familiepar/#pakker">Familie/par-pakker</NavLink>
           </LeftNavLinksWrapper>
           <NavLink to="/kontakt">Andre henvendelser</NavLink>
         </MenuLinkWrapper>

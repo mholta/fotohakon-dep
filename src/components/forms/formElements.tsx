@@ -3,12 +3,12 @@ import styled from 'styled-components'
 
 export const PhoneEmailGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 8rem 4fr;
   gap: 1rem;
 `
 
 export const BookingForm = styled.form`
-  & > :not(:last-child) {
+  & > :not(:last-child, h3) {
     margin-bottom: 1rem;
   }
 `
