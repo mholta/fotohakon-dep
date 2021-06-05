@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { Button } from '../../../components/elements/button'
 import RandomGallery from '../../../components/gallery/randomGallery'
@@ -13,7 +14,29 @@ interface CategoryProps {
 
 const Category = ({ node, currentTab }: CategoryProps) => {
   const [animateIn, setAnimateIn] = useState<boolean>(false)
+  const [showActionButton, setShowActionButton] = useState<boolean>(false)
+  const [allLoaded, setAllLoaded] = useState<boolean>(false)
+  const hideShowActionButton = (inView: boolean) => {
+    console.log(inView)
+    if (showActionButton !== inView) setShowActionButton(inView)
+  }
 
+  /* Display action button when viewing photos */
+  const { ref, inView } = useInView({
+    threshold: 0,
+    delay: 200,
+    trackVisibility: true,
+  })
+
+  useEffect(() => {
+    if (inView !== showActionButton) {
+      hideShowActionButton(inView)
+    }
+  }, [inView])
+
+  useEffect(() => {
+    setShowActionButton(allLoaded)
+  }, [allLoaded])
   useEffect(() => {
     setAnimateIn(currentTab)
   }, [currentTab])
@@ -27,23 +50,51 @@ const Category = ({ node, currentTab }: CategoryProps) => {
     >
       <InfoBlock>
         <MDRenderer>{node.infoseksjon}</MDRenderer>
-        <Button to={'/' + node.link}>Fortell meg mer</Button>
+        <Button to={'/' + node.link}>Fortell meg mer og se priser</Button>
       </InfoBlock>
       <AnimatePresence>
-        {currentTab && (
-          <motion.div
-            transition={{ delay: 0.8 }}
+        {showActionButton && (
+          <ActionButtonWrapper
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <RandomGallery node={node} />
-          </motion.div>
+            <Button to={'/' + node.link}>Fortell meg mer og se priser</Button>
+          </ActionButtonWrapper>
         )}
       </AnimatePresence>
+      <div ref={ref}>
+        <AnimatePresence>
+          {currentTab && (
+            <motion.div
+              transition={{ delay: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <RandomGallery node={node} callback={setAllLoaded} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
   )
 }
 
+const ActionButtonWrapper = styled(motion.div)`
+  position: fixed;
+  z-index: 110;
+  bottom: 0;
+  padding-bottom: 2rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  & > * {
+    box-shadow: 0px 1px 20px rgba(255, 255, 255, 0.2),
+      0px 1px 40px rgba(255, 255, 255, 0.3);
+  }
+`
 const InfoBlock = styled.div`
   max-width: 24rem;
   margin: 0 auto;
