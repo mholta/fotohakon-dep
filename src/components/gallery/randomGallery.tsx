@@ -1,19 +1,14 @@
 import { withTheme } from '@material-ui/core'
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CategoryPageQueryNode } from '../../pages'
 import {
   isHorizontal,
   randomAlign,
-  randomBool,
-  randomInt,
   randomMargin,
   randomMargin4x,
-  randomVwMargin4x,
 } from '../../utils/random'
-import { Button } from '../elements/button'
+import useWindowDimensions, { isBrowser } from '../hooks/useWindowDimensions'
 import Lightbox from './lightbox'
 import LoadMoreButton from './loadmoreButton'
 
@@ -22,6 +17,7 @@ interface RandomGalleryProps {
   appendWithAmount?: number
   columns?: number
   callback?: Function
+  dragConstraints: any
 }
 
 const RandomGallery = ({
@@ -29,10 +25,11 @@ const RandomGallery = ({
   appendWithAmount = 10,
   columns = 6,
   callback,
+  dragConstraints,
 }: RandomGalleryProps) => {
   const [notLoaded, setNotLoaded] = useState<any[]>(node.gallery)
   const [loaded] = useState<LoadedElement[]>([])
-  const maxMargin = 6
+  const { width } = isBrowser ? useWindowDimensions() : { width: 10 }
 
   const loadMore = (loadMoreButtonVisible: boolean) => {
     if (loadMoreButtonVisible) {
@@ -66,18 +63,18 @@ const RandomGallery = ({
       callback(!loadMoreButtonVisible)
     }
   }
-  const constraintsRef = useRef(null)
 
   //  useEffect(() => loadMore(false), [node])
 
   return (
-    <RandomGalleryWrapper ref={constraintsRef}>
+    <RandomGalleryWrapper>
       <GalleryGrid>
         {loaded.map((loadedElement: LoadedElement, index: number) => (
           <ImageElement
             {...loadedElement}
-            dragConstraints={constraintsRef}
+            dragConstraints={dragConstraints}
             key={'randomImage-' + index}
+            drag={width > 700}
           />
         ))}
       </GalleryGrid>
@@ -98,6 +95,7 @@ const ImageElement = ({
   imageData,
   justifySelf,
   dragConstraints,
+  drag,
 }: LoadedElement) => (
   <li
     style={{
@@ -112,7 +110,11 @@ const ImageElement = ({
       maxWidth: '32em',
     }}
   >
-    <Lightbox imageData={imageData} dragConstraints={dragConstraints} />
+    <Lightbox
+      imageData={imageData}
+      dragConstraints={dragConstraints}
+      drag={drag ?? false}
+    />
   </li>
 )
 
@@ -141,6 +143,7 @@ interface LoadedElement {
   gridColumnStart: string
   justifySelf: string
   dragConstraints?: any
+  drag?: boolean
 }
 
 export default RandomGallery

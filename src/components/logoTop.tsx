@@ -8,16 +8,14 @@ interface LogoTopProps {}
 
 const LogoTop = ({}: LogoTopProps) => {
   return (
-    <Header>
-      <Link to="/">
-        <LogoWrapper>
-          <Logo />
-          <ArrowBackWrapper>
-            <ArrowBack />
-          </ArrowBackWrapper>
-        </LogoWrapper>
-      </Link>
-    </Header>
+    <Link to="/">
+      <LogoWrapper>
+        <Logo />
+        <ArrowBackWrapper>
+          <ArrowBack />
+        </ArrowBackWrapper>
+      </LogoWrapper>
+    </Link>
   )
 }
 
@@ -52,11 +50,4 @@ const LogoWrapper = styled.div`
     opacity: 1;
   }
 `
-
-const Header = styled.header`
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-`
-
 export default LogoTop

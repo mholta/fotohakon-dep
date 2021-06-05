@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { Button } from '../../../components/elements/button'
@@ -10,9 +10,10 @@ import { CategoryPageQueryNode } from '../../../pages'
 interface CategoryProps {
   node: CategoryPageQueryNode
   currentTab: boolean
+  dragConstraints: any
 }
 
-const Category = ({ node, currentTab }: CategoryProps) => {
+const Category = ({ node, currentTab, dragConstraints }: CategoryProps) => {
   const [animateIn, setAnimateIn] = useState<boolean>(false)
   const [showActionButton, setShowActionButton] = useState<boolean>(false)
   const [allLoaded, setAllLoaded] = useState<boolean>(false)
@@ -70,7 +71,11 @@ const Category = ({ node, currentTab }: CategoryProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <RandomGallery node={node} callback={setAllLoaded} />
+              <RandomGallery
+                node={node}
+                callback={setAllLoaded}
+                dragConstraints={dragConstraints}
+              />
             </motion.div>
           )}
         </AnimatePresence>

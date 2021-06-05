@@ -16,8 +16,8 @@ const StepCard = ({ markdown }: StepCardProps) => {
 }
 
 const StepCardWrapper = withTheme(styled.div`
-  max-width: 20rem;
-  padding: 1rem;
+  max-width: 19rem;
+  padding: 0.2rem;
   background-color: ${(props) => props.theme.palette.background.paper};
 
   & > h3 {
