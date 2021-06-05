@@ -14,19 +14,10 @@ import { motion } from 'framer-motion'
 interface LightboxProps {
   imageData: any
   dragConstraints: any
+  drag: boolean
 }
 
-interface PanInfo {
-  x: number
-  y: number
-}
-
-const initialPanInfo: PanInfo = {
-  x: 0,
-  y: 0,
-}
-
-const Lightbox = ({ imageData, dragConstraints }: LightboxProps) => {
+const Lightbox = ({ imageData, dragConstraints, drag }: LightboxProps) => {
   const [open, setOpen] = useState<boolean>(false)
   const [wantsToOpen, setWantsToOpen] = useState<boolean>(false)
   const [dragging, setDragging] = useState<boolean>(false)
@@ -46,21 +37,21 @@ const Lightbox = ({ imageData, dragConstraints }: LightboxProps) => {
   return (
     <LightboxWrapper>
       <GalleryImageButton
-        drag
+        drag={drag}
         dragConstraints={dragConstraints}
         onDragStart={() => {
           setDragging(true)
         }}
         onTap={() => {
-          setWantsToOpen(true)
           setTap(!tap)
+          setWantsToOpen(true)
         }}
-        whileTap={{ zIndex: 120 }}
+        whileTap={{ scale: 0.98 }}
         whileHover={{
           scale: 1.02,
           boxShadow: '1px 0px 10rem rgba(0, 0, 0, 0.1)',
-          zIndex: 50,
         }}
+        style={{ cursor: drag ? 'move' : 'pointer' }}
         transition={{ duration: 0.4 }}
       >
         <Image imageData={imageData} maxheight="90vh" />
@@ -96,8 +87,10 @@ const Lightbox = ({ imageData, dragConstraints }: LightboxProps) => {
 const LightboxWrapper = styled.div``
 
 const GalleryImageButton = styled(motion.div)<Partial<LightboxProps>>`
+  display: relative;
   max-width: 100%;
   cursor: move;
+  z-index: 2;
 
   &:after {
     content: '';
@@ -110,6 +103,7 @@ const GalleryImageButton = styled(motion.div)<Partial<LightboxProps>>`
   }
   &:active {
     transform: scale(0.98);
+    z-index: 100;
   }
 `
 

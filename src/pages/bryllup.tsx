@@ -1,22 +1,17 @@
-import { FormControlLabel, TextField } from '@material-ui/core'
-import { motion } from 'framer'
+import { TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import {
   OptionsIntroWrapper,
   OptionsLabel,
 } from '../components/elements/optionsIntroWrapper'
-import {
-  BookingForm,
-  PhoneEmailGrid,
-  RadioSlider,
-} from '../components/forms/formElements'
+import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
 import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
 import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
-import LogoTop from '../components/logoTop'
 import MDRenderer from '../components/md/MDRenderer'
+import Nav from '../components/nav'
 import StepsSection from '../components/steps/steps.section'
 
 interface BookingPageProps {
@@ -29,34 +24,18 @@ const BookingPage = ({
   const weddingPageNode: WeddingPageQueryNode = contentfulBryllupsside
 
   const [selectedPhotoSolution, setSelectedPhotoSolution] =
-    useState<string | null>('HALVDAG')
+    useState<string | null>()
   const [selectedVideoSoluton, setSelectedVideoSolution] =
-    useState<string | null>('HELDAG')
+    useState<string | null>()
   const [selectedExtraSoluton, setSelectedExtraSolution] =
     useState<string | null>()
-
-  const handlePhotoSolutionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSelectedPhotoSolution((event.target as HTMLInputElement).value)
-  }
-  const handleVideoSolutionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSelectedVideoSolution((event.target as HTMLInputElement).value)
-  }
-  const handleExtraSolutionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSelectedExtraSolution((event.target as HTMLInputElement).value)
-  }
 
   const handleSubmit = () => {
     console.log('submit')
   }
   return (
     <div>
-      <LogoTop />
+      <Nav />
       <Section>
         <Container style={{ textAlign: 'center' }}>
           <MDRenderer>{weddingPageNode.topText}</MDRenderer>
@@ -163,101 +142,78 @@ const BookingPage = ({
             </PhoneEmailGrid>
 
             <h2>Foto</h2>
-            <RadioSlider
-              aria-label="foto"
-              name="Fotopakke"
-              value={selectedPhotoSolution}
-              onChange={handlePhotoSolutionChange}
-            >
+            <Slider summary>
               {weddingPageNode.photoSolutions.map((node, index) => (
-                <FormControlLabel
-                  label=""
-                  value={node.title}
+                <SelectionCard
                   key={'phots-' + index}
-                  control={
-                    <SelectionCard
-                      summary
-                      selected={
-                        selectedPhotoSolution === node.title.toUpperCase()
-                      }
-                      node={node}
-                      onClick={() =>
-                        setSelectedPhotoSolution(
-                          selectedPhotoSolution === node.title.toUpperCase()
-                            ? null
-                            : node.title.toUpperCase()
-                        )
-                      }
-                    />
+                  summary
+                  selected={selectedPhotoSolution === node.title.toUpperCase()}
+                  node={node}
+                  onClick={() =>
+                    setSelectedPhotoSolution(
+                      selectedPhotoSolution === node.title.toUpperCase()
+                        ? null
+                        : node.title.toUpperCase()
+                    )
                   }
                 />
               ))}
-            </RadioSlider>
+            </Slider>
 
             <h2>Video</h2>
-            <RadioSlider
-              aria-label="foto"
-              name="Videopakke"
-              value={selectedVideoSoluton}
-              onChange={handleVideoSolutionChange}
-            >
+            <Slider summary>
               {weddingPageNode.videoSolutions.map((node, index) => (
-                <FormControlLabel
-                  label=""
-                  value={node.title}
+                <SelectionCard
                   key={'vids-' + index}
-                  control={
-                    <SelectionCard
-                      summary
-                      selected={
-                        selectedVideoSoluton === node.title.toUpperCase()
-                      }
-                      node={node}
-                      onClick={() =>
-                        setSelectedVideoSolution(
-                          selectedVideoSoluton === node.title.toUpperCase()
-                            ? null
-                            : node.title.toUpperCase()
-                        )
-                      }
-                    />
+                  summary
+                  selected={selectedVideoSoluton === node.title.toUpperCase()}
+                  node={node}
+                  onClick={() =>
+                    setSelectedVideoSolution(
+                      selectedVideoSoluton === node.title.toUpperCase()
+                        ? null
+                        : node.title.toUpperCase()
+                    )
                   }
                 />
               ))}
-            </RadioSlider>
+            </Slider>
 
             <h2>Tilleggsvalg</h2>
-            <RadioSlider
-              aria-label="foto"
-              name="Tileggsvalg"
-              value={selectedVideoSoluton}
-              onChange={handleExtraSolutionChange}
-              /* URGENT: Not multiselectable */
-            >
+            <Slider summary>
               {weddingPageNode.extras.map((node, index) => (
-                <FormControlLabel
+                <SelectionCard
+                  summary
                   key={'extr-' + index}
-                  label=""
-                  value={node.title}
-                  control={
-                    <SelectionCard
-                      summary
-                      selected={
-                        selectedExtraSoluton === node.title.toUpperCase()
-                      }
-                      node={node}
-                      onClick={() =>
-                        setSelectedExtraSolution(
-                          selectedExtraSoluton === node.title.toUpperCase()
-                            ? null
-                            : node.title.toUpperCase()
-                        )
-                      }
-                    />
+                  selected={selectedExtraSoluton === node.title.toUpperCase()}
+                  node={node}
+                  onClick={() =>
+                    setSelectedExtraSolution(
+                      selectedExtraSoluton === node.title.toUpperCase()
+                        ? null
+                        : node.title.toUpperCase()
+                    )
                   }
                 />
               ))}
-            </RadioSlider>
+            </Slider>
+
+            {/* Hidden fields for sending solution data */}
+            <input
+              name="Fotopakke"
+              value={selectedPhotoSolution ?? ''}
+              hidden
+            />
+            <input
+              name="Videopakke"
+              value={selectedVideoSoluton ?? ''}
+              hidden
+            />
+            <input
+              name="Tilleggsvalg"
+              value={selectedExtraSoluton ?? ''}
+              hidden
+            />
 
             <TextField
               id="fsubject"

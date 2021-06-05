@@ -6,7 +6,7 @@ interface SubmitButtonProps {
 }
 
 const SubmitButton = ({ onClick }: SubmitButtonProps) => {
-  const [hover, setHover] = useState<boolean>(true)
+  const [hover, setHover] = useState<boolean>(false)
 
   return (
     <SubmitButtonWrapper

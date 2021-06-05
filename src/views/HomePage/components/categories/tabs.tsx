@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Container, Section } from '../../../../components/layout/layout'
 import { CategoryPageQueryNode } from '../../../../pages'
@@ -39,18 +39,21 @@ export const Tabs = ({ children }: TabsProps) => {
     />
   ))
 
+  const constraintsRef = useRef(null)
+
   return (
     <div>
       <Section>
         <TabsWrapper className="tabs__box">{tabs}</TabsWrapper>
       </Section>
-      <Section>
+      <Section ref={constraintsRef}>
         <Container style={{ minHeight: '200vh' }}>
           {children.map((child: Child, index: number) => (
             <Category
               key={'category-content-' + index}
               node={child.props.node}
               currentTab={child.props.label === activeTab}
+              dragConstraints={constraintsRef}
             />
           ))}
         </Container>
