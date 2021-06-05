@@ -64,11 +64,11 @@ const GalleryImageButton = styled(ButtonBase)<Partial<LightboxProps>>`
   &:hover {
     transform: scale(1.02);
     box-shadow: 1px 0px 10rem rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 50;
   }
   &:active {
     transform: scale(0.98);
-    z-index: 100;
+    z-index: 50;
   }
 `
 

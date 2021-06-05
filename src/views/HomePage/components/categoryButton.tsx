@@ -26,8 +26,7 @@ const CategoryTabButton = ({
         <Image
           imageData={node.buttonImage}
           absolute
-          bw={!activeTab}
-          darken={0.1}
+          darken={activeTab ? 0 : 0.6}
         />
       </ImageWrapper>
     </TabImageButton>
