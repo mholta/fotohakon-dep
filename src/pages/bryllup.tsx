@@ -50,7 +50,6 @@ const BookingPage = ({
   ) => {
     setSelectedExtraSolution((event.target as HTMLInputElement).value)
   }
-  console.log(weddingPageNode)
 
   const handleSubmit = () => {
     console.log('submit')

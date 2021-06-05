@@ -5,30 +5,67 @@ import {
   IconButton,
   Modal,
 } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import CloseIcon from '@material-ui/icons/Close'
 import Image from './image'
+import { motion } from 'framer-motion'
 
 interface LightboxProps {
   imageData: any
+  dragConstraints: any
 }
 
-const Lightbox = ({ imageData }: LightboxProps) => {
-  const [open, setOpen] = useState<boolean>(false)
+interface PanInfo {
+  x: number
+  y: number
+}
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
+const initialPanInfo: PanInfo = {
+  x: 0,
+  y: 0,
+}
+
+const Lightbox = ({ imageData, dragConstraints }: LightboxProps) => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [wantsToOpen, setWantsToOpen] = useState<boolean>(false)
+  const [dragging, setDragging] = useState<boolean>(false)
+  const [tap, setTap] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (wantsToOpen) {
+      if (!dragging) setOpen(true)
+      else setDragging(false)
+    }
+  }, [tap, wantsToOpen])
+
   const handleClose = () => {
     setOpen(false)
   }
 
   return (
     <LightboxWrapper>
-      <GalleryImageButton onClick={handleOpen} disableRipple>
+      <GalleryImageButton
+        drag
+        dragConstraints={dragConstraints}
+        onDragStart={() => {
+          setDragging(true)
+        }}
+        onTap={() => {
+          setWantsToOpen(true)
+          setTap(!tap)
+        }}
+        whileTap={{ zIndex: 120 }}
+        whileHover={{
+          scale: 1.02,
+          boxShadow: '1px 0px 10rem rgba(0, 0, 0, 0.1)',
+          zIndex: 50,
+        }}
+        transition={{ duration: 0.4 }}
+      >
         <Image imageData={imageData} maxheight="90vh" />
       </GalleryImageButton>
+
       <ModalWrapper
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -58,17 +95,21 @@ const Lightbox = ({ imageData }: LightboxProps) => {
 
 const LightboxWrapper = styled.div``
 
-const GalleryImageButton = styled(ButtonBase)<Partial<LightboxProps>>`
+const GalleryImageButton = styled(motion.div)<Partial<LightboxProps>>`
   max-width: 100%;
-  transition: all 400ms ease-in-out;
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 1px 0px 10rem rgba(0, 0, 0, 0.1);
-    z-index: 50;
+  cursor: move;
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
   }
   &:active {
     transform: scale(0.98);
-    z-index: 50;
   }
 `
 

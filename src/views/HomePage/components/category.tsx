@@ -17,7 +17,6 @@ const Category = ({ node, currentTab }: CategoryProps) => {
   const [showActionButton, setShowActionButton] = useState<boolean>(false)
   const [allLoaded, setAllLoaded] = useState<boolean>(false)
   const hideShowActionButton = (inView: boolean) => {
-    console.log(inView)
     if (showActionButton !== inView) setShowActionButton(inView)
   }
 
