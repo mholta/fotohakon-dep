@@ -6,8 +6,10 @@ interface SliderWrapperProps {
   summary?: boolean
 }
 
-const Slider = ({ children, summary }: SliderWrapperProps) => {
-  return <SliderWrapper summary={summary}>{children}</SliderWrapper>
+const Slider = ({ children, summary = false }: SliderWrapperProps) => {
+  return (
+    <SliderWrapper summary={summary ? true : false}>{children}</SliderWrapper>
+  )
 }
 
 interface SliderWrapperProps {
@@ -17,6 +19,10 @@ interface SliderWrapperProps {
 const SliderWrapper = styled.div<SliderWrapperProps>`
   display: flex;
   overflow: auto;
+
+  & > * {
+    flex-shrink: 0;
+  }
 
   ${(props) =>
     props.summary

@@ -39,7 +39,7 @@ declare module '@material-ui/core/styles/createPalette' {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#21466E',
+      main: '#222',
     },
     secondary: {
       main: '#EAE2D9',

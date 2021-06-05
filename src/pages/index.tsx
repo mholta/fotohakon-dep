@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
+import Footer from '../components/footer'
 import CategorySection from '../views/HomePage/components/categoriesSection'
 import HomePage from '../views/HomePage/HomePage'
 
@@ -18,6 +19,7 @@ const IndexPage = ({
     <>
       <HomePage node={homeNode} />
       <CategorySection nodes={allCategoryNodes} />
+      <Footer />
     </>
   )
 }

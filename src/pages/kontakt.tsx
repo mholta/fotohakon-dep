@@ -1,6 +1,6 @@
 import { TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
-import React, { useState } from 'react'
+import React from 'react'
 import {
   OptionsIntroWrapper,
   OptionsLabel,
@@ -8,9 +8,7 @@ import {
 import Footer from '../components/footer'
 import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
 import FormsChoice from '../components/forms/formsChoise'
-import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
-import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
@@ -19,17 +17,14 @@ interface BookingPageProps {
   data: any
 }
 
-const OtherBookingsPage = ({
-  data: { contentfulAndreBookinger },
+const ContactPage = ({
+  data: { contentfulAndreHenvendelser },
 }: BookingPageProps) => {
-  const pageNode: OtherBookingsPageQueryNode = contentfulAndreBookinger
-
-  const [selectedSolution, setSelectedSolution] = useState<string | null>()
+  const pageNode: ContactPageQueryNode = contentfulAndreHenvendelser
 
   const handleSubmit = () => {
     console.log('submit')
   }
-
   return (
     <div>
       <Nav />
@@ -38,45 +33,25 @@ const OtherBookingsPage = ({
           <MDRenderer>{pageNode.topText}</MDRenderer>
         </Container>
       </Section>
-      <Section id="pakker">
+      <Section>
         <Container style={{ textAlign: 'center' }} width="sm">
-          <OptionsIntroWrapper>
+          <OptionsIntroWrapper style={{ paddingBottom: '6rem' }}>
             <MDRenderer>{pageNode.optionsIntro}</MDRenderer>
           </OptionsIntroWrapper>
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Slider>
-            {pageNode.solutions.map((node, index) => (
-              <SelectionCard
-                selected={selectedSolution === node.title.toUpperCase()}
-                node={node}
-                key={'ps' + index}
-                onClick={() =>
-                  setSelectedSolution(
-                    selectedSolution === node.title.toUpperCase()
-                      ? null
-                      : node.title.toUpperCase()
-                  )
-                }
-              />
-            ))}
-          </Slider>
         </Container>
       </Section>
       <Section lightGrey id="booking">
         <Container>
           <FormsChoice />
-          <OptionsLabel>Fullfør booking</OptionsLabel>
+          <OptionsLabel>Kontakt meg</OptionsLabel>
           <BookingForm
-            name="Booking annet"
+            name="Andre henvendelser"
             autoComplete="off"
             method="POST"
             data-netlify="true"
             action="/takk"
           >
-            <input type="hidden" name="form-name" value="Booking annet" />
+            <input type="hidden" name="form-name" value="Andre henvendelser" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
             <PhoneEmailGrid>
               <TextField id="fphone" name="Mobil" label="Mobil" required />
@@ -88,27 +63,6 @@ const OtherBookingsPage = ({
                 required
               />
             </PhoneEmailGrid>
-
-            <h3>Pakke</h3>
-            <Slider summary>
-              {pageNode.solutions.map((node, index) => (
-                <SelectionCard
-                  key={'phots-' + index}
-                  summary
-                  selected={selectedSolution === node.title.toUpperCase()}
-                  node={node}
-                  onClick={() =>
-                    setSelectedSolution(
-                      selectedSolution === node.title.toUpperCase()
-                        ? null
-                        : node.title.toUpperCase()
-                    )
-                  }
-                />
-              ))}
-            </Slider>
-            {/* Hidden fields for sending solution data */}
-            <input name="Pakke" defaultValue={selectedSolution ?? ''} hidden />
 
             <TextField
               id="fsubject"
@@ -137,19 +91,13 @@ const OtherBookingsPage = ({
   )
 }
 
-export default OtherBookingsPage
+export default ContactPage
 
 export const pageQuery = graphql`
   query {
-    contentfulAndreBookinger(key: { eq: "other" }) {
+    contentfulAndreHenvendelser(key: { eq: "other" }) {
       topText {
         raw
-      }
-      solutions {
-        title
-        content {
-          raw
-        }
       }
       optionsIntro {
         raw
@@ -158,8 +106,7 @@ export const pageQuery = graphql`
   }
 `
 
-export interface OtherBookingsPageQueryNode {
+export interface ContactPageQueryNode {
   topText: any
   optionsIntro: any
-  solutions: { content: any; title: string }[]
 }
