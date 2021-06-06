@@ -20,9 +20,9 @@ interface BookingPageProps {
 }
 
 const OtherBookingsPage = ({
-  data: { contentfulAndreBookinger },
+  data: { contentfulFamiliepar },
 }: BookingPageProps) => {
-  const pageNode: OtherBookingsPageQueryNode = contentfulAndreBookinger
+  const pageNode: OtherBookingsPageQueryNode = contentfulFamiliepar
 
   const [selectedSolution, setSelectedSolution] = useState<string | null>()
 
@@ -33,11 +33,13 @@ const OtherBookingsPage = ({
   return (
     <div>
       <Nav />
-      <Section>
-        <Container style={{ textAlign: 'center' }}>
-          <MDRenderer>{pageNode.topText}</MDRenderer>
-        </Container>
-      </Section>
+      {pageNode?.topText && (
+        <Section>
+          <Container style={{ textAlign: 'center' }}>
+            <MDRenderer>{pageNode.topText}</MDRenderer>
+          </Container>
+        </Section>
+      )}
       <Section id="pakker">
         <Container style={{ textAlign: 'center' }} width="sm">
           <OptionsIntroWrapper>
@@ -141,7 +143,7 @@ export default OtherBookingsPage
 
 export const pageQuery = graphql`
   query {
-    contentfulAndreBookinger(key: { eq: "other" }) {
+    contentfulFamiliepar(key: { eq: "familiepar" }) {
       topText {
         raw
       }

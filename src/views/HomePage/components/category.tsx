@@ -1,11 +1,11 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { Button } from '../../../components/elements/button'
 import RandomGallery from '../../../components/gallery/randomGallery'
 import MDRenderer from '../../../components/md/MDRenderer'
-import { CategoryPageQueryNode } from '../../../pages'
+import { CategoryPageQueryNode } from '../../../pages/indexx'
 
 interface CategoryProps {
   node: CategoryPageQueryNode
@@ -86,7 +86,7 @@ const Category = ({ node, currentTab, dragConstraints }: CategoryProps) => {
 
 const ActionButtonWrapper = styled(motion.div)`
   position: fixed;
-  z-index: 110;
+  z-index: 70;
   bottom: 0;
   padding-bottom: 2rem;
   left: 0;

@@ -1,69 +1,28 @@
-import { graphql } from 'gatsby'
 import React from 'react'
-import Footer from '../components/footer'
-import CategorySection from '../views/HomePage/components/categoriesSection'
-import HomePage from '../views/HomePage/HomePage'
+import styled from 'styled-components'
 
-interface IndexPageProps {
-  data: any
-}
+interface IndexPageProps {}
 
-const IndexPage = ({
-  data: { contentfulHjem, allContentfulCategory },
-}: IndexPageProps) => {
-  const homeNode: HomePageQueryNode = contentfulHjem
-  const allCategoryNodes: AllCategoryPageQueryNodes =
-    allContentfulCategory.edges
-  allContentfulCategory.edges
+const IndexPage = ({}: IndexPageProps) => {
   return (
-    <>
-      <HomePage node={homeNode} />
-      <CategorySection nodes={allCategoryNodes} />
-      <Footer />
-    </>
+    <KommerWrapper>
+      <h1>Kommer ...</h1>
+    </KommerWrapper>
   )
 }
 
-export default IndexPage
+const KommerWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 
-export const pageQuery = graphql`
-  query {
-    contentfulHjem(internTittel: { eq: "home" }) {
-      internTittel
-      presentation {
-        raw
-      }
-      headerImage {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-        title
-      }
-      profilePicture {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-        title
-      }
-    }
-    allContentfulCategory {
-      edges {
-        node {
-          link
-          buttonImage {
-            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-            title
-          }
-          buttonText
-          infoseksjon {
-            raw
-          }
-          gallery {
-            gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
-            title
-          }
-        }
-      }
-    }
+  & > h1 {
+    font-size: 4rem;
   }
 `
 
+export default IndexPage
 export interface HomePageQueryNode {
   internTittel: string
   presentation: any

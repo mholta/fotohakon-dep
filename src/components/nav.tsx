@@ -1,26 +1,61 @@
 import { withTheme } from '@material-ui/core'
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Logo from '../assets/Logo.svg'
 import ArrowBack from '../assets/ArrowBack.svg'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface NavProps {
   noArrow?: boolean
+  hamburgerOpen?: boolean
 }
 
 const Nav = ({ noArrow }: NavProps) => {
+  const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(true)
+
+  /*   useEffect(() => {
+    if (typeof document !== `undefined`)
+      document.body.style.overflow = hamburgerOpen ? 'hidden' : 'auto'
+  }, [hamburgerOpen]) */
+
   return (
     <NavWrapper id="top">
       <InnerFlexWrapper>
-        <MenuLinkWrapper>
-          <LeftNavLinksWrapper>
-            <NavLink to="/bryllup/#pakker">Bryllupspakker</NavLink>
-            <NavLink to="/familiepar/#pakker">Familie/par-pakker</NavLink>
-            <NavLink to="/kontakt">Andre henvendelser</NavLink>
-          </LeftNavLinksWrapper>
-        </MenuLinkWrapper>
-        <LogoAnimationWrapperLink to="/" noArrow={noArrow ?? false}>
+        <Hamburger
+          open={hamburgerOpen}
+          onClick={() => setHamburgerOpen(!hamburgerOpen)}
+        >
+          <span />
+          <span />
+          <span />
+          <span />
+        </Hamburger>
+        <AnimatePresence>
+          {hamburgerOpen && (
+            <MenuLinkWrapper
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={menuContainerVariants}
+            >
+              <motion.li variants={menuItemVariants}>
+                <NavLink to="/bryllup/#pakker">Bryllupspakker</NavLink>
+              </motion.li>
+              <motion.li variants={menuItemVariants}>
+                <NavLink to="/familiepar/#pakker">Familie/par-pakker</NavLink>
+              </motion.li>
+              <motion.li variants={menuItemVariants}>
+                <NavLink to="/kontakt">Andre henvendelser</NavLink>
+              </motion.li>
+            </MenuLinkWrapper>
+          )}
+        </AnimatePresence>
+        <LogoAnimationWrapperLink
+          to="/"
+          noArrow={noArrow ?? false}
+          hamburgerOpen={hamburgerOpen}
+        >
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
@@ -32,15 +67,76 @@ const Nav = ({ noArrow }: NavProps) => {
     </NavWrapper>
   )
 }
+const menuContainerVariants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+      when: 'afterChildren',
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+}
 
-const LeftNavLinksWrapper = styled.div`
+const menuItemVariants = {
+  hidden: { opacity: 0, x: -10, transition: { duration: 0.2 } },
+  show: { opacity: 1, x: 0 },
+}
+
+const Hamburger = styled.div<{ open: boolean }>`
+  position: ${(props) => (props.open ? 'fixed' : 'absolute')};
+  z-index: 150;
+
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  width: 1.4em;
+  height: 1em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  transition: transform 200ms ease;
 
-  & > :not(:last-child) {
-    margin-bottom: 0.2em;
+  & > span {
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    transition: transform 200ms ease, opacity 200ms ease;
   }
+  & > span:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    transform: scale(1.06);
+  }
+
+  ${(props) =>
+    props.open &&
+    `
+  & > span:nth-child(3) {
+    transform: rotateZ(-45deg);
+  }
+  & > span:nth-child(2) {
+    transform: rotateZ(45deg);
+  }
+  & > span:nth-child(1) {
+    opacity: 0;
+    transform: translateY(1000%) scaleX(0.2);
+  }
+  & > span:nth-child(4) {
+    opacity: 0;
+    transform: translateY(-1000%) scaleX(0.2);
+  }
+  `}
 `
 
 const ArrowBackWrapper = styled.div`
@@ -55,7 +151,9 @@ const ArrowBackWrapper = styled.div`
 `
 
 const LogoAnimationWrapperLink = styled(Link)<NavProps>`
-  position: relative;
+  position: ${(props) => (props.hamburgerOpen ? 'fixed' : 'absolute')};
+  top: 2rem;
+  z-index: 100;
   display: flex;
   justify-content: center;
   & > div:first-child {
@@ -79,33 +177,37 @@ const LogoAnimationWrapperLink = styled(Link)<NavProps>`
 `
 
 const InnerFlexWrapper = styled.div`
-  position: relative;
   width: 100%;
   display: flex;
 
   justify-content: center;
 `
 
-const MenuLinkWrapper = styled.div`
-  position: absolute;
-  width: 100%;
+const MenuLinkWrapper = styled(motion.ol)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 1);
 
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  & > :last-child {
-    margin-left: auto;
-    margin-right: 0;
-  }
+  list-style: none;
 `
 
 const NavLink = styled(Link)`
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  font-size: 1rem;
+  display: block;
+  font-size: 1.4rem;
   font-weight: 400;
-  margin-right: 2em;
+  margin: 1rem 0;
   position: relative;
 
   &::after {
@@ -130,7 +232,7 @@ const NavWrapper = withTheme(styled.nav`
   width: 100%;
   padding: 2rem;
 
-  z-index: 10;
+  z-index: 100;
 `)
 
 const LogoWrapper = withTheme(styled.div`
