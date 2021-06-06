@@ -7,10 +7,10 @@ const contentfulConfig = {
 
 module.exports = {
   siteMetadata: {
-    title: 'fotohakon',
+    title: 'FotoHakon',
     description: `Web page for Hakon`,
     author: `@mholta`,
-    siteUrl: `https://fotohakondev.netlify.app`,
+    siteUrl: `https://fotohakon.no`,
   },
   plugins: [
     'gatsby-plugin-mdx',
@@ -19,13 +19,13 @@ module.exports = {
       options: {
         googleAnalytics: {
           trackingId: process.env['GOOGLE_ANALYTICS_TRACKING_ID'], // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-consent-given',
+          cookieName: 'gatsby-gdpr-google-analytics', // default
           anonymize: true, // default
           allowAdFeatures: false, // default
         },
         googleTagManager: {
           trackingId: process.env['GOOGLE_TAG_MANAGER_TRACKING_ID'], // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-consent-given',
+          cookieName: 'gatsby-gdpr-google-tagmanager', // default
           dataLayerName: 'dataLayer', // default
         },
         /* facebookPixel: {
@@ -33,7 +33,7 @@ module.exports = {
           cookieName: 'gatsby-gdpr-facebook-pixel', // default
         }, */
         // defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production'],
+        environments: ['production', 'development'],
       },
     },
     {
