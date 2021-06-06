@@ -31,6 +31,7 @@ const ArrowBackWrapper = styled.div`
 `
 
 const LogoWrapper = styled.div`
+  text-decoration: none;
   position: relative;
 
   & > svg {

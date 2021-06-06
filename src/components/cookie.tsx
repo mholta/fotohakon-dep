@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core'
-import React, { CSSProperties } from 'react'
-import CookieConsent from 'react-cookie-consent'
+import React, { CSSProperties, useEffect, useState } from 'react'
+import CookieConsent, { Cookies } from 'react-cookie-consent'
 
 const wrapperStyles: CSSProperties = {
   position: 'fixed',
@@ -31,30 +31,42 @@ const declineButtonStyle: CSSProperties = {
 
 const Kjeks = () => {
   return (
-    <CookieConsent
-      cookieName="gatsby-gdpr-consent-given"
-      cookieValue={true}
-      ButtonComponent={Button}
-      buttonText="Jeg godtar"
-      location="none"
-      disableStyles
-      declineButtonText="Nei takk"
-      enableDeclineButton
-      ariaAcceptLabel="jeg aksepterer bruk av cookies"
-      ariaDeclineLabel="jeg aksepterer ikke bruk av cookies"
-      style={wrapperStyles}
-      buttonStyle={buttonStyle}
-      declineButtonStyle={declineButtonStyle}
-    >
-      <p>
-        <b>Hei</b>
-        <br />
-        Vi bruker cookies for å <br />
-        måle bruken av siden.
-        <br />
-        <br />
-      </p>
-    </CookieConsent>
+    <>
+      <CookieConsent
+        cookieName="consent-given"
+        onAccept={() => {
+          Cookies.set('gatsby-gdpr-google-analytics', true)
+          //Cookies.set('gatsby-gdpr-google-tagmanager', true)
+        }}
+        onDecline={() => {
+          if (typeof window !== `undefined`) {
+            window.sessionStorage.setItem('consent-denied', 'true')
+          }
+        }}
+        setDeclineCookie
+        declineCookieValue={false}
+        ButtonComponent={Button}
+        buttonText="Jeg godtar"
+        location="none"
+        disableStyles
+        declineButtonText="Nei takk"
+        enableDeclineButton
+        ariaAcceptLabel="jeg aksepterer bruk av cookies"
+        ariaDeclineLabel="jeg aksepterer ikke bruk av cookies"
+        style={wrapperStyles}
+        buttonStyle={buttonStyle}
+        declineButtonStyle={declineButtonStyle}
+      >
+        <p>
+          <b>Hei</b>
+          <br />
+          Vi bruker cookies for å <br />
+          måle bruken av siden.
+          <br />
+          <br />
+        </p>
+      </CookieConsent>
+    </>
   )
 }
 
