@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Image from '../../../components/gallery/image'
 import { Container, Section } from '../../../components/layout/layout'
 import MDRenderer from '../../../components/md/MDRenderer'
-import { HomePageQueryNode } from '../../../pages'
+import { HomePageQueryNode } from '../../../pages/indexx'
 
 interface PresentationSectionProps {
   node: HomePageQueryNode

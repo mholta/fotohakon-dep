@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HomePageQueryNode } from '../../../pages'
+import { HomePageQueryNode } from '../../../pages/indexx'
 import { CenterChild } from '../../../components/layout/layout'
 import ArrowButton from '../../../components/elements/arrowButton'
 import Image from '../../../components/gallery/image'

@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Container, Section } from '../../../../components/layout/layout'
-import { CategoryPageQueryNode } from '../../../../pages'
+import { CategoryPageQueryNode } from '../../../../pages/indexx'
 import Category from '../category'
 import CategoryTabButton from '../categoryButton'
 

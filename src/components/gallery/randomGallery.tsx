@@ -1,7 +1,7 @@
 import { withTheme } from '@material-ui/core'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { CategoryPageQueryNode } from '../../pages'
+import { CategoryPageQueryNode } from '../../pages/indexx'
 import {
   isHorizontal,
   randomAlign,

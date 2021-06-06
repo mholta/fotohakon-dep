@@ -2,7 +2,7 @@ import { withTheme } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 import Image from '../../../components/gallery/image'
-import { CategoryPageQueryNode } from '../../../pages'
+import { CategoryPageQueryNode } from '../../../pages/indexx'
 
 interface CategoryTabButtonProps {
   node: CategoryPageQueryNode

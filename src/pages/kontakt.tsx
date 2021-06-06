@@ -28,11 +28,13 @@ const ContactPage = ({
   return (
     <div>
       <Nav />
-      <Section>
-        <Container style={{ textAlign: 'center' }}>
-          <MDRenderer>{pageNode.topText}</MDRenderer>
-        </Container>
-      </Section>
+      {pageNode?.topText && (
+        <Section>
+          <Container style={{ textAlign: 'center' }}>
+            <MDRenderer>{pageNode.topText}</MDRenderer>
+          </Container>
+        </Section>
+      )}
       <Section>
         <Container style={{ textAlign: 'center' }} width="sm">
           <OptionsIntroWrapper style={{ paddingBottom: '6rem' }}>
