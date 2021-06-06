@@ -31,6 +31,7 @@
     "framer-motion": "^4.1.17",
     "gatsby": "^3.6.2",
     "gatsby-plugin-fontawesome-css": "^1.1.0",
+    "gatsby-plugin-gdpr-cookies": "^2.0.0",
     "gatsby-plugin-image": "^1.1.2",
     "gatsby-plugin-manifest": "^3.1.0",
     "gatsby-plugin-material-ui": "^3.0.1",
@@ -46,11 +47,13 @@
     "gatsby-transformer-remark": "^3.1.0",
     "gatsby-transformer-sharp": "^3.1.0",
     "react": "^17.0.1",
+    "react-cookie-consent": "^6.2.4",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^8.31.0",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "universal-cookie": "^4.0.4"
   }
 }

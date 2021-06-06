@@ -68,7 +68,7 @@ const OtherBookingsPage = ({
       <Section lightGrey id="booking">
         <Container>
           <FormsChoice />
-          <OptionsLabel>Fullfør booking</OptionsLabel>
+          <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>
           <BookingForm
             name="Booking annet"
             autoComplete="off"

@@ -8,7 +8,7 @@ interface SectionProps {
 
 export const Section = withTheme(styled.section<SectionProps>`
   padding: ${(props) => (props.large ? 8 : 4)}rem 1rem;
-  overflow: hidden;
+
   background-color: ${(props) =>
     props.lightGrey ? props.theme.palette.grey[200] : 'transparent'};
 `)

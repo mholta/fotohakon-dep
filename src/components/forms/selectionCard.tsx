@@ -83,8 +83,12 @@ const CardWrapper = withTheme(
     & > :last-child {
       margin-top: auto;
     }
+    & > :not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
 
     & > h4 {
+      margin-top: 0;
       font-size: ${(props) => (props.summary ? 1.2 : 1.8)}rem;
     }
     & > ul {

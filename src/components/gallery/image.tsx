@@ -57,7 +57,7 @@ const AbosluteWrapper = styled.div<Partial<ImgProps>>`
 
 const GImage = styled(GatsbyImage)<ImgProps>`
   max-width: 100%;
-  transition: filter 00ms ease;
+  transition: filter 200ms ease;
   position: relative;
   ${(props) =>
     props.maxheight
@@ -72,10 +72,10 @@ const GImage = styled(GatsbyImage)<ImgProps>`
       : ``}
 
     ${(props) =>
-    props.darken !== 0 &&
     `
 
     &::after {
+      transition: opacity 200ms ease;
       content:'';
       position: absolute;
       top: 0;

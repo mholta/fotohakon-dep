@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import theme from './src/styles/theme'
 import { Helmet } from 'react-helmet'
+import Kjeks from './src/components/cookie'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -15,6 +16,11 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     font-size: 16px;
   }
+  @media only screen and (max-width: 600px) {
+    body {
+      font-size: 14px;
+    }
+  }
   
   body {
     font-family:'Source Sans Pro', sans-serif;
@@ -26,7 +32,8 @@ const GlobalStyles = createGlobalStyle`
   h1{font-size: 3.75}
   h3{
     font-size: 1.4rem;
-    }`
+    }
+    `
 
 const Viewport = ({ children }) => {
   return (
@@ -47,5 +54,6 @@ export const wrapRootElement = ({ element }) => (
     <CssBaseline />
     <GlobalStyles />
     {element}
+    <Kjeks />
   </ThemeProvider>
 )
