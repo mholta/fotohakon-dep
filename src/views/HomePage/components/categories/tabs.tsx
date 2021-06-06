@@ -63,13 +63,13 @@ export const Tabs = ({ children }: TabsProps) => {
 }
 
 const TabsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 40rem;
+  gap: 1rem;
+  margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 2rem;
-  & > * {
-    margin: 0 2rem;
-  }
 `
 
 export const Tab = ({ children }: any) => {

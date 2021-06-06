@@ -8,7 +8,9 @@ interface SliderWrapperProps {
 
 const Slider = ({ children, summary = false }: SliderWrapperProps) => {
   return (
-    <SliderWrapper summary={summary ? true : false}>{children}</SliderWrapper>
+    <SliderWrapper summary={summary.valueOf() ?? false}>
+      {children}
+    </SliderWrapper>
   )
 }
 

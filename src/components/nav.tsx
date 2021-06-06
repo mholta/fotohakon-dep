@@ -15,11 +15,10 @@ const Nav = ({ noArrow }: NavProps) => {
       <InnerFlexWrapper>
         <MenuLinkWrapper>
           <LeftNavLinksWrapper>
-            <div style={{ fontWeight: 'bold' }}>Priser:</div>
             <NavLink to="/bryllup/#pakker">Bryllupspakker</NavLink>
             <NavLink to="/familiepar/#pakker">Familie/par-pakker</NavLink>
+            <NavLink to="/kontakt">Andre henvendelser</NavLink>
           </LeftNavLinksWrapper>
-          <NavLink to="/kontakt">Andre henvendelser</NavLink>
         </MenuLinkWrapper>
         <LogoAnimationWrapperLink to="/" noArrow={noArrow ?? false}>
           <LogoWrapper>

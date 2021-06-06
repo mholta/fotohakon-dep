@@ -51,7 +51,7 @@ const Lightbox = ({ imageData, dragConstraints, drag }: LightboxProps) => {
           scale: 1.02,
           boxShadow: '1px 0px 10rem rgba(0, 0, 0, 0.1)',
         }}
-        style={{ cursor: drag ? 'move' : 'pointer' }}
+        style={{ cursor: 'pointer' }}
         transition={{ duration: 0.4 }}
       >
         <Image imageData={imageData} maxheight="90vh" />

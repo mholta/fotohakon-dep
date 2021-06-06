@@ -123,7 +123,7 @@ const BookingPage = ({
       <Section lightGrey id="booking">
         <Container>
           <FormsChoice />
-          <OptionsLabel>Fullfør booking</OptionsLabel>
+          <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>
           <BookingForm
             name="Booking bryllup"
             autoComplete="off"

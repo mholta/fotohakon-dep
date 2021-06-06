@@ -44,7 +44,6 @@ const TabImageButton = styled.div`
   display: inline-block;
 
   transition: all 400ms ease-in-out;
-  margin: 0 2rem;
 
   &:hover {
     transform: scale(1.02);
@@ -58,12 +57,11 @@ const TabImageButton = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  width: 16rem;
   padding-bottom: 67%;
   position: relative;
 `
 
-const ButtonTextWrapper = styled.div`
+const ButtonTextWrapper = withTheme(styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -78,8 +76,13 @@ const ButtonTextWrapper = styled.div`
     font-weight: bold;
     font-size: 2rem;
     color: white;
+    text-align: center;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 1), 0px 2px 24px rgba(0, 0, 0, 1);
+
+    ${(props) => props.theme.breakpoints.down('xs')} {
+      font-size: 1.6rem;
+    }
   }
-`
+`)
 
 export default CategoryTabButton
