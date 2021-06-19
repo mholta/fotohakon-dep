@@ -1,3 +1,4 @@
+import { withTheme } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -6,10 +7,14 @@ interface SliderWrapperProps {
   summary?: boolean
 }
 
-const Slider = ({ children, summary = false }: SliderWrapperProps) => {
+const OptionCardsWrapper = ({
+  children,
+  summary = false,
+}: SliderWrapperProps) => {
   return (
     <SliderWrapper summary={summary.valueOf() ?? false}>
       {children}
+      <div style={{ width: 0.1 }} />
     </SliderWrapper>
   )
 }
@@ -18,10 +23,7 @@ interface SliderWrapperProps {
   summary?: boolean
 }
 
-const SliderWrapper = styled.div<SliderWrapperProps>`
-  display: flex;
-  overflow: auto;
-
+const SliderWrapper = withTheme(styled.div<SliderWrapperProps>`
   & > * {
     flex-shrink: 0;
   }
@@ -29,21 +31,42 @@ const SliderWrapper = styled.div<SliderWrapperProps>`
   ${(props) =>
     props.summary
       ? `
-      margin: 0;
-  padding: 0;
+      display: flex;
+      overflow: auto;
+      margin: 0 -1rem;
+      padding: 0 1rem;
 
-  & > *:not(:last-child) {
-    margin-right: 1rem;
-  }
-  `
+      & > *:not(:last-child) {
+        margin-right: 1rem;
+      }
+      `
       : `
-  margin: -3rem;
-  padding: 3rem;
+      display: flex;
+      overflow: auto;
+      margin: -2rem -1rem;
+      padding: 2rem 1rem;
 
-  & > *:not(:last-child) {
-    margin-right: 3rem;
-  }
+      & > *:not(:last-child) {
+        margin-right: 3rem;
+      }
+
+      & > *:nth-last-child(2) {
+        margin-right: 1rem;
+      }
+      
+      ${props.theme.breakpoints.up('md')} {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        & > * {
+          min-width: 0;
+        }
+        & > *:not(:last-child) {
+          margin-right: 0;
+        }
   `}
-`
+`)
 
-export default Slider
+export default OptionCardsWrapper

@@ -10,7 +10,7 @@ import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
 import FormsChoice from '../components/forms/formsChoise'
 import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
-import Slider from '../components/forms/sliderWrapper'
+import OptionCardsWrapper from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
@@ -66,7 +66,7 @@ const BookingPage = ({
       <Section>
         <Container>
           <OptionsLabel>Foto</OptionsLabel>
-          <Slider>
+          <OptionCardsWrapper>
             {weddingPageNode.photoSolutions.map((node, index) => (
               <SelectionCard
                 selected={selectedPhotoSolution === node.title.toUpperCase()}
@@ -81,14 +81,14 @@ const BookingPage = ({
                 }
               />
             ))}
-          </Slider>
+          </OptionCardsWrapper>
         </Container>
       </Section>
 
       <Section>
         <Container>
           <OptionsLabel>Video</OptionsLabel>
-          <Slider>
+          <OptionCardsWrapper>
             {weddingPageNode.videoSolutions.map((node, index) => (
               <SelectionCard
                 selected={selectedVideoSoluton === node.title.toUpperCase()}
@@ -103,14 +103,14 @@ const BookingPage = ({
                 }
               />
             ))}
-          </Slider>
+          </OptionCardsWrapper>
         </Container>
       </Section>
 
       <Section>
         <Container>
           <OptionsLabel>Tilleggsvalg</OptionsLabel>
-          <Slider>
+          <OptionCardsWrapper>
             {weddingPageNode.extras.map((node, index) => (
               <SelectionCard
                 selected={selectedExtraSoluton === node.title.toUpperCase()}
@@ -125,7 +125,7 @@ const BookingPage = ({
                 }
               />
             ))}
-          </Slider>
+          </OptionCardsWrapper>
         </Container>
       </Section>
 
@@ -154,7 +154,7 @@ const BookingPage = ({
             </PhoneEmailGrid>
 
             <h3>Fotopakke</h3>
-            <Slider summary>
+            <OptionCardsWrapper summary>
               {weddingPageNode.photoSolutions.map((node, index) => (
                 <SelectionCard
                   key={'phots-' + index}
@@ -170,10 +170,10 @@ const BookingPage = ({
                   }
                 />
               ))}
-            </Slider>
+            </OptionCardsWrapper>
 
             <h3>Videopakke</h3>
-            <Slider summary>
+            <OptionCardsWrapper summary>
               {weddingPageNode.videoSolutions.map((node, index) => (
                 <SelectionCard
                   key={'vids-' + index}
@@ -189,10 +189,10 @@ const BookingPage = ({
                   }
                 />
               ))}
-            </Slider>
+            </OptionCardsWrapper>
 
             <h3>Tilleggsvalg</h3>
-            <Slider summary>
+            <OptionCardsWrapper summary>
               {weddingPageNode.extras.map((node, index) => (
                 <SelectionCard
                   summary
@@ -208,7 +208,7 @@ const BookingPage = ({
                   }
                 />
               ))}
-            </Slider>
+            </OptionCardsWrapper>
 
             {/* Hidden fields for sending solution data */}
             <input
