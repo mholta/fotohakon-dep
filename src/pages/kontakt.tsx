@@ -12,6 +12,7 @@ import SubmitButton from '../components/forms/sendButton'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
+import SEO from '../components/seo'
 
 interface BookingPageProps {
   data: any
@@ -27,6 +28,7 @@ const ContactPage = ({
   }
   return (
     <div>
+      <SEO title="Kontakt meg" />
       <Nav />
       {pageNode?.topText && (
         <Section>

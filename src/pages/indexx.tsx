@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import Footer from '../components/footer'
+import SEO from '../components/seo'
 import CategorySection from '../views/HomePage/components/categoriesSection'
 import HomePage from '../views/HomePage/HomePage'
 
@@ -17,6 +18,13 @@ const IndexPage = ({
   allContentfulCategory.edges
   return (
     <>
+      <SEO
+        image={
+          homeNode.headerImage?.file?.url
+            ? 'https:' + homeNode.headerImage?.file?.url
+            : undefined
+        }
+      />
       <HomePage node={homeNode} />
       <CategorySection nodes={allCategoryNodes} />
       <Footer />
@@ -36,6 +44,9 @@ export const pageQuery = graphql`
       headerImage {
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
         title
+        file {
+          url
+        }
       }
       profilePicture {
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])

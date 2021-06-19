@@ -14,6 +14,7 @@ import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
+import SEO from '../components/seo'
 
 interface BookingPageProps {
   data: any
@@ -32,6 +33,14 @@ const OtherBookingsPage = ({
 
   return (
     <div>
+      <SEO
+        title="Familie/par"
+        image={
+          pageNode.seoBilde?.file?.url
+            ? 'https:' + pageNode.seoBilde?.file?.url
+            : undefined
+        }
+      />
       <Nav />
       {pageNode?.topText && (
         <Section>
@@ -147,6 +156,11 @@ export const pageQuery = graphql`
       topText {
         raw
       }
+      seoBilde {
+        file {
+          url
+        }
+      }
       solutions {
         title
         content {
@@ -162,6 +176,7 @@ export const pageQuery = graphql`
 
 export interface OtherBookingsPageQueryNode {
   topText: any
+  seoBilde: any
   optionsIntro: any
   solutions: { content: any; title: string }[]
 }

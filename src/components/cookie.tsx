@@ -20,6 +20,8 @@ const buttonStyle: CSSProperties = {
   borderBottomLeftRadius: 0,
   border: '1px solid #020202',
   borderLeft: 'none',
+  paddingRight: 16,
+  paddingLeft: 16,
 }
 
 const declineButtonStyle: CSSProperties = {
@@ -27,6 +29,8 @@ const declineButtonStyle: CSSProperties = {
   borderBottomRightRadius: 0,
   border: '1px solid #ddd',
   borderRight: 'none',
+  paddingRight: 16,
+  paddingLeft: 16,
 }
 
 const Kjeks = () => {
