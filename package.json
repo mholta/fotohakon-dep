@@ -7,6 +7,7 @@
     "gatsby"
   ],
   "scripts": {
+    "preload-fonts": "gatsby-preload-fonts",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -37,12 +38,14 @@
     "gatsby-plugin-manifest": "^3.1.0",
     "gatsby-plugin-material-ui": "^3.0.1",
     "gatsby-plugin-mdx": "^2.1.0",
+    "gatsby-plugin-preload-fonts": "^2.7.1",
     "gatsby-plugin-react-helmet": "^4.7.1",
     "gatsby-plugin-react-svg": "^3.0.1",
     "gatsby-plugin-sharp": "^3.1.2",
     "gatsby-plugin-sitemap": "^3.1.0",
     "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-styled-components": "^4.1.0",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-contentful": "^5.1.2",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-transformer-remark": "^3.1.0",

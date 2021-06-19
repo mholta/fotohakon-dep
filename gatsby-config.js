@@ -14,6 +14,7 @@ module.exports = {
     image: '/seo.jpg', // Path to your image you placed in the 'static' folder
   },
   plugins: [
+    `gatsby-plugin-preload-fonts`,
     'gatsby-plugin-mdx',
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
@@ -47,7 +48,7 @@ module.exports = {
         stylesProvider: {
           injectFirst: true,
         },
-        /*  webFontsConfig: {
+        /* webFontsConfig: {
           fonts: {
             google: [
               {
