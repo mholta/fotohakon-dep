@@ -10,7 +10,7 @@ import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
 import FormsChoice from '../components/forms/formsChoise'
 import SelectionCard from '../components/forms/selectionCard'
 import SubmitButton from '../components/forms/sendButton'
-import Slider from '../components/forms/sliderWrapper'
+import OptionCardsWrapper from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
@@ -58,7 +58,7 @@ const OtherBookingsPage = ({
       </Section>
       <Section>
         <Container>
-          <Slider>
+          <OptionCardsWrapper>
             {pageNode.solutions.map((node, index) => (
               <SelectionCard
                 selected={selectedSolution === node.title.toUpperCase()}
@@ -73,7 +73,7 @@ const OtherBookingsPage = ({
                 }
               />
             ))}
-          </Slider>
+          </OptionCardsWrapper>
         </Container>
       </Section>
       <Section lightGrey id="booking">
@@ -101,7 +101,7 @@ const OtherBookingsPage = ({
             </PhoneEmailGrid>
 
             <h3>Pakke</h3>
-            <Slider summary>
+            <OptionCardsWrapper summary>
               {pageNode.solutions.map((node, index) => (
                 <SelectionCard
                   key={'phots-' + index}
@@ -117,7 +117,7 @@ const OtherBookingsPage = ({
                   }
                 />
               ))}
-            </Slider>
+            </OptionCardsWrapper>
             {/* Hidden fields for sending solution data */}
             <input name="Pakke" defaultValue={selectedSolution ?? ''} hidden />
 

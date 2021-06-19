@@ -69,7 +69,7 @@ const CardWrapper = withTheme(
     cursor: pointer;
     text-align: left;
     ${(props) => !props.summary && 'flex: 1;'}
-    min-width: ${(props) => (props.summary ? 2 : 16)}rem;
+    min-width: ${(props) => (props.summary ? 2 : 20)}rem;
 
     display: flex;
     align-items: flex-start;
