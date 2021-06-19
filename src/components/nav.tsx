@@ -12,7 +12,7 @@ interface NavProps {
 }
 
 const Nav = ({ noArrow }: NavProps) => {
-  const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(true)
+  const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false)
 
   /*   useEffect(() => {
     if (typeof document !== `undefined`)
@@ -71,9 +71,9 @@ const menuContainerVariants = {
   hidden: {
     opacity: 0,
     transition: {
+      duration: 0.6,
       staggerChildren: 0.2,
       staggerDirection: 1,
-      when: 'afterChildren',
     },
   },
   show: {
@@ -86,7 +86,7 @@ const menuContainerVariants = {
 }
 
 const menuItemVariants = {
-  hidden: { opacity: 0, x: -10, transition: { duration: 0.2 } },
+  hidden: { opacity: 0, x: -10, transition: { duration: 0.4 } },
   show: { opacity: 1, x: 0 },
 }
 
@@ -151,11 +151,11 @@ const ArrowBackWrapper = styled.div`
 `
 
 const LogoAnimationWrapperLink = styled(Link)<NavProps>`
-  position: ${(props) => (props.hamburgerOpen ? 'fixed' : 'absolute')};
-  top: 2rem;
+  position: ${(props) => (props.hamburgerOpen ? 'fixed' : 'relative')};
   z-index: 100;
   display: flex;
   justify-content: center;
+  text-decoration: none;
   & > div:first-child {
     opacity: 1;
     transition: opacity 200ms ease;

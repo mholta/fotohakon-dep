@@ -14,6 +14,7 @@ import Slider from '../components/forms/sliderWrapper'
 import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
+import SEO from '../components/seo'
 import StepsSection from '../components/steps/steps.section'
 
 interface BookingPageProps {
@@ -37,6 +38,14 @@ const BookingPage = ({
   }
   return (
     <div>
+      <SEO
+        title="Bryllup"
+        image={
+          weddingPageNode.seoBilde?.file?.url
+            ? 'https:' + weddingPageNode.seoBilde?.file?.url
+            : undefined
+        }
+      />
       <Nav />
       <Section>
         <Container style={{ textAlign: 'center' }}>
@@ -250,6 +259,11 @@ export default BookingPage
 export const pageQuery = graphql`
   query {
     contentfulBryllupsside(key: { eq: "weddingpage" }) {
+      seoBilde {
+        file {
+          url
+        }
+      }
       imageOne {
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
         title
@@ -296,6 +310,7 @@ export const pageQuery = graphql`
 `
 
 export interface WeddingPageQueryNode {
+  seoBilde: any
   imageOne: any
   imageTwo: any
   topText: any

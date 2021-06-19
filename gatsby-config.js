@@ -7,10 +7,11 @@ const contentfulConfig = {
 
 module.exports = {
   siteMetadata: {
-    title: 'FotoHåkon',
+    title: 'Håkon Mjøs',
+    titleTemplate: '%s · FotoHakon',
     description: `Håkon Mjøs, fotograf basert i Bergen, og brenner for å forevige de gode, gylne øyeblikkene - enten det er fotografering av bryllup, familie, forlovelse, konfirmasjon eller par.`,
-    siteUrl: `https://fotohakon.no`,
-    image: '/images/snape.jpg',
+    siteUrl: 'https://www.fotohakon.no', // No trailing slash allowed!
+    image: '/seo.jpg', // Path to your image you placed in the 'static' folder
   },
   plugins: [
     'gatsby-plugin-mdx',

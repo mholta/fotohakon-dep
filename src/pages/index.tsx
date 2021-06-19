@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+import SEO from '../components/seo'
 
 interface IndexPageProps {}
 
 const IndexPage = ({}: IndexPageProps) => {
   return (
-    <KommerWrapper>
-      <h1>Kommer ...</h1>
-    </KommerWrapper>
+    <>
+      <SEO title="Kommer" />
+      <KommerWrapper>
+        <h1>Kommer ...</h1>
+      </KommerWrapper>
+    </>
   )
 }
 
