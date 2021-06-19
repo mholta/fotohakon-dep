@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { HomePageQueryNode } from '../../../pages/indexx'
 import { CenterChild } from '../../../components/layout/layout'
-import ArrowButton from '../../../components/elements/arrowButton'
 import Image from '../../../components/gallery/image'
 import Logo from '../../../assets/Logo.svg'
 import { withTheme } from '@material-ui/core'
 import Nav from '../../../components/nav'
+import Arrow from '../../../components/arrow'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -26,10 +26,18 @@ const HeaderWrapper = ({ node }: HeaderWrapperProps) => {
         {/*    <CenterChild absolute fullWidth bottom>
           <ArrowButton direction="down" onClick={handleScrollDown} />
         </CenterChild> */}
+        <ArrowButton>
+          <Arrow direction="down" />
+        </ArrowButton>
       </RelativeWrapper>
     </MainWrapper>
   )
 }
+
+const ArrowButton = styled.div`
+  position: absolute;
+  bottom: 2rem;
+`
 
 const HomePageNavWrapper = styled.div`
   position: absolute;
@@ -47,6 +55,8 @@ const RelativeWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 `
 
 export default HeaderWrapper
