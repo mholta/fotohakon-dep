@@ -16,12 +16,7 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     font-size: 16px;
   }
-  @media only screen and (max-width: 600px) {
-    body {
-      font-size: 14px;
-    }
-  }
-  
+
   body {
     font-family:'Source Sans Pro', sans-serif;
   }
