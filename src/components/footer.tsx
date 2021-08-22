@@ -50,18 +50,18 @@ const ScrollToTopButtonWrapper = styled.div`
   top: 0;
 `
 
-const SocialIconWrapper = styled.a`
-  color: #eee;
+const SocialIconWrapper = withTheme(styled.a`
+  color: ${(props) => props.theme.palette.primary.dark};
   transition: color 200ms ease;
   transition: transform 200ms ease;
   &:hover {
-    color: #777;
+    color: ${(props) => props.theme.palette.primary.light};
   }
   &:active {
     transform: scale(0.9);
   }
   margin: 0 0.6rem;
-`
+`)
 
 const SocialsWrapper = styled.div`
   display: inline-flex;
@@ -74,11 +74,11 @@ const FooterContainer = styled(Container)`
   }
 `
 const FooterWrapper = withTheme(styled.footer`
-  margin: auto;
-  background-color: ${(props) => props.theme.palette.primary.main};
+  margin-top: 4rem;
+  border-top: 1px solid ${(props) => props.theme.palette.primary.light};
   padding: 4rem;
   text-align: center;
-  color: #eee;
+  color: ${(props) => props.theme.palette.primary.dark};
   position: relative;
   z-index: 120;
 `)

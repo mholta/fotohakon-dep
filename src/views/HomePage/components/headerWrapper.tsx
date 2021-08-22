@@ -1,10 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { HomePageQueryNode } from '../../../pages/indexx'
-import { CenterChild } from '../../../components/layout/layout'
 import Image from '../../../components/gallery/image'
-import Logo from '../../../assets/Logo.svg'
-import { withTheme } from '@material-ui/core'
 import Nav from '../../../components/nav'
 import Arrow from '../../../components/arrow'
 
@@ -12,7 +9,7 @@ interface HeaderWrapperProps {
   node: HomePageQueryNode
 }
 
-const HeaderWrapper = ({ node }: HeaderWrapperProps) => {
+const HomePageHeader = ({ node }: HeaderWrapperProps) => {
   const handleScrollDown = () => {}
 
   return (
@@ -47,7 +44,6 @@ const HomePageNavWrapper = styled.div`
 `
 
 const MainWrapper = styled.header`
-  padding: 1rem;
   height: 100vh;
 `
 
@@ -59,4 +55,4 @@ const RelativeWrapper = styled.div`
   justify-content: center;
 `
 
-export default HeaderWrapper
+export default HomePageHeader

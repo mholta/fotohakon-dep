@@ -8,6 +8,7 @@ interface ImageProps {
   absolute?: boolean | number
   bw?: boolean | number
   darken?: number
+  height?: string
 }
 
 const Image = ({
@@ -16,11 +17,12 @@ const Image = ({
   absolute = false,
   bw = false,
   darken = 0,
+  height,
 }: ImageProps) => {
   const gImage = getImage(imageData)
 
   return (
-    <AbosluteWrapper absolute={absolute ? 1 : 0}>
+    <AbosluteWrapper absolute={absolute ? 1 : 0} height={height}>
       {gImage && (
         <GImage
           image={gImage}
@@ -39,6 +41,7 @@ const Image = ({
 interface ImgProps extends Partial<ImageProps> {
   ratio: number
   maxheight: string | undefined
+  height?: string
 }
 
 const AbosluteWrapper = styled.div<Partial<ImgProps>>`
@@ -52,7 +55,8 @@ const AbosluteWrapper = styled.div<Partial<ImgProps>>`
     width:100%;
     object-fit: fill;
     `
-      : ``}
+      : `
+    height: ${props.height ?? 'auto'}`}
 `
 
 const GImage = styled(GatsbyImage)<ImgProps>`

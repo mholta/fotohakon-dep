@@ -1,37 +1,19 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
-/* 
 declare module '@material-ui/core/styles/createPalette' {
-    interface Palette {
-    tertiary: Palette['primary'];
-    team1: Palette['primary'];
-    team2: Palette['primary'];
-    team3: Palette['primary'];
-    team4: Palette['primary'];
-    team5: Palette['primary'];
-    team6: Palette['primary'];
-    background1: Palette['primary'];
-    background2: Palette['primary'];
-    gold: Palette['primary'];
-    silver: Palette['primary'];
-    bronze: Palette['primary'];
-    text: TypeText;
+  interface Palette {
+    color1: Palette['primary']
+    color2: Palette['primary']
+    color3: Palette['primary']
+    color4: Palette['primary']
   }
   interface PaletteOptions {
-    tertiary: PaletteOptions['primary'];
-    team1: PaletteOptions['primary'];
-    team2: PaletteOptions['primary'];
-    team3: PaletteOptions['primary'];
-    team4: PaletteOptions['primary'];
-    team5: PaletteOptions['primary'];
-    team6: PaletteOptions['primary'];
-    background1: PaletteOptions['primary'];
-    background2: PaletteOptions['primary'];
-    gold: PaletteOptions['primary'];
-    silver: PaletteOptions['primary'];
-    bronze: PaletteOptions['primary'];
+    color1: PaletteOptions['primary']
+    color2: PaletteOptions['primary']
+    color3: PaletteOptions['primary']
+    color4: PaletteOptions['primary']
   }
-} */
+}
 // Theme component for Material UI
 // This is just overrides, the full theme object contains
 // more styles
@@ -39,15 +21,26 @@ declare module '@material-ui/core/styles/createPalette' {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#222',
+      main: '#271401',
     },
     secondary: {
       main: '#EAE2D9',
-      light: 'rgba(234, 226, 217, 0.6)',
+      dark: '#beb09f',
     },
-    text: {},
+    color1: {
+      main: '#A76D4F',
+    },
+    color2: {
+      main: '#7C9A80',
+    },
+    color3: {
+      main: '#AF8558',
+    },
+    color4: {
+      main: '#AF8558',
+    },
     background: {
-      default: '#fff',
+      default: '#eae8d7',
     },
   },
   typography: {
