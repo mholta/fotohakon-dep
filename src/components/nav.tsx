@@ -1,10 +1,11 @@
 import { withTheme } from '@material-ui/core'
-import { Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Logo from '../assets/Logo.svg'
 import ArrowBack from '../assets/ArrowBack.svg'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link } from './typography'
 
 interface NavProps {
   noArrow?: boolean
@@ -139,6 +140,17 @@ const Hamburger = styled.div<{ open: boolean }>`
   `}
 `
 
+const NavLink = withTheme(styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 1rem 0;
+  position: relative;
+`)
+
 const ArrowBackWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -150,7 +162,7 @@ const ArrowBackWrapper = styled.div`
   justify-content: center;
 `
 
-const LogoAnimationWrapperLink = styled(Link)<NavProps>`
+const LogoAnimationWrapperLink = styled(GatsbyLink)<NavProps>`
   position: ${(props) => (props.hamburgerOpen ? 'fixed' : 'relative')};
   z-index: 100;
   display: flex;
@@ -183,14 +195,14 @@ const InnerFlexWrapper = styled.div`
   justify-content: center;
 `
 
-const MenuLinkWrapper = styled(motion.ol)`
+const MenuLinkWrapper = withTheme(styled(motion.ol)`
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${(props) => props.theme.palette.secondary.light};
 
   display: flex;
   flex-direction: column;
@@ -198,32 +210,7 @@ const MenuLinkWrapper = styled(motion.ol)`
   justify-content: center;
 
   list-style: none;
-`
-
-const NavLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  display: block;
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin: 1rem 0;
-  position: relative;
-
-  &::after {
-    content: '';
-    height: 1px;
-    width: 0%;
-    background-color: black;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: width 200ms ease;
-  }
-  &:hover::after {
-    width: 100%;
-  }
-`
+`)
 
 const NavWrapper = withTheme(styled.nav`
   position: relative;
