@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HomePageQueryNode } from '../../../pages/indexx'
+import { HomePageQueryNode } from '../../../pages'
 import Image from '../../../components/gallery/image'
 import Nav from '../../../components/nav'
 import Arrow from '../../../components/arrow'
+import scrollTo from 'gatsby-plugin-smoothscroll'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -15,7 +16,7 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
   return (
     <MainWrapper>
       <HomePageNavWrapper>
-        <Nav noArrow />
+        <Nav white />
       </HomePageNavWrapper>
       <RelativeWrapper>
         <Image imageData={node.headerImage} absolute />
@@ -24,7 +25,12 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
           <ArrowButton direction="down" onClick={handleScrollDown} />
         </CenterChild> */}
         <ArrowButton>
-          <Arrow direction="down" />
+          <Arrow
+            direction="down"
+            onClick={() => {
+              scrollTo('#section')
+            }}
+          />
         </ArrowButton>
       </RelativeWrapper>
     </MainWrapper>
@@ -34,6 +40,8 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
 const ArrowButton = styled.div`
   position: absolute;
   bottom: 2rem;
+  z-index: 20;
+  cursor: pointer;
 `
 
 const HomePageNavWrapper = styled.div`

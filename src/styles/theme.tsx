@@ -7,6 +7,7 @@ declare module '@material-ui/core/styles/createPalette' {
     color3: Palette['primary']
     color4: Palette['primary']
   }
+
   interface PaletteOptions {
     color1: PaletteOptions['primary']
     color2: PaletteOptions['primary']
@@ -24,7 +25,7 @@ const theme = createMuiTheme({
       main: '#271401',
     },
     secondary: {
-      main: '#EAE2D9',
+      main: '#eae8d7',
       dark: '#beb09f',
     },
     color1: {
@@ -40,20 +41,18 @@ const theme = createMuiTheme({
       main: '#AF8558',
     },
     background: {
-      default: '#eae8d7',
+      default: '#fafafa',
     },
   },
   typography: {
     allVariants: {},
-    fontFamily: ['Source Sans Pro', 'sans-serif', 'Libre Baskerville'].join(
-      ','
-    ),
+    fontFamily: ['Libre Baskerville', 'sans-serif'].join(','),
   },
   breakpoints: {
     values: {
       xs: 0,
       sm: 600,
-      md: 680,
+      md: 760,
       lg: 1280,
       xl: 1920,
     },

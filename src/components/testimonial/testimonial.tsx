@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MDRenderer from '../md/MDRenderer'
-import { TestimonialNode } from '../../pages/indexx'
+import { TestimonialNode } from '../../pages'
 
 import Image from '../gallery/image'
 import { useInView } from 'react-intersection-observer'
@@ -51,10 +51,10 @@ interface TestimonialCardProps {
 const MainWrapper = styled.div<TestimonialCardProps>`
   background-color: ${(props) => props.color};
   color: white;
-  margin: 14rem 0;
-  padding: 4rem 4rem;
+  margin: 14em 0;
+  padding: 4em 4em;
   position: relative;
-  min-height: 16rem;
+  min-height: 16em;
 
   display: flex;
   flex-direction: ${(props) => (props.reverseOrder ? 'row-reverse' : 'row')};
@@ -65,9 +65,9 @@ const MainWrapper = styled.div<TestimonialCardProps>`
 const ImageWrapper = styled.div<TestimonialCardProps>`
   position: relative;
 
-  margin: -7rem 0;
+  margin: -7em 0;
 
-  max-width: 19rem;
+  max-width: 19em;
   ${(props) => (props.reverseOrder ? 'margin-right' : 'margin-left')}: 4em;
 `
 
@@ -79,12 +79,14 @@ const TextWrapper = styled.div`
   font-size: 1.2em;
 
   & > * > * {
+    font-size: 1em;
     line-height: 1.6;
   }
 
   & > * > h2 {
+    font-size: 2em;
     line-height: 1;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.3em;
   }
 `
 

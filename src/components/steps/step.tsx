@@ -1,7 +1,6 @@
 import { withTheme } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
-import { SlideIntoView } from '../animations/slideIn'
 import MDRenderer from '../md/MDRenderer'
 
 interface StepCardProps {
@@ -10,27 +9,24 @@ interface StepCardProps {
 
 const StepCard = ({ markdown }: StepCardProps) => {
   return (
-    <SlideIntoView>
-      <StepCardWrapper>
-        <MDRenderer>{markdown}</MDRenderer>
-      </StepCardWrapper>
-    </SlideIntoView>
+    <StepCardWrapper>
+      <MDRenderer>{markdown}</MDRenderer>
+    </StepCardWrapper>
   )
 }
 
 const StepCardWrapper = withTheme(styled.div`
-  max-width: 28rem;
+  max-width: 19rem;
   padding: 0.2rem;
-
   background-color: ${(props) => props.theme.palette.background.default};
 
   & > h3 {
-    font-size: 3rem;
-    margin-bottom: 0.1em;
+    font-size: 3.2rem;
+    margin-bottom: 0rem;
   }
 
   & > p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
 
     &:not(:last-child) {

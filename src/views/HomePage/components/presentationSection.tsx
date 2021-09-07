@@ -5,7 +5,7 @@ import { SlideIntoView } from '../../../components/animations/slideIn'
 import Image from '../../../components/gallery/image'
 import MDRenderer from '../../../components/md/MDRenderer'
 import { Link } from '../../../components/typography'
-import { HomePageQueryNode } from '../../../pages/indexx'
+import { HomePageQueryNode } from '../../../pages'
 
 interface PresentationSectionProps {
   node: HomePageQueryNode
@@ -42,15 +42,15 @@ const PresentationSection = ({ node }: PresentationSectionProps) => {
 }
 
 const PresentationWrapper = withTheme(styled.div`
-  margin: 6rem 0;
-  padding: 0 4rem;
+  margin: 6em 0;
+  padding: 0 4em;
 `)
 
 const PresentationGrid = withTheme(styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 30rem;
-  gap: 4rem;
+  grid-template-columns: 1fr 30em;
+  gap: 4em;
 `)
 
 const TitleWrapper = styled.div`
@@ -58,7 +58,7 @@ const TitleWrapper = styled.div`
 `
 
 const Title = withTheme(styled.h1`
-  font-size: 4rem;
+  font-size: 4em;
   font-weight: 300;
   margin: 0;
   line-height: 1;
@@ -73,7 +73,7 @@ const TextCol = withTheme(styled.div`
   flex-direction: column;
   justify-content: center;
 
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: 200;
   color: ${(props) => props.theme.palette.primary.main};
 
@@ -90,7 +90,7 @@ const TextWrapper = withTheme(styled.div`
 const CTAWrapper = styled.div``
 
 const ImageWrapper = styled.div`
-  padding: 0 5rem;
+  padding: 0 5em;
 `
 
 export default PresentationSection

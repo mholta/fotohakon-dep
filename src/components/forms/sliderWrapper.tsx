@@ -32,19 +32,22 @@ const SliderWrapper = withTheme(styled.div<SliderWrapperProps>`
     props.summary
       ? `
       display: flex;
+      flex-wrap: wrap;
       overflow: auto;
       margin: 0 -1rem;
+      margin-bottom: -1rem;
       padding: 0 1rem;
 
       & > *:not(:last-child) {
         margin-right: 1rem;
+        margin-bottom: 1rem
       }
       `
       : `
       display: flex;
       overflow: auto;
-      margin: -2rem -1rem;
-      padding: 2rem 1rem;
+      margin: -2rem -2rem;
+      padding: 2rem 2rem;
 
       & > *:not(:last-child) {
         margin-right: 3rem;
@@ -58,8 +61,8 @@ const SliderWrapper = withTheme(styled.div<SliderWrapperProps>`
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-        margin: 0;
-        padding: 0;
+        margin: -2rem;
+        padding: 2rem;
         & > * {
           min-width: 0;
         }

@@ -44,7 +44,7 @@ const ContactPage = ({
           </OptionsIntroWrapper>
         </Container>
       </Section>
-      <Section lightGrey id="booking">
+      <Section id="booking">
         <Container>
           <FormsChoice />
           <OptionsLabel>Kontakt meg</OptionsLabel>

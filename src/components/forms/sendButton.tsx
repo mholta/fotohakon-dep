@@ -3,9 +3,11 @@ import styled from 'styled-components'
 
 interface SubmitButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  buttonText?: string
+  fontSize?: number
 }
 
-const SubmitButton = ({ onClick }: SubmitButtonProps) => {
+const SubmitButton = ({ onClick, buttonText, fontSize }: SubmitButtonProps) => {
   const [hover, setHover] = useState<boolean>(false)
 
   return (
@@ -13,13 +15,14 @@ const SubmitButton = ({ onClick }: SubmitButtonProps) => {
       onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      style={{ fontSize: (fontSize ?? 4) / 4 + 'rem' }}
     >
       <LineWrapper hover={hover}>
         <span></span>
         <span></span>
         <span></span>
       </LineWrapper>
-      <SubmitText hover={hover}>Send</SubmitText>
+      <SubmitText hover={hover}>{buttonText ?? 'Send'}</SubmitText>
     </SubmitButtonWrapper>
   )
 }
@@ -29,7 +32,6 @@ interface HoverProps {
 }
 
 const LineWrapper = styled.div<HoverProps>`
-  font-size: 1rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -72,8 +74,8 @@ const LineWrapper = styled.div<HoverProps>`
   }
 `
 
-const SubmitText = styled.span<HoverProps>`
-  font-size: 4rem;
+const SubmitText = styled.div<HoverProps>`
+  font-size: 4em;
   font-weight: 600;
   transition: transform 200ms ease;
 
@@ -96,7 +98,7 @@ const SubmitButtonWrapper = styled.button`
 
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 2rem;
+  gap: 2em;
   cursor: pointer;
   align-items: center;
   transition: transform 200ms ease;

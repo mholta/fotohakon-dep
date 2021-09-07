@@ -7,7 +7,7 @@ interface SectionProps {
 }
 
 export const Section = withTheme(styled.section<SectionProps>`
-  padding: ${(props) => (props.large ? 8 : 4)}rem 1rem;
+  padding: ${(props) => (props.large ? 8 : 4)}rem 2rem;
 
   background-color: ${(props) =>
     props.lightGrey ? props.theme.palette.grey[200] : 'transparent'};
@@ -25,7 +25,7 @@ export const Container = styled.div<ContainerProps>`
       case 'sm':
         return `300px`
       default:
-        return `760px`
+        return `940px`
     }
   }};
   margin: 0 auto;

@@ -1,7 +1,7 @@
 import { withTheme } from '@material-ui/core'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { CategoryPageQueryNode } from '../../pages/indexx'
+import { CategoryPageQueryNode } from '../../pages'
 import {
   isHorizontal,
   randomAlign,
@@ -9,11 +9,12 @@ import {
   randomMargin4x,
 } from '../../utils/random'
 import useWindowDimensions, { isBrowser } from '../hooks/useWindowDimensions'
+import { PortfolioNode } from '../portfolioPage'
 import Lightbox from './lightbox'
 import LoadMoreButton from './loadmoreButton'
 
 interface RandomGalleryProps {
-  node: CategoryPageQueryNode
+  node: PortfolioNode
   appendWithAmount?: number
   columns?: number
   callback?: Function
@@ -64,8 +65,6 @@ const RandomGallery = ({
     }
   }
 
-  //  useEffect(() => loadMore(false), [node])
-
   return (
     <RandomGalleryWrapper>
       <GalleryGrid>
@@ -78,6 +77,7 @@ const RandomGallery = ({
           />
         ))}
       </GalleryGrid>
+
       <LoadMoreButton callback={loadMore} sendState hide={!notLoaded.length} />
     </RandomGalleryWrapper>
   )
