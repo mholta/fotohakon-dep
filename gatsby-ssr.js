@@ -54,11 +54,8 @@ const Viewport = ({ children }) => {
 }
 
 export const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={theme}>
-    <Viewport />
-    <CssBaseline />
-    <GlobalStyles />
+  <>
+    Hello SSR
     {element}
-    <Kjeks />
-  </ThemeProvider>
+  </>
 )

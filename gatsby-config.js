@@ -14,7 +14,6 @@ module.exports = {
     image: '/seo.jpg', // Path to your image you placed in the 'static' folder
   },
   plugins: [
-    `gatsby-plugin-preload-fonts`,
     'gatsby-plugin-mdx',
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
@@ -42,6 +41,7 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-top-layout',
     {
       resolve: `gatsby-plugin-material-ui`,
@@ -65,12 +65,9 @@ module.exports = {
         }, */
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
-
     'gatsby-plugin-image',
-
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -109,5 +106,6 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-preload-fonts`,
   ],
 }
