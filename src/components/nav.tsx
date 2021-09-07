@@ -15,10 +15,8 @@ interface NavProps {
 const Nav = ({ white }: NavProps) => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false)
 
-  /*   useEffect(() => {
-    if (typeof document !== `undefined`)
-      document.body.style.overflow = hamburgerOpen ? 'hidden' : 'auto'
-  }, [hamburgerOpen]) */
+  const open = () => setHamburgerOpen(true)
+  const close = () => setHamburgerOpen(false)
 
   return (
     <NavWrapper id="top">
@@ -41,14 +39,23 @@ const Nav = ({ white }: NavProps) => {
               exit="hidden"
               variants={menuContainerVariants}
             >
+              <MenuLogoWrapper white={white}>
+                <Logo />
+              </MenuLogoWrapper>
               <motion.li variants={menuItemVariants}>
-                <NavLink to="/bryllup/#pakker">Bryllupspakker</NavLink>
+                <NavLink to="/bryllup/#pakker" onClick={close}>
+                  Bryllupspakker
+                </NavLink>
               </motion.li>
               <motion.li variants={menuItemVariants}>
-                <NavLink to="/familiepar/#pakker">Familie/par-pakker</NavLink>
+                <NavLink to="/familiepar/#pakker" onClick={close}>
+                  Familie/par-pakker
+                </NavLink>
               </motion.li>
               <motion.li variants={menuItemVariants}>
-                <NavLink to="/kontakt">Andre henvendelser</NavLink>
+                <NavLink to="/kontakt" onClick={close}>
+                  Andre henvendelser
+                </NavLink>
               </motion.li>
             </MenuLinkWrapper>
           )}
@@ -164,8 +171,8 @@ const ArrowBackWrapper = styled.div`
 `
 
 const LogoAnimationWrapperLink = styled(GatsbyLink)<NavProps>`
-  position: ${(props) => (props.hamburgerOpen ? 'fixed' : 'relative')};
-  z-index: 100;
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -224,7 +231,11 @@ const NavWrapper = withTheme(styled.nav`
   z-index: 100;
 `)
 
-const LogoWrapper = withTheme(styled.div<{ white: boolean }>`
+interface LogoWrapperProps {
+  white: boolean
+}
+
+const LogoWrapper = withTheme(styled.div<LogoWrapperProps>`
   font-size: 2rem;
 
   color: ${(props) =>
@@ -258,6 +269,12 @@ const LogoWrapper = withTheme(styled.div<{ white: boolean }>`
       `
         : ``};
   }
+`)
+
+const MenuLogoWrapper = withTheme(styled(LogoWrapper)<LogoWrapperProps>`
+  position: absolute;
+  bottom: 1rem;
+  font-size: 1rem;
 `)
 
 export default Nav

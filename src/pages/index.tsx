@@ -34,7 +34,7 @@ const IndexPage = ({
         }
       />
       <HomePageHeader node={homeNode} />
-      <CategoryButtonsWrapper>
+      <CategoryButtonsWrapper id="hei">
         <CategoryButton
           node={homeNode.familieParKategori}
           bookingLink={weddingBookingLink}
