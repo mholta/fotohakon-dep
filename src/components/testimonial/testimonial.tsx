@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MDRenderer from '../md/MDRenderer'
-import { TestimonialNode } from '../../pages'
+import { TestimonialNode } from '../../pages/indexx'
 
 import Image from '../gallery/image'
 import { useInView } from 'react-intersection-observer'

@@ -5,7 +5,7 @@ import { SlideIntoView } from '../../../components/animations/slideIn'
 import Image from '../../../components/gallery/image'
 import MDRenderer from '../../../components/md/MDRenderer'
 import { Link } from '../../../components/typography'
-import { HomePageQueryNode } from '../../../pages'
+import { HomePageQueryNode } from '../../../pages/indexx'
 
 interface PresentationSectionProps {
   node: HomePageQueryNode

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HomePageQueryNode } from '../../../pages'
+import { HomePageQueryNode } from '../../../pages/indexx'
 import Image from '../../../components/gallery/image'
 import Nav from '../../../components/nav'
 import scrollTo from 'gatsby-plugin-smoothscroll'
