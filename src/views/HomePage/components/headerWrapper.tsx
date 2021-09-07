@@ -3,20 +3,18 @@ import styled from 'styled-components'
 import { HomePageQueryNode } from '../../../pages'
 import Image from '../../../components/gallery/image'
 import Nav from '../../../components/nav'
-import Arrow from '../../../components/arrow'
 import scrollTo from 'gatsby-plugin-smoothscroll'
+import ArrowButton from '../../../components/elements/arrowButton'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
 }
 
 const HomePageHeader = ({ node }: HeaderWrapperProps) => {
-  const handleScrollDown = () => {}
-
   return (
     <MainWrapper>
       <HomePageNavWrapper>
-        <Nav white />
+        <Nav />
       </HomePageNavWrapper>
       <RelativeWrapper>
         <Image imageData={node.headerImage} absolute />
@@ -24,22 +22,21 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
         {/*    <CenterChild absolute fullWidth bottom>
           <ArrowButton direction="down" onClick={handleScrollDown} />
         </CenterChild> */}
-        <ArrowButton>
-          <Arrow
+        <ArrowButtonWrapper>
+          <ArrowButton
+            onClick={() => scrollTo('#hei')}
+            variant="light"
             direction="down"
-            onClick={() => {
-              scrollTo('#section')
-            }}
           />
-        </ArrowButton>
+        </ArrowButtonWrapper>
       </RelativeWrapper>
     </MainWrapper>
   )
 }
 
-const ArrowButton = styled.div`
+const ArrowButtonWrapper = styled.div`
   position: absolute;
-  bottom: 2rem;
+  bottom: 0;
   z-index: 20;
   cursor: pointer;
 `

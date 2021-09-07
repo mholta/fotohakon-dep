@@ -51,12 +51,15 @@ const AbosluteWrapper = styled.div<Partial<ImgProps>>`
     position: absolute;
     top: 0;
     left: 0;
+    bottom:0;
+    right:0;
     height: 100%;
     width:100%;
     object-fit: fill;
     `
       : `
-    height: ${props.height ?? 'auto'}`}
+    height: ${props.height ?? 'auto'};
+    display: flex;`}
 `
 
 const GImage = styled(GatsbyImage)<ImgProps>`

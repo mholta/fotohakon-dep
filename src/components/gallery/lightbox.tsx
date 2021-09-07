@@ -19,16 +19,16 @@ interface LightboxProps {
 
 const Lightbox = ({ imageData, dragConstraints, drag }: LightboxProps) => {
   const [open, setOpen] = useState<boolean>(false)
-  const [wantsToOpen, setWantsToOpen] = useState<boolean>(false)
+  /*   const [wantsToOpen, setWantsToOpen] = useState<boolean>(false)
   const [dragging, setDragging] = useState<boolean>(false)
-  const [tap, setTap] = useState<boolean>(true)
+  const [tap, setTap] = useState<boolean>(true) */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (wantsToOpen) {
       if (!dragging) setOpen(true)
       else setDragging(false)
     }
-  }, [tap, wantsToOpen])
+  }, [tap, wantsToOpen]) */
 
   const handleClose = () => {
     setOpen(false)
@@ -37,22 +37,10 @@ const Lightbox = ({ imageData, dragConstraints, drag }: LightboxProps) => {
   return (
     <LightboxWrapper>
       <GalleryImageButton
-        drag={drag}
-        dragConstraints={dragConstraints}
-        onDragStart={() => {
-          setDragging(true)
-        }}
-        onTap={() => {
-          setTap(!tap)
-          setWantsToOpen(true)
-        }}
-        whileTap={{ scale: 0.98 }}
-        whileHover={{
-          scale: 1.02,
-          boxShadow: '1px 0px 10rem rgba(0, 0, 0, 0.1)',
+        onClick={() => {
+          setOpen(true)
         }}
         style={{ cursor: 'pointer' }}
-        transition={{ duration: 0.4 }}
       >
         <Image imageData={imageData} maxheight="90vh" />
       </GalleryImageButton>
@@ -86,11 +74,18 @@ const Lightbox = ({ imageData, dragConstraints, drag }: LightboxProps) => {
 
 const LightboxWrapper = styled.div``
 
-const GalleryImageButton = styled(motion.div)<Partial<LightboxProps>>`
+const GalleryImageButton = styled.div<Partial<LightboxProps>>`
   display: relative;
   max-width: 100%;
   cursor: move;
   z-index: 2;
+
+  transition: transform 400ms ease, box-shadow 400ms ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 0px 10rem rgba(0, 0, 0, 0.1);
+  }
 
   &:after {
     content: '';
