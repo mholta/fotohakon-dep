@@ -8,11 +8,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from './typography'
 
 interface NavProps {
-  noArrow?: boolean
+  white?: boolean
   hamburgerOpen?: boolean
 }
 
-const Nav = ({ noArrow }: NavProps) => {
+const Nav = ({ white }: NavProps) => {
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false)
 
   /*   useEffect(() => {
@@ -25,6 +25,7 @@ const Nav = ({ noArrow }: NavProps) => {
       <InnerFlexWrapper>
         <Hamburger
           open={hamburgerOpen}
+          white={white ?? false}
           onClick={() => setHamburgerOpen(!hamburgerOpen)}
         >
           <span />
@@ -54,10 +55,10 @@ const Nav = ({ noArrow }: NavProps) => {
         </AnimatePresence>
         <LogoAnimationWrapperLink
           to="/"
-          noArrow={noArrow ?? false}
+          white={white ?? false}
           hamburgerOpen={hamburgerOpen}
         >
-          <LogoWrapper>
+          <LogoWrapper white={white}>
             <Logo />
           </LogoWrapper>
           <ArrowBackWrapper>
@@ -91,7 +92,7 @@ const menuItemVariants = {
   show: { opacity: 1, x: 0 },
 }
 
-const Hamburger = styled.div<{ open: boolean }>`
+const Hamburger = styled.div<{ open: boolean; white: boolean }>`
   position: ${(props) => (props.open ? 'fixed' : 'absolute')};
   z-index: 150;
 
@@ -108,7 +109,7 @@ const Hamburger = styled.div<{ open: boolean }>`
   & > span {
     height: 2px;
     width: 100%;
-    background-color: #000;
+    background-color: ${(props) => (props.white ? '#fff' : '#000')};
     transition: transform 200ms ease, opacity 200ms ease;
   }
   & > span:nth-child(2) {
@@ -178,7 +179,7 @@ const LogoAnimationWrapperLink = styled(GatsbyLink)<NavProps>`
     transition: opacity 200ms ease;
   }
   ${(props) =>
-    !props.noArrow &&
+    !props.white &&
     `
   &:hover > div:first-child {
     opacity: 0;
@@ -202,7 +203,8 @@ const MenuLinkWrapper = withTheme(styled(motion.ol)`
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background-color: ${(props) => props.theme.palette.secondary.light};
+  //background-color: ${(props) => props.theme.palette.secondary.light};
+  background-color: white;
 
   display: flex;
   flex-direction: column;
@@ -222,10 +224,13 @@ const NavWrapper = withTheme(styled.nav`
   z-index: 100;
 `)
 
-const LogoWrapper = withTheme(styled.div`
+const LogoWrapper = withTheme(styled.div<{ white: boolean }>`
   font-size: 2rem;
 
-  color: ${(props) => props.theme.palette.grey[900]};
+  color: ${(props) =>
+    props.white
+      ? props.theme.palette.grey[100]
+      : props.theme.palette.grey[900]};
 
   height: 3.3em;
   width: 10em;
@@ -241,6 +246,17 @@ const LogoWrapper = withTheme(styled.div`
     margin-bottom: -16.1em;
     margin-left: -0.8em;
     margin-right: -0.8em;
+    fill: currentColor;
+    ${(props) =>
+      props.white
+        ? `
+      filter: 
+        drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.18))
+        drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.25)) 
+        drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+
+      `
+        : ``};
   }
 `)
 

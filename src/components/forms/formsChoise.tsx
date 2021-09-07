@@ -1,3 +1,4 @@
+import { withTheme } from '@material-ui/core'
 import { Link, navigate } from 'gatsby'
 import React, { CSSProperties } from 'react'
 import styled from 'styled-components'
@@ -47,16 +48,19 @@ const FormsChoice = ({}: FormsChoiseProps) => {
 }
 
 const activeStyles: CSSProperties = {
-  fontWeight: 'bold',
   color: '#000',
+  fontWeight: 'bold',
 }
 
-const FormChoiceLink = styled(Link)`
-  color: #555;
+const FormChoiceLink = withTheme(styled(Link)`
+  color: #888;
   text-transform: uppercase;
   text-decoration: none;
-`
+  font-family: 'Source Sans Pro', sans;
+`)
 
-const FormChoices = styled.div``
+const FormChoices = styled.div`
+  margin-bottom: 2rem;
+`
 
 export default FormsChoice

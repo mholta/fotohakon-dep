@@ -28,7 +28,7 @@ const SelectionCard = ({
       summary={summary ? 1 : 0}
     >
       {(summary ? 1 : 0) ? (
-        <h4>{node.title}</h4>
+        <>{node.title}</>
       ) : (
         <>
           <CheckMark selected={selected ? 1 : 0} hover={hover}>
@@ -74,7 +74,8 @@ const CardWrapper = withTheme(
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-family: 'Libre Baskerville', serif;
 
     &:active {
       transform: scale(0.98);

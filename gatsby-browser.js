@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
   body, html {
     font-weight: 400;
     height: 100%;
-    font-size: 1.3vw;
+    font-size: 18px;
   }
   
   body {

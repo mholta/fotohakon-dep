@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Button } from '../../../components/elements/button'
 import RandomGallery from '../../../components/gallery/randomGallery'
 import MDRenderer from '../../../components/md/MDRenderer'
-import { CategoryPageQueryNode } from '../../../pages/indexx'
+import { CategoryPageQueryNode } from '../../../pages'
 
 interface CategoryProps {
   node: CategoryPageQueryNode

@@ -15,6 +15,7 @@ import { Container, Section } from '../components/layout/layout'
 import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
 import SEO from '../components/seo'
+import { Link } from '../components/typography'
 
 interface BookingPageProps {
   data: any
@@ -46,6 +47,8 @@ const OtherBookingsPage = ({
         <Section>
           <Container style={{ textAlign: 'center' }}>
             <MDRenderer>{pageNode.topText}</MDRenderer>
+            <br />
+            <Link to="/portfolio/familiepar">Portfolio</Link>
           </Container>
         </Section>
       )}
@@ -76,7 +79,7 @@ const OtherBookingsPage = ({
           </OptionCardsWrapper>
         </Container>
       </Section>
-      <Section lightGrey id="booking">
+      <Section id="booking">
         <Container>
           <FormsChoice />
           <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>

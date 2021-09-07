@@ -14,9 +14,16 @@ interface CategoryNode {
 interface CategoryButtonProps {
   node: CategoryNode
   spaceBetween?: boolean
+  portfolioLink: string
+  bookingLink: string
 }
 
-const CategoryButton = ({ node, spaceBetween }: CategoryButtonProps) => {
+const CategoryButton = ({
+  node,
+  spaceBetween,
+  portfolioLink,
+  bookingLink,
+}: CategoryButtonProps) => {
   return (
     <ImageWrapper>
       <ButtonTextWrapper spaceBetween={spaceBetween}>
@@ -25,10 +32,14 @@ const CategoryButton = ({ node, spaceBetween }: CategoryButtonProps) => {
         </SlideIntoView>
         <CTAWrapper spaceBetween={spaceBetween}>
           <SlideIntoView direction="none">
-            <Link light={true}>Portfølje</Link>
+            <Link light={true} to={portfolioLink}>
+              Portfølje
+            </Link>
           </SlideIntoView>
           <SlideIntoView direction="none">
-            <Link light={true}>Fortell meg mer og se priser</Link>
+            <Link light={true} to={bookingLink}>
+              Fortell meg mer og se priser
+            </Link>
           </SlideIntoView>
         </CTAWrapper>
       </ButtonTextWrapper>
@@ -39,7 +50,7 @@ const CategoryButton = ({ node, spaceBetween }: CategoryButtonProps) => {
 
 const CTAWrapper = styled.div<{ spaceBetween?: boolean }>`
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-family: inherit;
 
   ${(props) =>
@@ -91,7 +102,7 @@ const ButtonTextWrapper = withTheme(styled.div<{ spaceBetween?: boolean }>`
 
   & > h2 {
     font-weight: 400;
-    font-size: 3rem;
+    font-size: 3.6em;
     color: white;
     text-align: center;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5),

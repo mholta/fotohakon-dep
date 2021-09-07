@@ -16,6 +16,7 @@ import MDRenderer from '../components/md/MDRenderer'
 import Nav from '../components/nav'
 import SEO from '../components/seo'
 import StepsSection from '../components/steps/steps.section'
+import { Link } from '../components/typography'
 
 interface BookingPageProps {
   data: any
@@ -30,8 +31,17 @@ const BookingPage = ({
     useState<string | null>()
   const [selectedVideoSoluton, setSelectedVideoSolution] =
     useState<string | null>()
-  const [selectedExtraSoluton, setSelectedExtraSolution] =
-    useState<string | null>()
+  const [selectedExtraSoluton, setSelectedExtraSolution] = useState<string>('')
+
+  const updateSelecteExtraSolutions = (solution: string) => {
+    const array = selectedExtraSoluton.split(';;')
+    const index = array.indexOf(solution)
+
+    if (index === -1) array.push(solution)
+    else array.splice(index, 1)
+
+    setSelectedExtraSolution(array.join(';;'))
+  }
 
   const handleSubmit = () => {
     console.log('submit')
@@ -50,6 +60,8 @@ const BookingPage = ({
       <Section>
         <Container style={{ textAlign: 'center' }}>
           <MDRenderer>{weddingPageNode.topText}</MDRenderer>
+          <br />
+          <Link to="/portfolio/bryllup">Portfolio</Link>
         </Container>
       </Section>
 
@@ -113,15 +125,13 @@ const BookingPage = ({
           <OptionCardsWrapper>
             {weddingPageNode.extras.map((node, index) => (
               <SelectionCard
-                selected={selectedExtraSoluton === node.title.toUpperCase()}
+                selected={
+                  selectedExtraSoluton.indexOf(node.title.toUpperCase()) !== -1
+                }
                 node={node}
                 key={'es' + index}
                 onClick={() =>
-                  setSelectedExtraSolution(
-                    selectedExtraSoluton === node.title.toUpperCase()
-                      ? null
-                      : node.title.toUpperCase()
-                  )
+                  updateSelecteExtraSolutions(node.title.toUpperCase())
                 }
               />
             ))}
@@ -129,7 +139,7 @@ const BookingPage = ({
         </Container>
       </Section>
 
-      <Section lightGrey id="booking">
+      <Section id="booking">
         <Container>
           <FormsChoice />
           <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>
@@ -152,6 +162,12 @@ const BookingPage = ({
                 required
               />
             </PhoneEmailGrid>
+            <TextField
+              id="freference"
+              name="Reference"
+              label="Hvordan hørte du om meg?"
+              fullWidth
+            />
 
             <h3>Fotopakke</h3>
             <OptionCardsWrapper summary>
@@ -197,14 +213,13 @@ const BookingPage = ({
                 <SelectionCard
                   summary
                   key={'extr-' + index}
-                  selected={selectedExtraSoluton === node.title.toUpperCase()}
+                  selected={
+                    selectedExtraSoluton.indexOf(node.title.toUpperCase()) !==
+                    -1
+                  }
                   node={node}
                   onClick={() =>
-                    setSelectedExtraSolution(
-                      selectedExtraSoluton === node.title.toUpperCase()
-                        ? null
-                        : node.title.toUpperCase()
-                    )
+                    updateSelecteExtraSolutions(node.title.toUpperCase())
                   }
                 />
               ))}

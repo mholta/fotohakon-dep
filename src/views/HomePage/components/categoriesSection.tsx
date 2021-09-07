@@ -2,7 +2,7 @@ import React from 'react'
 import {
   AllCategoryPageQueryNodes,
   CategoryPageQueryEdge,
-} from '../../../pages/indexx'
+} from '../../../pages'
 import { Tab, Tabs } from './categories/tabs'
 
 interface CategorySectionProps {

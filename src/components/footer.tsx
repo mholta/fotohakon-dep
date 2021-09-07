@@ -74,7 +74,6 @@ const FooterContainer = styled(Container)`
   }
 `
 const FooterWrapper = withTheme(styled.footer`
-  margin-top: 4rem;
   border-top: 1px solid ${(props) => props.theme.palette.primary.light};
   padding: 4rem;
   text-align: center;

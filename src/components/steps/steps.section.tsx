@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { WeddingPageQueryNode } from '../../pages/bryllup'
+import { Container, Section } from '../layout/layout'
 import Line from '../../assets/StepsLine.svg'
 import StepCard from './step'
 import StepImage, { Variant } from './steps.image'
@@ -12,35 +13,36 @@ interface StepsSectionProps {
 
 const StepsSection = ({ weddingPageNode }: StepsSectionProps) => {
   return (
-    <OuterWrapper>
-      <InnerWrapper>
-        <StepImageOneWrapper>
-          <StepImage
-            imageData={weddingPageNode.imageOne}
-            variant={Variant.TopRight}
-          />
-        </StepImageOneWrapper>
-        <StepsGrid>
-          <StepCard markdown={weddingPageNode.stepOne} />
-          <StepCard markdown={weddingPageNode.stepTwo} />
-          <StepCard markdown={weddingPageNode.stepThree} />
-        </StepsGrid>
-        <StepImageTwoWrapper>
-          <StepImage
-            imageData={weddingPageNode.imageTwo}
-            variant={Variant.TopLeft}
-          />
-        </StepImageTwoWrapper>
-      </InnerWrapper>
+    <StepsSectionWrapper>
+      <Section style={{ position: 'relative', overflow: 'visible' }}>
+        <StepsContainer>
+          <StepImageOneWrapper>
+            <StepImage
+              imageData={weddingPageNode.imageOne}
+              variant={Variant.TopRight}
+            />
+          </StepImageOneWrapper>
+          <ContentGrid>
+            <StepCard markdown={weddingPageNode.stepOne} />
+            <StepCard markdown={weddingPageNode.stepTwo} />
+            <StepCard markdown={weddingPageNode.stepThree} />
+          </ContentGrid>
+          <StepImageTwoWrapper>
+            <StepImage
+              imageData={weddingPageNode.imageTwo}
+              variant={Variant.TopLeft}
+            />
+          </StepImageTwoWrapper>
+        </StepsContainer>
+      </Section>
       <LineWrapper>
         <Line />
       </LineWrapper>
-    </OuterWrapper>
+    </StepsSectionWrapper>
   )
 }
 
-const InnerWrapper = withTheme(styled.div`
-  padding: 0 6rem;
+const StepsContainer = withTheme(styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -74,7 +76,7 @@ const StepImageTwoWrapper = withTheme(styled.div`
   }
 `)
 
-const StepsGrid = withTheme(styled.div`
+const ContentGrid = withTheme(styled.div`
   display: flex;
   flex-direction: column;
 
@@ -106,10 +108,8 @@ const StepsGrid = withTheme(styled.div`
   }
 `)
 
-const OuterWrapper = styled.div`
+const StepsSectionWrapper = styled.div`
   position: relative;
-  overflow: visible;
-  padding: 4rem 1rem;
 `
 
 const LineWrapper = withTheme(styled.div`
