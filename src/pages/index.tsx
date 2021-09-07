@@ -27,6 +27,7 @@ const KommerWrapper = styled.div`
 `
 
 export default IndexPage
+
 export interface HomePageQueryNode {
   internTittel: string
   presentation: any

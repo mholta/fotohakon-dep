@@ -42,6 +42,7 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    'gatsby-plugin-top-layout',
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
@@ -64,11 +65,11 @@ module.exports = {
         }, */
       },
     },
-    `gatsby-plugin-fontawesome-css`,
-
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+
+    'gatsby-plugin-image',
+
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

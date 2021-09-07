@@ -84,6 +84,10 @@ const CategoryButtonsWrapper = styled.div<{ small?: boolean }>`
 const HomePageWrapper = withTheme(styled.div`
   background-color: ${(props) => props.theme.palette.secondary.main};
   font-size: 1.3vw;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
 `)
 
 export default IndexPage

@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -18,18 +19,21 @@ const GlobalStyles = createGlobalStyle`
   body, html {
     font-weight: 400;
     height: 100%;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 0;
   }
-
+  
   body {
-    font-family: 'Libre Caslon Text', serif;
-  }
+    font-family: 'Libre Baskerville', serif;
+/*     background-color: #eae8d7;
+ */  }
 
   h1,h2,h3,h4,h5,h6{
-    /* font-family: 'Libre Baskerville', serif; */
-    font-family: 'Libre Caslon Display', serif;
-        font-weight: 400;
+     font-family: 'Libre Baskerville', serif;
+/*     
+ */
   }
+  
   h1{font-size: 3.75}
   h3{
     font-size: 1.4rem;

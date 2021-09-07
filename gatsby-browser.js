@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     height: 100%;
     font-size: 18px;
+    padding: 0;
   }
   
   body {
