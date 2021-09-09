@@ -37,13 +37,13 @@ const IndexPage = ({
       <CategoryButtonsWrapper id="hei">
         <CategoryButton
           node={homeNode.familieParKategori}
-          bookingLink={weddingBookingLink}
-          portfolioLink={weddingPortfolioLink}
+          bookingLink={familyBookingLink}
+          portfolioLink={familyPortfolioLink}
         />
         <CategoryButton
           node={homeNode.bryllupKategori}
-          bookingLink={familyBookingLink}
-          portfolioLink={familyPortfolioLink}
+          bookingLink={weddingBookingLink}
+          portfolioLink={weddingPortfolioLink}
         />
       </CategoryButtonsWrapper>
       <PresentationSection node={homeNode} />
@@ -55,14 +55,14 @@ const IndexPage = ({
       <CategoryButtonsWrapper small={true}>
         <CategoryButton
           node={homeNode.familieParKategori}
-          bookingLink={weddingBookingLink}
-          portfolioLink={weddingPortfolioLink}
+          bookingLink={familyBookingLink}
+          portfolioLink={familyPortfolioLink}
           spaceBetween
         />
         <CategoryButton
           node={homeNode.bryllupKategori}
-          bookingLink={familyBookingLink}
-          portfolioLink={familyPortfolioLink}
+          bookingLink={weddingBookingLink}
+          portfolioLink={weddingPortfolioLink}
           spaceBetween
         />
       </CategoryButtonsWrapper>
@@ -72,20 +72,31 @@ const IndexPage = ({
   )
 }
 
-const CategoryButtonsWrapper = styled.div<{ small?: boolean }>`
+const CategoryButtonsWrapper = withTheme(styled.div<{ small?: boolean }>`
   padding: 1rem;
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 80rem;
   max-height: ${(props) => (props.small ? '20rem' : '100vh')};
-`
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    grid-template-columns: 1fr;
+    max-height: 160vh;
+  }
+`)
 
 const HomePageWrapper = withTheme(styled.div`
   background-color: ${(props) => props.theme.palette.secondary.main};
   font-size: 1.3vw;
 
-  @media only screen and (max-width: 600px) {
+  ${(props) => props.theme.breakpoints.down('md')} {
+    font-size: 1.5vw;
+  }
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    font-size: 1.9vw;
+  }
+  ${(props) => props.theme.breakpoints.down('xs')} {
     font-size: 16px;
   }
 `)

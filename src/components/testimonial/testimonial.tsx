@@ -6,6 +6,7 @@ import { TestimonialNode } from '../../pages/indexx'
 import Image from '../gallery/image'
 import { useInView } from 'react-intersection-observer'
 import { SlideIntoView } from '../animations/slideIn'
+import { withTheme } from '@material-ui/core'
 
 interface TestimonialProps {
   node: TestimonialNode
@@ -48,7 +49,7 @@ interface TestimonialCardProps {
   inView?: boolean
 }
 
-const MainWrapper = styled.div<TestimonialCardProps>`
+const MainWrapper = withTheme(styled.div<TestimonialCardProps>`
   background-color: ${(props) => props.color};
   color: white;
   margin: 14em 0;
@@ -60,18 +61,33 @@ const MainWrapper = styled.div<TestimonialCardProps>`
   flex-direction: ${(props) => (props.reverseOrder ? 'row-reverse' : 'row')};
   justify-content: center;
   align-items: stretch;
-`
 
-const ImageWrapper = styled.div<TestimonialCardProps>`
+  ${(props) => props.theme.breakpoints.down('md')} {
+    padding: 2em;
+  }
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+`)
+
+const ImageWrapper = withTheme(styled.div<TestimonialCardProps>`
   position: relative;
 
   margin: -7em 0;
 
   max-width: 19em;
   ${(props) => (props.reverseOrder ? 'margin-right' : 'margin-left')}: 4em;
-`
 
-const TextWrapper = styled.div`
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    margin: 2em;
+    max-width: 16em;
+  }
+`)
+
+const TextWrapper = withTheme(styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -88,6 +104,13 @@ const TextWrapper = styled.div`
     line-height: 1;
     margin-bottom: 0.3em;
   }
-`
+
+  ${(props) => props.theme.breakpoints.down('md')} {
+    padding: 2em;
+  }
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    padding-bottom: 0;
+  }
+`)
 
 export default Testimonial

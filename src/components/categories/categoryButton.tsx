@@ -48,7 +48,7 @@ const CategoryButton = ({
   )
 }
 
-const CTAWrapper = styled.div<{ spaceBetween?: boolean }>`
+const CTAWrapper = withTheme(styled.div<{ spaceBetween?: boolean }>`
   color: white;
   font-size: 1.6em;
   font-family: inherit;
@@ -72,7 +72,11 @@ const CTAWrapper = styled.div<{ spaceBetween?: boolean }>`
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3),
       0px 2px 24px rgba(0, 0, 0, 0.2);
   }
-`
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    //font-size: 1em;
+  }
+`)
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -99,7 +103,16 @@ const ButtonTextWrapper = withTheme(styled.div<{ spaceBetween?: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  ${(props) => props.theme.breakpoints.down('xs')} {
+    font-size: 1.1em;
+  }
   & > h2 {
     font-weight: 400;
     font-size: 3.6em;
@@ -107,10 +120,6 @@ const ButtonTextWrapper = withTheme(styled.div<{ spaceBetween?: boolean }>`
     text-align: center;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5),
       0px 2px 24px rgba(0, 0, 0, 0.3);
-
-    ${(props) => props.theme.breakpoints.down('xs')} {
-      font-size: 1.6rem;
-    }
   }
 `)
 

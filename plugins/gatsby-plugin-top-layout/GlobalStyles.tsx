@@ -14,6 +14,16 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 18px;
     padding: 0;
   }
+
+  @media only screen and (max-width: 760px) {
+    body{font-size: 16px;}
+  }
+  @media only screen and (max-width: 600px) {
+    body{font-size: 14px;}
+  }
+  @media only screen and (max-width: 400px) {
+    body{font-size: 13px;}
+  }
   
   body {
     font-family: 'Libre Baskerville', serif;

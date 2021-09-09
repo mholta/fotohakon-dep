@@ -168,7 +168,7 @@ const MenuItemHeader = withTheme(styled.h3`
   font-weight: 700;
   letter-spacing: 0.2em;
   color: ${(props) => props.theme.palette.grey[500]};
-  font-size: 1rem;
+  font-size: 0.7em;
   margin-bottom: 0.6rem;
 `)
 
@@ -182,6 +182,10 @@ const NavMenuLi = withTheme(styled(motion.li)`
   margin: 1.2rem 0;
   position: relative;
   text-align: center;
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    font-size: 1rem;
+  }
 `)
 
 const ArrowBackWrapper = styled.div`
