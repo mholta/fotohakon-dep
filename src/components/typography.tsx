@@ -5,6 +5,7 @@ import styled from 'styled-components'
 interface LinkProps {
   fontWeight?: string
   light?: boolean
+  marginH?: string
 }
 
 export const Link = withTheme(styled(GatsbyLink)<LinkProps>`
@@ -20,7 +21,7 @@ export const Link = withTheme(styled(GatsbyLink)<LinkProps>`
   position: relative;
 
   padding: 0.3em 0;
-  margin: -0.3em 0;
+  margin: -0.3em ${(props) => props.marginH ?? 0};
 
   &::before {
     content: '';

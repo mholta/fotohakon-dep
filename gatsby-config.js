@@ -41,7 +41,6 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-top-layout',
     {
       resolve: `gatsby-plugin-material-ui`,
@@ -49,22 +48,9 @@ module.exports = {
         stylesProvider: {
           injectFirst: true,
         },
-        /* webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: `Source Sans Pro`,
-                variants: [`300`, `400`, `600`],
-              },
-              {
-                family: `Libre Baskerville`,
-                variants: [`400`, `700`],
-              },
-            ],
-          },
-        }, */
       },
     },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',

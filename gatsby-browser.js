@@ -55,7 +55,7 @@ const Viewport = ({ children }) => {
 
 export const wrapRootElement = ({ element }) => (
   <>
-    Hello Browser
     {element}
+    <Kjeks />
   </>
 )

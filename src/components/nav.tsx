@@ -42,21 +42,34 @@ const Nav = ({ white }: NavProps) => {
               <MenuLogoWrapper white={white}>
                 <Logo />
               </MenuLogoWrapper>
-              <motion.li variants={menuItemVariants}>
-                <NavLink to="/bryllup/#pakker" onClick={close}>
-                  Bryllupspakker
-                </NavLink>
-              </motion.li>
-              <motion.li variants={menuItemVariants}>
-                <NavLink to="/familiepar/#pakker" onClick={close}>
-                  Familie/par-pakker
-                </NavLink>
-              </motion.li>
-              <motion.li variants={menuItemVariants}>
-                <NavLink to="/kontakt" onClick={close}>
-                  Andre henvendelser
-                </NavLink>
-              </motion.li>
+              <NavMenuLi variants={menuItemVariants}>
+                <MenuItemHeader>Bryllup</MenuItemHeader>
+                <Link to="/portfolio/bryllup" marginH="0.6rem" onClick={close}>
+                  Portfolio
+                </Link>
+                <Link to="/bryllup/#pakker" marginH="0.6rem" onClick={close}>
+                  Pakker og priser
+                </Link>
+              </NavMenuLi>
+              <NavMenuLi variants={menuItemVariants}>
+                <MenuItemHeader>Familie/par</MenuItemHeader>
+                <Link
+                  to="/portfolio/familiepar"
+                  marginH="0.6rem"
+                  onClick={close}
+                >
+                  Portfolio
+                </Link>
+                <Link to="/familiepar/#pakker" marginH="0.6rem" onClick={close}>
+                  Pakker og priser
+                </Link>
+              </NavMenuLi>
+              <NavMenuLi variants={menuItemVariants}>
+                <MenuItemHeader>Andre henvendelser</MenuItemHeader>
+                <Link to="/kontakt" onClick={close}>
+                  Kontakt
+                </Link>
+              </NavMenuLi>
             </MenuLinkWrapper>
           )}
         </AnimatePresence>
@@ -148,15 +161,27 @@ const Hamburger = styled.div<{ open: boolean; white: boolean }>`
   `}
 `
 
-const NavLink = withTheme(styled(Link)`
+const MenuItemHeader = withTheme(styled.h3`
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: ${(props) => props.theme.palette.grey[500]};
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+`)
+
+const NavMenuLi = withTheme(styled(motion.li)`
   color: inherit;
   text-decoration: none;
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
   font-weight: 400;
-  margin: 1rem 0;
+  margin: 1.2rem 0;
   position: relative;
+  text-align: center;
 `)
 
 const ArrowBackWrapper = styled.div`
@@ -270,11 +295,42 @@ const LogoWrapper = withTheme(styled.div<LogoWrapperProps>`
         : ``};
   }
 `)
-
-const MenuLogoWrapper = withTheme(styled(LogoWrapper)<LogoWrapperProps>`
+const MenuLogoWrapper = withTheme(styled.div<LogoWrapperProps>`
   position: absolute;
   bottom: 1rem;
   font-size: 1rem;
+
+  color: ${(props) =>
+    props.white
+      ? props.theme.palette.grey[100]
+      : props.theme.palette.grey[900]};
+
+  height: 3.3em;
+  width: 10em;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    height: 20em;
+    width: 12em;
+    margin-top: -15.3em;
+    margin-bottom: -16.1em;
+    margin-left: -0.8em;
+    margin-right: -0.8em;
+    fill: currentColor;
+    ${(props) =>
+      props.white
+        ? `
+      filter: 
+        drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.18))
+        drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.25)) 
+        drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+
+      `
+        : ``};
+  }
 `)
 
 export default Nav

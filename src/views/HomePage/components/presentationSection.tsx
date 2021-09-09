@@ -27,7 +27,7 @@ const PresentationSection = ({ node }: PresentationSectionProps) => {
             </TextWrapper>
             <CTAWrapper>
               <span>Er vi en match? </span>
-              <Link to="/kontakt">Send meg en forespørsel!</Link>
+              <Link to="/bryllup/#booking">Send meg en forespørsel!</Link>
             </CTAWrapper>
           </TextCol>
         </SlideIntoView>
