@@ -142,7 +142,7 @@ const BookingPage = ({
       <Section id="booking">
         <Container>
           <FormsChoice />
-          <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>
+          <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
             name="Booking bryllup"
             autoComplete="off"
@@ -162,12 +162,6 @@ const BookingPage = ({
                 required
               />
             </PhoneEmailGrid>
-            <TextField
-              id="freference"
-              name="Reference"
-              label="Hvordan hørte du om meg?"
-              fullWidth
-            />
 
             <h3>Fotopakke</h3>
             <OptionCardsWrapper summary>
@@ -241,20 +235,26 @@ const BookingPage = ({
               defaultValue={selectedExtraSoluton ?? ''}
               hidden
             />
-
+            <TextField
+              id="freference"
+              name="Referanse"
+              label="Hvordan hørte dere om meg?"
+              multiline
+              fullWidth
+            />
             <TextField
               id="fsubject"
-              name="Emnefelt"
-              label="Gjelder"
+              name="OmBryllupet"
+              label="Skriv litt om bryllupet deres og hvorfor vi er en god match"
+              multiline
               required
               fullWidth
             />
 
             <TextField
               id="fmessage"
-              name="Melding"
-              label="Melding"
-              placeholder=""
+              name="Spørsmål"
+              label="Fortell meg hva dere lurer på"
               multiline
               required
               fullWidth

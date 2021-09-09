@@ -69,6 +69,14 @@ const ContactPage = ({
             </PhoneEmailGrid>
 
             <TextField
+              id="freference"
+              name="Referanse"
+              label="Hvordan hørte du om meg?"
+              multiline
+              fullWidth
+            />
+
+            <TextField
               id="fsubject"
               name="Emnefelt"
               label="Gjelder"
@@ -80,7 +88,6 @@ const ContactPage = ({
               id="fmessage"
               name="Melding"
               label="Melding"
-              placeholder=""
               multiline
               required
               fullWidth

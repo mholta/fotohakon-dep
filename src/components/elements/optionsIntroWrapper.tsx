@@ -6,6 +6,6 @@ export const OptionsIntroWrapper = styled.div`
   }
 `
 export const OptionsLabel = styled.h2`
-  font-size: 3.6rem;
+  font-size: 2.6rem;
   margin-bottom: 1rem;
 `

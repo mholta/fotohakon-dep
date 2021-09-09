@@ -82,7 +82,7 @@ const OtherBookingsPage = ({
       <Section id="booking">
         <Container>
           <FormsChoice />
-          <OptionsLabel>Fullfør bookingforespørsel</OptionsLabel>
+          <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
             name="Booking annet"
             autoComplete="off"
@@ -125,18 +125,26 @@ const OtherBookingsPage = ({
             <input name="Pakke" defaultValue={selectedSolution ?? ''} hidden />
 
             <TextField
+              id="freference"
+              name="Referanse"
+              label="Hvordan hørte dere om meg?"
+              multiline
+              fullWidth
+            />
+
+            <TextField
               id="fsubject"
-              name="Emnefelt"
-              label="Gjelder"
+              name="OmBryllupet"
+              label="Skriv litt om fotogaferingen og hvorfor vi er en god match"
+              multiline
               required
               fullWidth
             />
 
             <TextField
               id="fmessage"
-              name="Melding"
-              label="Melding"
-              placeholder=""
+              name="Spørsmål"
+              label="Fortell meg hva dere lurer på"
               multiline
               required
               fullWidth
