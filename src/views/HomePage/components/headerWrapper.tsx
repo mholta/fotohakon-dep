@@ -5,6 +5,7 @@ import Image from '../../../components/gallery/image'
 import Nav from '../../../components/nav'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import ArrowButton from '../../../components/elements/arrowButton'
+import { withTheme } from '@material-ui/core'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -52,12 +53,23 @@ const MainWrapper = styled.header`
   height: 100vh;
 `
 
-const RelativeWrapper = styled.div`
+const RelativeWrapper = withTheme(styled.div`
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-`
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    & > div:first-child > *:first-child {
+      width: 200%;
+      max-width: 200%;
+      left: -80%;
+    }
+    & > div:first-child {
+      overflow: hidden;
+    }
+  }
+`)
 
 export default HomePageHeader

@@ -43,7 +43,9 @@ const BookingPage = ({
     setSelectedExtraSolution(array.join(';;'))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    //e.prevenDefault()
+
     console.log('submit')
   }
   return (
@@ -148,7 +150,8 @@ const BookingPage = ({
             autoComplete="off"
             method="POST"
             data-netlify="true"
-            action="/takk"
+            action="/portfolio/bryllup"
+            onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="Booking bryllup" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
@@ -241,6 +244,7 @@ const BookingPage = ({
               label="Hvordan hørte dere om meg?"
               multiline
               fullWidth
+              rows={6}
             />
             <TextField
               id="fsubject"
@@ -249,6 +253,7 @@ const BookingPage = ({
               multiline
               required
               fullWidth
+              rows={6}
             />
 
             <TextField
@@ -258,9 +263,10 @@ const BookingPage = ({
               multiline
               required
               fullWidth
+              rows={6}
             />
 
-            <SubmitButton onClick={handleSubmit} />
+            <SubmitButton />
           </BookingForm>
         </Container>
       </Section>

@@ -24,6 +24,7 @@ const IndexPage = ({
   const weddingBookingLink = '/bryllup'
   const familyPortfolioLink = '/portfolio/familiepar'
   const familyBookingLink = '/familiepar'
+
   return (
     <HomePageWrapper>
       <SEO
@@ -36,14 +37,14 @@ const IndexPage = ({
       <HomePageHeader node={homeNode} />
       <CategoryButtonsWrapper id="hei">
         <CategoryButton
-          node={homeNode.familieParKategori}
-          bookingLink={familyBookingLink}
-          portfolioLink={familyPortfolioLink}
-        />
-        <CategoryButton
           node={homeNode.bryllupKategori}
           bookingLink={weddingBookingLink}
           portfolioLink={weddingPortfolioLink}
+        />
+        <CategoryButton
+          node={homeNode.familieParKategori}
+          bookingLink={familyBookingLink}
+          portfolioLink={familyPortfolioLink}
         />
       </CategoryButtonsWrapper>
       <PresentationSection node={homeNode} />
@@ -54,15 +55,15 @@ const IndexPage = ({
       </div>
       <CategoryButtonsWrapper small={true}>
         <CategoryButton
-          node={homeNode.familieParKategori}
-          bookingLink={familyBookingLink}
-          portfolioLink={familyPortfolioLink}
-          spaceBetween
-        />
-        <CategoryButton
           node={homeNode.bryllupKategori}
           bookingLink={weddingBookingLink}
           portfolioLink={weddingPortfolioLink}
+          spaceBetween
+        />
+        <CategoryButton
+          node={homeNode.familieParKategori}
+          bookingLink={familyBookingLink}
+          portfolioLink={familyPortfolioLink}
           spaceBetween
         />
       </CategoryButtonsWrapper>

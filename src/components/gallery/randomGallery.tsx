@@ -130,7 +130,8 @@ const GalleryGrid = withTheme(styled.ul`
 
   ${(props) => props.theme.breakpoints.down('sm')} {
     grid-template-columns: 1fr 1fr;
-    font-size: 10px;
+    font-size: 1vw;
+    padding: 2em;
   }
 `)
 

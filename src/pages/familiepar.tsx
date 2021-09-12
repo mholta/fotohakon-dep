@@ -88,7 +88,7 @@ const OtherBookingsPage = ({
             autoComplete="off"
             method="POST"
             data-netlify="true"
-            action="/takk"
+            action="/portfolio/familiepar"
           >
             <input type="hidden" name="form-name" value="Booking annet" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
@@ -130,6 +130,7 @@ const OtherBookingsPage = ({
               label="Hvordan hørte dere om meg?"
               multiline
               fullWidth
+              rows={6}
             />
 
             <TextField
@@ -139,6 +140,7 @@ const OtherBookingsPage = ({
               multiline
               required
               fullWidth
+              rows={6}
             />
 
             <TextField
@@ -148,6 +150,7 @@ const OtherBookingsPage = ({
               multiline
               required
               fullWidth
+              rows={6}
             />
 
             <SubmitButton onClick={handleSubmit} />

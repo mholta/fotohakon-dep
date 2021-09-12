@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from '../../src/styles/theme'
 import { GlobalStyles } from './GlobalStyles'
+import SaveForLaterButton from '../../src/components/saveForLater'
 
 export default function TopLayout(props) {
   return (
@@ -30,6 +31,7 @@ export default function TopLayout(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <GlobalStyles />
+        <SaveForLaterButton />
         {props.children}
       </ThemeProvider>
     </React.Fragment>
