@@ -14,7 +14,7 @@ export const Link = withTheme(styled(GatsbyLink)<LinkProps>`
 
   text-decoration: none;
   cursor: pointer;
-  display: inline;
+  display: inline-block;
 
   font-weight: ${(props) => props.fontWeight ?? 'inherit'};
 

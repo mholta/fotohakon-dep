@@ -16,13 +16,13 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterContainer>
-        <ScrollToTopButtonWrapper>
+        {/*         <ScrollToTopButtonWrapper>
           <ArrowButton
             onClick={() => scrollTo('#top')}
             variant="light"
             direction="top"
           />
-        </ScrollToTopButtonWrapper>
+        </ScrollToTopButtonWrapper> */}
         <SocialsWrapper>
           <SocialIconWrapper href="https://www.facebook.com/fotohakon">
             <FontAwesomeIcon icon={faFacebookF} />

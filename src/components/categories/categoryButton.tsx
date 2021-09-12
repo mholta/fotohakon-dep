@@ -33,7 +33,7 @@ const CategoryButton = ({
         <CTAWrapper spaceBetween={spaceBetween}>
           <SlideIntoView direction="none">
             <Link light={true} to={portfolioLink}>
-              Portfølje
+              Portfolio
             </Link>
           </SlideIntoView>
           <SlideIntoView direction="none">
@@ -109,9 +109,10 @@ const ButtonTextWrapper = withTheme(styled.div<{ spaceBetween?: boolean }>`
     left: 0;
     align-items: center;
     justify-content: center;
+    font-size: 0.9em;
   }
   ${(props) => props.theme.breakpoints.down('xs')} {
-    font-size: 1.1em;
+    font-size: 0.8em;
   }
   & > h2 {
     font-weight: 400;

@@ -28,13 +28,16 @@ const ArrowBackWrapper = styled.div`
   padding: 0.4rem;
   display: flex;
   justify-content: center;
+  max-width: 70vw;
 `
 
 const LogoWrapper = styled.div`
   text-decoration: none;
   position: relative;
 
-  & > svg {
+  & svg {
+    max-width: 100%;
+    border: 1px solid red;
     opacity: 1;
     transition: opacity 200ms ease;
   }

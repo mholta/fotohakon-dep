@@ -88,7 +88,7 @@ const GalleryImageButton = styled.div<Partial<LightboxProps>>`
   }
 
   &:after {
-    content: '';
+    content: none;
     position: absolute;
     z-index: 10;
     top: 0;

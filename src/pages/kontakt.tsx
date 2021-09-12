@@ -23,7 +23,8 @@ const ContactPage = ({
 }: BookingPageProps) => {
   const pageNode: ContactPageQueryNode = contentfulAndreHenvendelser
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.prevenDefault()
     console.log('submit')
   }
   return (
@@ -53,7 +54,7 @@ const ContactPage = ({
             autoComplete="off"
             method="POST"
             data-netlify="true"
-            action="/takk"
+            action="/portfolio/familiepar"
           >
             <input type="hidden" name="form-name" value="Andre henvendelser" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
@@ -74,6 +75,7 @@ const ContactPage = ({
               label="Hvordan hørte du om meg?"
               multiline
               fullWidth
+              rows={4}
             />
 
             <TextField
@@ -91,6 +93,7 @@ const ContactPage = ({
               multiline
               required
               fullWidth
+              rows={6}
             />
 
             <SubmitButton onClick={handleSubmit} />

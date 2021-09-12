@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MDRenderer from '../md/MDRenderer'
-import { TestimonialNode } from '../../pages/indexx'
+import { TestimonialNode } from '../../pages'
 
 import Image from '../gallery/image'
 import { useInView } from 'react-intersection-observer'
@@ -75,6 +75,7 @@ const MainWrapper = withTheme(styled.div<TestimonialCardProps>`
 
 const ImageWrapper = withTheme(styled.div<TestimonialCardProps>`
   position: relative;
+  flex-shrink: 0;
 
   margin: -7em 0;
 

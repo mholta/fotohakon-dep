@@ -39,7 +39,7 @@ const Nav = ({ white }: NavProps) => {
               exit="hidden"
               variants={menuContainerVariants}
             >
-              <MenuLogoWrapper white={white}>
+              <MenuLogoWrapper white={white} to="/">
                 <Logo />
               </MenuLogoWrapper>
               <NavMenuLi variants={menuItemVariants}>
@@ -112,13 +112,18 @@ const menuItemVariants = {
   show: { opacity: 1, x: 0 },
 }
 
-const Hamburger = styled.div<{ open: boolean; white: boolean }>`
+const Hamburger = withTheme(styled.div<{ open: boolean; white: boolean }>`
+  font-size: 2rem;
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    font-size: 1.8rem;
+  }
+
   position: ${(props) => (props.open ? 'fixed' : 'absolute')};
   z-index: 150;
 
   top: 2rem;
   right: 2rem;
-  font-size: 2rem;
   width: 1.4em;
   height: 1em;
   display: flex;
@@ -159,7 +164,7 @@ const Hamburger = styled.div<{ open: boolean; white: boolean }>`
     transform: translateY(-1000%) scaleX(0.2);
   }
   `}
-`
+`)
 
 const MenuItemHeader = withTheme(styled.h3`
   text-transform: uppercase;
@@ -265,7 +270,7 @@ interface LogoWrapperProps {
 }
 
 const LogoWrapper = withTheme(styled.div<LogoWrapperProps>`
-  font-size: 2rem;
+  font-size: 1.6em;
 
   color: ${(props) =>
     props.white
@@ -299,7 +304,7 @@ const LogoWrapper = withTheme(styled.div<LogoWrapperProps>`
         : ``};
   }
 `)
-const MenuLogoWrapper = withTheme(styled.div<LogoWrapperProps>`
+const MenuLogoWrapper = withTheme(styled(GatsbyLink)<LogoWrapperProps>`
   position: absolute;
   bottom: 1rem;
   font-size: 1rem;
