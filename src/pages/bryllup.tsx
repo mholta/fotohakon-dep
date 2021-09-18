@@ -146,14 +146,14 @@ const BookingPage = ({
           <FormsChoice />
           <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
-            name="Bryllupsbooking"
+            name="bryllupsbooking"
             autoComplete="off"
             method="POST"
             data-netlify="true"
             action="/portfolio/bryllup"
             onSubmit={handleSubmit}
           >
-            <input type="hidden" name="form-name" value="Booking bryllup" />
+            <input type="hidden" name="form-name" value="bryllupsbooking" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
             <PhoneEmailGrid>
               <TextField id="fphone" name="Mobil" label="Mobil" required />
