@@ -146,7 +146,7 @@ const BookingPage = ({
           <FormsChoice />
           <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
-            name="Booking bryllup"
+            name="Bryllupsbooking"
             autoComplete="off"
             method="POST"
             data-netlify="true"
