@@ -50,13 +50,13 @@ const ContactPage = ({
           <FormsChoice />
           <OptionsLabel>Kontakt meg</OptionsLabel>
           <BookingForm
-            name="Andre henvendelser"
+            name="kontakt"
             autoComplete="off"
             method="POST"
             data-netlify="true"
             action="/portfolio/familiepar"
           >
-            <input type="hidden" name="form-name" value="Andre henvendelser" />
+            <input type="hidden" name="form-name" value="kontakt" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
             <PhoneEmailGrid>
               <TextField id="fphone" name="Mobil" label="Mobil" required />

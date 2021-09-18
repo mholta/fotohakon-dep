@@ -84,13 +84,13 @@ const OtherBookingsPage = ({
           <FormsChoice />
           <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
-            name="Booking annet"
+            name="familieparbooking"
             autoComplete="off"
             method="POST"
             data-netlify="true"
             action="/portfolio/familiepar"
           >
-            <input type="hidden" name="form-name" value="Booking annet" />
+            <input type="hidden" name="form-name" value="familieparbooking" />
             <TextField id="fname" name="Navn" label="Navn" required fullWidth />
             <PhoneEmailGrid>
               <TextField id="fphone" name="Mobil" label="Mobil" required />
