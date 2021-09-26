@@ -143,6 +143,9 @@ const BookingPage = ({
 
       <Section id="booking">
         <Container>
+          <p>Prisene stiger i november.</p>
+          <br />
+          <br />
           <FormsChoice />
           <OptionsLabel>Send meg en melding</OptionsLabel>
           <BookingForm
