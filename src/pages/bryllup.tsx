@@ -79,8 +79,7 @@ const BookingPage = ({
 
       <Section>
         <Container>
-          <OptionsLabel>Foto</OptionsLabel>
-          <OptionCardsWrapper>
+          <OptionCardsWrapper title="Foto">
             {weddingPageNode.photoSolutions.map((node, index) => (
               <SelectionCard
                 selected={selectedPhotoSolution === node.title.toUpperCase()}
@@ -101,8 +100,7 @@ const BookingPage = ({
 
       <Section>
         <Container>
-          <OptionsLabel>Video</OptionsLabel>
-          <OptionCardsWrapper>
+          <OptionCardsWrapper title="Video">
             {weddingPageNode.videoSolutions.map((node, index) => (
               <SelectionCard
                 selected={selectedVideoSoluton === node.title.toUpperCase()}
@@ -123,8 +121,7 @@ const BookingPage = ({
 
       <Section>
         <Container>
-          <OptionsLabel>Tilleggsvalg</OptionsLabel>
-          <OptionCardsWrapper>
+          <OptionCardsWrapper title="Tilleggsvalg">
             {weddingPageNode.extras.map((node, index) => (
               <SelectionCard
                 selected={
@@ -169,8 +166,7 @@ const BookingPage = ({
               />
             </PhoneEmailGrid>
 
-            <h3>Fotopakke</h3>
-            <OptionCardsWrapper summary>
+            <OptionCardsWrapper summary title="Fotopakke">
               {weddingPageNode.photoSolutions.map((node, index) => (
                 <SelectionCard
                   key={'phots-' + index}
@@ -188,8 +184,7 @@ const BookingPage = ({
               ))}
             </OptionCardsWrapper>
 
-            <h3>Videopakke</h3>
-            <OptionCardsWrapper summary>
+            <OptionCardsWrapper summary title="Videopakke">
               {weddingPageNode.videoSolutions.map((node, index) => (
                 <SelectionCard
                   key={'vids-' + index}
@@ -207,8 +202,7 @@ const BookingPage = ({
               ))}
             </OptionCardsWrapper>
 
-            <h3>Tilleggsvalg</h3>
-            <OptionCardsWrapper summary>
+            <OptionCardsWrapper summary title="Tilleggsvalg">
               {weddingPageNode.extras.map((node, index) => (
                 <SelectionCard
                   summary
