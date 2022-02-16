@@ -9,6 +9,7 @@ import { Link } from '../typography'
 interface CategoryNode {
   buttonText: string
   buttonImage: any
+  smallButtonImage: any
 }
 
 interface CategoryButtonProps {
@@ -43,7 +44,7 @@ const CategoryButton = ({
           </SlideIntoView>
         </CTAWrapper>
       </ButtonTextWrapper>
-      <Image imageData={node.buttonImage} absolute />
+      <Image imageData={node.smallButtonImage} absolute />
     </ImageWrapper>
   )
 }

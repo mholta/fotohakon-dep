@@ -128,10 +128,18 @@ export const pageQuery = graphql`
           gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
           title
         }
+        smallButtonImage {
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+          title
+        }
         buttonText
       }
       familieParKategori {
         buttonImage {
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+          title
+        }
+        smallButtonImage {
           gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
           title
         }

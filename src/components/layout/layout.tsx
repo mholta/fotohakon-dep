@@ -41,6 +41,7 @@ interface CenterChildProps {
 export const CenterChild = styled.div<CenterChildProps>`
   display: grid;
   place-items: center;
+  height: 100%;
   ${(props) => (props.absolute ? `position: absolute;` : ``)}
   ${(props) => (props.fullWidth ? `left:0;width:100%;` : ``)}
   ${(props) => (props.bottom ? `bottom:0;` : ``)}

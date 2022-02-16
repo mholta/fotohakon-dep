@@ -6,6 +6,7 @@ import Nav from '../../../components/nav'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import ArrowButton from '../../../components/elements/arrowButton'
 import { withTheme } from '@material-ui/core'
+import { CenterChild } from '../../../components/layout/layout'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -20,9 +21,11 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
       <RelativeWrapper>
         <Image imageData={node.headerImage} absolute />
 
-        {/*    <CenterChild absolute fullWidth bottom>
-          <ArrowButton direction="down" onClick={handleScrollDown} />
-        </CenterChild> */}
+        <CenterChild absolute>
+          <h1 style={{ color: 'white' }}>{/* bryllupsbilder for livet */}</h1>
+        </CenterChild>
+        {/*   <ArrowButton direction="down" onClick={handleScrollDown} /> */}
+
         <ArrowButtonWrapper>
           <ArrowButton
             onClick={() => scrollTo('#hei')}

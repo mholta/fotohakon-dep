@@ -28,6 +28,11 @@ const RandomGallery = ({
   callback,
   dragConstraints,
 }: RandomGalleryProps) => {
+  // Sort by updatedDate
+  node.gallery.sort(
+    (a: { updatedAt: number }, b: { updatedAt: number }) =>
+      new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+  )
   const [notLoaded, setNotLoaded] = useState<any[]>(node.gallery)
   const [loaded] = useState<LoadedElement[]>([])
   const { width } = isBrowser ? useWindowDimensions() : { width: 10 }

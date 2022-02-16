@@ -51,6 +51,7 @@ export const pageQuery = graphql`
       gallery {
         title
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP])
+        updatedAt
       }
     }
   }
