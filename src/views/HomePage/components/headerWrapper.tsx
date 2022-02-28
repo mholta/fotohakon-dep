@@ -22,7 +22,11 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
         <Image imageData={node.headerImage} absolute />
 
         <CenterChild absolute>
-          <h1 style={{ color: 'white' }}>bryllupsbildene for livet</h1>
+          <h1
+            style={{ color: 'white', fontSize: '1.6rem', textAlign: 'center' }}
+          >
+            bryllupsbildene for livet
+          </h1>
         </CenterChild>
         {/*   <ArrowButton direction="down" onClick={handleScrollDown} /> */}
 
