@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "preload-fonts": "gatsby-preload-fonts",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",

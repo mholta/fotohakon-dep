@@ -1,7 +1,5 @@
-import { navigate } from 'gatsby-link'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import SubmitButton from './forms/sendButton'
 import RandomGallery from './gallery/randomGallery'
 import { Container } from './layout/layout'
 import { Link } from './typography'

@@ -22,11 +22,7 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
         <Image imageData={node.headerImage} absolute />
 
         <CenterChild absolute>
-          <h1
-            style={{ color: 'white', fontSize: '1.6rem', textAlign: 'center' }}
-          >
-            bryllupsbildene for livet
-          </h1>
+          <HomePageTitle>bryllupsbildene for livet</HomePageTitle>
         </CenterChild>
         {/*   <ArrowButton direction="down" onClick={handleScrollDown} /> */}
 
@@ -41,6 +37,14 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
     </MainWrapper>
   )
 }
+
+const HomePageTitle = styled.h1`
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.2em;
+`
 
 const ArrowButtonWrapper = styled.div`
   position: absolute;
