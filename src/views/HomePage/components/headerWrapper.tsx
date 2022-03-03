@@ -7,6 +7,7 @@ import scrollTo from 'gatsby-plugin-smoothscroll'
 import ArrowButton from '../../../components/elements/arrowButton'
 import { withTheme } from '@material-ui/core'
 import { CenterChild } from '../../../components/layout/layout'
+import { SlideIntoView } from '../../../components/animations/slideIn'
 
 interface HeaderWrapperProps {
   node: HomePageQueryNode
@@ -22,7 +23,9 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
         <Image imageData={node.headerImage} absolute />
 
         <CenterChild absolute>
-          <HomePageTitle>bryllupsbildene for livet</HomePageTitle>
+          <SlideIntoView direction="left" duration={600}>
+            <HomePageTitle>bryllupsbildene for livet</HomePageTitle>
+          </SlideIntoView>
         </CenterChild>
         {/*   <ArrowButton direction="down" onClick={handleScrollDown} /> */}
 
@@ -40,7 +43,7 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
 
 const HomePageTitle = styled.h1`
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 300;
   text-align: center;
   letter-spacing: 0.2em;
