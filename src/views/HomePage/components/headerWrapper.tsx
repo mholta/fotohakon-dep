@@ -41,13 +41,17 @@ const HomePageHeader = ({ node }: HeaderWrapperProps) => {
   )
 }
 
-const HomePageTitle = styled.h1`
+const HomePageTitle = withTheme(styled.h1`
   color: white;
   font-size: 1rem;
   font-weight: 300;
   text-align: center;
   letter-spacing: 0.2em;
-`
+
+  ${(props) => props.theme.breakpoints.down('sm')} {
+    font-size: 0.8rem;
+  }
+`)
 
 const ArrowButtonWrapper = styled.div`
   position: absolute;
