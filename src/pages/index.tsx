@@ -20,9 +20,11 @@ const IndexPage = ({
   const testimonialNodes: TestimonialNode[] =
     allContentfulTilbakemeldinger.nodes
 
-  const weddingPortfolioLink = '/portfolio/bryllup'
+  const weddingPortfolioLink =
+    'https://fotohakon.client-gallery.com/category/bryllup'
   const weddingBookingLink = '/bryllup'
-  const familyPortfolioLink = '/portfolio/familiepar'
+  const familyPortfolioLink =
+    'https://fotohakon.client-gallery.com/category/familie-par'
   const familyBookingLink = '/familiepar'
 
   return (
@@ -160,6 +162,7 @@ export const pageQuery = graphql`
         color {
           hex
         }
+        cloudSpotLink
       }
     }
   }
@@ -170,6 +173,7 @@ export interface TestimonialNode {
   name: string
   feedback: any
   color: { hex: string }
+  cloudSpotLink: string
 }
 export interface HomePageQueryNode {
   internTittel: string

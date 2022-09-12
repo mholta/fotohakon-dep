@@ -7,6 +7,7 @@ import Image from '../gallery/image'
 import { useInView } from 'react-intersection-observer'
 import { SlideIntoView } from '../animations/slideIn'
 import { withTheme } from '@material-ui/core'
+import { Link } from 'gatsby'
 
 interface TestimonialProps {
   node: TestimonialNode
@@ -14,7 +15,7 @@ interface TestimonialProps {
 }
 
 const Testimonial = ({ node, reverseOrder }: TestimonialProps) => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     threshold: 0.6,
     triggerOnce: true,
   })
@@ -24,6 +25,7 @@ const Testimonial = ({ node, reverseOrder }: TestimonialProps) => {
       color={node.color?.hex ?? 'transparent'}
       reverseOrder={reverseOrder}
       ref={ref}
+      to={node.cloudSpotLink}
     >
       <TextWrapper>
         <SlideIntoView direction={reverseOrder ? 'right' : 'left'}>
@@ -34,9 +36,33 @@ const Testimonial = ({ node, reverseOrder }: TestimonialProps) => {
       <ImageWrapper reverseOrder={reverseOrder}>
         <SlideIntoView
           direction={reverseOrder ? 'left' : 'right'}
-          style={{ height: '100%' }}
+          style={{ height: '100%', position: 'relative' }}
         >
-          <Image imageData={node.image} height="100%" />
+          {!!node.cloudSpotLink ? (
+            <div>
+              <div className="link-wrapper">
+                <div style={{ width: '8rem' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <Image imageData={node.image} height="100%" />
+            </div>
+          ) : (
+            <Image imageData={node.image} height="100%" />
+          )}
         </SlideIntoView>
       </ImageWrapper>
     </MainWrapper>
@@ -49,13 +75,15 @@ interface TestimonialCardProps {
   inView?: boolean
 }
 
-const MainWrapper = withTheme(styled.div<TestimonialCardProps>`
+const MainWrapper = withTheme(styled(Link)<TestimonialCardProps>`
   background-color: ${(props) => props.color};
   color: white;
   margin: 14em 0;
   padding: 4em 4em;
   position: relative;
   min-height: 16em;
+  display: block;
+  text-decoration: none;
 
   display: flex;
   flex-direction: ${(props) => (props.reverseOrder ? 'row-reverse' : 'row')};
@@ -70,6 +98,26 @@ const MainWrapper = withTheme(styled.div<TestimonialCardProps>`
     align-items: center;
     padding: 0;
     margin: 0;
+  }
+
+  cursor: pointer;
+  & .link-wrapper {
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 200ms opacity ease;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  &:hover .link-wrapper {
+    opacity: 1;
   }
 `)
 
