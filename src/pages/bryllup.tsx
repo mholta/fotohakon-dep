@@ -1,6 +1,7 @@
 import { TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
+import { weddingPortfolioLink } from '.'
 import {
   OptionsIntroWrapper,
   OptionsLabel,
@@ -63,7 +64,7 @@ const BookingPage = ({
         <Container style={{ textAlign: 'center' }}>
           <MDRenderer>{weddingPageNode.topText}</MDRenderer>
           <br />
-          <Link to="/Portfolio/bryllup">Portfolio</Link>
+          <Link to={weddingPortfolioLink}>Portfolio</Link>
         </Container>
       </Section>
 

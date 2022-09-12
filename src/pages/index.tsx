@@ -13,19 +13,18 @@ interface IndexPageProps {
   data: any
 }
 
+export const weddingPortfolioLink =
+  'https://fotohakon.client-gallery.com/category/bryllup'
+const weddingBookingLink = '/bryllup'
+export const familyPortfolioLink =
+  'https://fotohakon.client-gallery.com/category/familie-par'
+const familyBookingLink = '/familiepar'
 const IndexPage = ({
   data: { contentfulHjem, allContentfulTilbakemeldinger },
 }: IndexPageProps) => {
   const homeNode: HomePageQueryNode = contentfulHjem
   const testimonialNodes: TestimonialNode[] =
     allContentfulTilbakemeldinger.nodes
-
-  const weddingPortfolioLink =
-    'https://fotohakon.client-gallery.com/category/bryllup'
-  const weddingBookingLink = '/bryllup'
-  const familyPortfolioLink =
-    'https://fotohakon.client-gallery.com/category/familie-par'
-  const familyBookingLink = '/familiepar'
 
   return (
     <HomePageWrapper>
