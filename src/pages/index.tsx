@@ -17,7 +17,7 @@ export const weddingPortfolioLink =
   'https://fotohakon.client-gallery.com/category/bryllup'
 const weddingBookingLink = '/bryllup'
 export const familyPortfolioLink =
-  'https://fotohakon.client-gallery.com/category/familie-par'
+  'https://fotohakon.client-gallery.com/category/test'
 const familyBookingLink = '/familiepar'
 const IndexPage = ({
   data: { contentfulHjem, allContentfulTilbakemeldinger },

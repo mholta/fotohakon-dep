@@ -1,22 +1,22 @@
 import { TextField } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
-import { familyPortfolioLink } from '.'
+import { familyPortfolioLink } from './pages'
 import {
   OptionsIntroWrapper,
   OptionsLabel,
-} from '../components/elements/optionsIntroWrapper'
-import Footer from '../components/footer'
-import { BookingForm, PhoneEmailGrid } from '../components/forms/formElements'
-import FormsChoice from '../components/forms/formsChoise'
-import SelectionCard from '../components/forms/selectionCard'
-import SubmitButton from '../components/forms/sendButton'
-import OptionCardsWrapper from '../components/forms/sliderWrapper'
-import { Container, Section } from '../components/layout/layout'
-import MDRenderer from '../components/md/MDRenderer'
-import Nav from '../components/nav'
-import SEO from '../components/seo'
-import { Link } from '../components/typography'
+} from './components/elements/optionsIntroWrapper'
+import Footer from './components/footer'
+import { BookingForm, PhoneEmailGrid } from './components/forms/formElements'
+import FormsChoice from './components/forms/formsChoise'
+import SelectionCard from './components/forms/selectionCard'
+import SubmitButton from './components/forms/sendButton'
+import OptionCardsWrapper from './components/forms/sliderWrapper'
+import { Container, Section } from './components/layout/layout'
+import MDRenderer from './components/md/MDRenderer'
+import Nav from './components/nav'
+import SEO from './components/seo'
+import { Link } from './components/typography'
 
 interface BookingPageProps {
   data: any
