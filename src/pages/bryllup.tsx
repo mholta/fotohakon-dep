@@ -30,8 +30,8 @@ const BookingPage = ({
 
   const [selectedPhotoSolution, setSelectedPhotoSolution] =
     useState<string | null>()
-  const [selectedVideoSoluton, setSelectedVideoSolution] =
-    useState<string | null>()
+  /*   const [selectedVideoSoluton, setSelectedVideoSolution] =
+    useState<string | null>() */
   const [selectedExtraSoluton, setSelectedExtraSolution] = useState<string>('')
 
   const updateSelecteExtraSolutions = (solution: string) => {
@@ -99,7 +99,7 @@ const BookingPage = ({
         </Container>
       </Section>
 
-      <Section>
+      {/*  <Section>
         <Container>
           <OptionCardsWrapper title="Video">
             {weddingPageNode.videoSolutions.map((node, index) => (
@@ -118,7 +118,7 @@ const BookingPage = ({
             ))}
           </OptionCardsWrapper>
         </Container>
-      </Section>
+      </Section> */}
 
       <Section>
         <Container>
@@ -181,7 +181,7 @@ const BookingPage = ({
                 />
               ))}
             </OptionCardsWrapper>
-
+            {/* 
             <OptionCardsWrapper summary title="Videopakke">
               {weddingPageNode.videoSolutions.map((node, index) => (
                 <SelectionCard
@@ -198,7 +198,7 @@ const BookingPage = ({
                   }
                 />
               ))}
-            </OptionCardsWrapper>
+            </OptionCardsWrapper> */}
 
             <OptionCardsWrapper summary title="Tilleggsvalg">
               {weddingPageNode.extras.map((node, index) => (
@@ -223,11 +223,11 @@ const BookingPage = ({
               defaultValue={selectedPhotoSolution ?? ''}
               hidden
             />
-            <input
+            {/*             <input
               name="Videopakke"
               defaultValue={selectedVideoSoluton ?? ''}
               hidden
-            />
+            /> */}
             <input
               name="Tilleggsvalg"
               defaultValue={selectedExtraSoluton ?? ''}
@@ -309,12 +309,12 @@ export const pageQuery = graphql`
       optionsIntro {
         raw
       }
-      videoSolutions {
+"""       videoSolutions {
         title
         content {
           raw
         }
-      }
+      } """
       extras {
         title
         content {
@@ -335,6 +335,6 @@ export interface WeddingPageQueryNode {
   stepThree: any
   optionsIntro: any
   photoSolutions: { content: any; title: string }[]
-  videoSolutions: { content: any; title: string }[]
+  // videoSolutions: { content: any; title: string }[]
   extras: { content: any; title: string }[]
 }
