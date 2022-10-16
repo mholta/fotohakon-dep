@@ -25,11 +25,11 @@ const PresentationSection = ({ node }: PresentationSectionProps) => {
             <TextWrapper>
               <MDRenderer>{node.presentation}</MDRenderer>
             </TextWrapper>
-            <CTAWrapper>
+            <div>
               <span style={{ marginRight: '0.3em' }}>Er vi en match? </span>
               <Link to="/bryllup/#booking">Send meg en melding</Link>{' '}
               <span>- det ville vært rått å høre fra dere!</span>
-            </CTAWrapper>
+            </div>
           </TextCol>
         </SlideIntoView>
         <SlideIntoView direction="right">
@@ -113,11 +113,6 @@ const TextWrapper = withTheme(styled.div`
     line-height: 1.6;
   }
 `)
-
-const CTAWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
 
 const ImageWrapper = withTheme(styled.div`
   padding: 0 5em;
