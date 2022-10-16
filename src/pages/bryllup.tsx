@@ -309,12 +309,6 @@ export const pageQuery = graphql`
       optionsIntro {
         raw
       }
-"""       videoSolutions {
-        title
-        content {
-          raw
-        }
-      } """
       extras {
         title
         content {
