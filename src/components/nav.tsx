@@ -1,10 +1,10 @@
 import { withTheme } from '@material-ui/core'
-import { Link as GatsbyLink } from 'gatsby'
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Logo from '../assets/Logo.svg'
-import ArrowBack from '../assets/ArrowBack.svg'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Link as GatsbyLink } from 'gatsby'
+import { useState } from 'react'
+import styled from 'styled-components'
+import ArrowBack from '../assets/ArrowBack.svg'
+import Logo from '../assets/Logo.svg'
 import { Link } from './typography'
 
 interface NavProps {
@@ -44,10 +44,18 @@ const Nav = ({ white }: NavProps) => {
               </MenuLogoWrapper>
               <NavMenuLi variants={menuItemVariants}>
                 <MenuItemHeader>Bryllup</MenuItemHeader>
-                <Link to="/portfolio/bryllup" marginH="0.6rem" onClick={close}>
+                <Link
+                  to="https://fotohakon.client-gallery.com/category/bryllup"
+                  marginH="0.6rem"
+                  onClick={close}
+                >
                   Portfolio
                 </Link>
-                <Link to="/bryllup/#pakker" marginH="0.6rem" onClick={close}>
+                <Link
+                  to="https://fotohakon.client-gallery.com/category/familie-par"
+                  marginH="0.6rem"
+                  onClick={close}
+                >
                   Pakker og priser
                 </Link>
               </NavMenuLi>
