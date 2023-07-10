@@ -1,0 +1,2 @@
+(self.webpackChunkfotohakon=self.webpackChunkfotohakon||[]).push([[728],{6814:function(e,n,t){"use strict";function u(e){if(null==e)throw new TypeError("Cannot destructure undefined")}t.d(n,{Z:function(){return u}})},1335:function(e,n,t){"use strict";t.r(n);var u=t(6814),r=t(7294),o=t(6718),c=t(1529);n.default=function(e){return(0,u.Z)(e),r.createElement("div",null,r.createElement(c.Z,{title:"Takk"}),"Takk <3",r.createElement(o.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-takk-tsx-6f034673d8f9e17dee29.js.map

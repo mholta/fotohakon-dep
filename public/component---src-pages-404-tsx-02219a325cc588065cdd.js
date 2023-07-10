@@ -1,0 +1,2 @@
+(self.webpackChunkfotohakon=self.webpackChunkfotohakon||[]).push([[218],{3205:function(e,n,t){"use strict";t.r(n);var u=t(8037),l=t(7294),a=t(6718),f=t(1529);n.default=function(){return"undefined"!=typeof window&&(0,u.c4)("/"),l.createElement("main",null,l.createElement(f.Z,{title:"Ikke funnet"}),"404",l.createElement(a.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-02219a325cc588065cdd.js.map
